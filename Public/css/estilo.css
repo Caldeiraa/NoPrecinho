@@ -4,19 +4,9 @@
     margin: 0px;
 }
 
-.cabecalho{
-    background-color:#aed896;
-    height: 95px;
-}
-
 .feed{
     background-color: rgb(33, 158, 141);
     height: 800px;
-}
-
-.footer{
-    background-color: red;
-    height: 95px;
 }
 
 .box {
@@ -127,81 +117,15 @@ h3{
     
 }
 
-.esqueci{
-    font-size: 18px;
-    margin-left: 13%;
+/* Colocando Linha */
+.linha{
+    width: 100%;
+    display: block;
+    margin-top: 10px;
+    border-bottom: 1px solid gray;
 }
 
 
-.esquerdo{
-    margin: 25px;
-    margin-left: 25px;
+.enviar{
+    margin-bottom: 20px;
 }
-
-
-.esquerdo, .direita {
-    display: inline-block;
-    vertical-align: top;
-}
-
-
-
-.infoUsuario{
-    font-size: 20px;
-    margin-left: 7%;
-}
-
-.barraEsquerda {
-    width: 80%;
-}
-.barraEsquerda input {
-    width: 550px;
-    height: 50px;
-    border: 1px solid black;
-    font-size: 1rem;
-    font-family: sans-serif;
-    border-radius: 25px;
-    margin-left: 8%;
-}
-
-.barradireita{
-    width: 80%;
-}
-
-.barradireita input{
-    margin-top: 5px;
-    width: 550px;
-    height: 50px;
-    border: 1px solid black;
-    font-size: 1rem;
-    font-family: sans-serif;
-    border-radius: 25px;
-    margin-left: 75%; 
-}
-
-.infoUsuario2{
-    font-size: 20px;
-    margin-left: 61%;
-}
-
-.direita{
-   
-    margin: 25px;
-    margin-left: 25px;
-}
-
-
-.CadastrarUsuario{
-    margin-top: 100px;
-    text-align: center;
-    margin-left: 75%;
-    margin-top: 85px;
-    width: 250px;
-    height: 45px;
-    border: 1px solid black;
-    border-radius: 25px;
-    background-color:#7ed957;
-    color: black;
-    font-size: 25px;
-}
-
