@@ -16,7 +16,7 @@ class CadastroUController{
             res.status(resposta[0]).json(resposta[1])
         }).catch(
             resposta =>{
-                console(resposta[1])
+                console.debug(resposta[1])
                 res.status(resposta[0]).json("Erro: "+resposta[1].errno)
         }
         )
