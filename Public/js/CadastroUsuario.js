@@ -1,6 +1,5 @@
-const CadastroUsuario = require("../models/CadastroUsuario")
+const CadastroUsuario = require(".../server/controller/CadastroUController")
 
 function CadastrarUsuario(){
     CadastroUsuario()
-
 }
