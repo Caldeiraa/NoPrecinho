@@ -14,6 +14,12 @@ class CadastroUController{
         let nomeUser_usuario = req.body.nomeUser_usuario
         let senha_usuario = req.body.senha_usuario
 
+        let senha1 =req.body.senha1
+        let senha2 = req.body.senha2
+
+        if(senha1 == senha2){
+            senha_usuario = senha2
+        }
         CadastroUsuario.inserir(nome_usuario,cpf_usuario,cep_usuario,estado_usuario,cidade_usuario,bairro_usuario,rua_usuario,telefone_usuario,email_usuario,nomeUser_usuario,senha_usuario).then(resposta=>{
             res.status(resposta[0]).json(resposta[1])
         }).catch(

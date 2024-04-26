@@ -18,23 +18,22 @@
             
         </div>
         <h3 class="mt-5 text-center">Cadastro de Usuário: </h3>
-    
-        <div class="container mt-5">
-            <form action="">
-                <div class="row">
+        <div  class="container mt-5">
+            <form action="/cadastroUsuario" method="post" enctype="multipart/form-data">
+                <div id="CadastroUsuario" class="row">
                     <div class="col-md">
                         <label for="" class="form-label fs-4 mt-3">Nome Completo:</label>
-                        <input type="text" class="form-control rounded-4 border border-black p-2 mt-2">
+                        <input name="nome_usuario" type="text" class="form-control rounded-4 border border-black p-2 mt-2">
                         <label for="" class="form-label fs-4 mt-3">CPF:</label>
-                        <input type="text" class="form-control rounded-4 border border-black p-2 mt-2">
+                        <input name="cpf_usuario" type="text" class="form-control rounded-4 border border-black p-2 mt-2">
                         <label for="" class="form-label fs-4 mt-3">Telefone:</label>
-                        <input type="" class="form-control rounded-4 border border-black p-2 mt-2">
+                        <input name="telefone_usuario" type="text" class="form-control rounded-4 border border-black p-2 mt-2">
                         <label for="" class="form-label fs-4 mt-3">E-mail:</label>
-                        <input type="text" class="form-control rounded-4 border border-black p-2 mt-2">
+                        <input name="email_usuario" type="text" class="form-control rounded-4 border border-black p-2 mt-2">
                         <label for="" class="form-label fs-4 mt-3">Nome de usuário:</label>
-                        <input type="text" class="form-control rounded-4 border border-black p-2 mt-2">
+                        <input name="nomeUser_usuario" type="text" class="form-control rounded-4 border border-black p-2 mt-2">
                         <label for="" class="form-label fs-4 mt-3">Senha:</label>
-                        <input type="password" class="form-control rounded-4 border border-black p-2 mt-2">
+                        <input name="senha1" type="password" class="form-control rounded-4 border border-black p-2 mt-2">
                     </div>
     
                     <div class="col-2">
@@ -43,23 +42,24 @@
     
                     <div class="col-md">
                         <label for="" class="form-label fs-4 mt-3">CEP:</label>
-                        <input type="text" class="form-control rounded-4 border border-black p-2 mt-2">
+                        <input name="cep_usuario" type="text" class="form-control rounded-4 border border-black p-2 mt-2">
                         <label for="" class="form-label fs-4 mt-3">Bairro:</label>
-                        <input type="text" class="form-control rounded-4 border border-black p-2 mt-2">
+                        <input name="bairro_usuario" type="text" class="form-control rounded-4 border border-black p-2 mt-2">
                         <label for="" class="form-label fs-4 mt-3">Cidade:</label>
-                        <input type="text" class="form-control rounded-4 border border-black p-2 mt-2">
+                        <input name="cidade_usuario" type="text" class="form-control rounded-4 border border-black p-2 mt-2">
                         <label for="" class="form-label fs-4 mt-3">Rua:</label>
-                        <input type="text" class="form-control rounded-4 border border-black p-2 mt-2">
+                        <input name="rua_usuario" type="text" class="form-control rounded-4 border border-black p-2 mt-2">
                         <label for="" class="form-label fs-4 mt-3">N°:</label>
-                        <input type="number" class="form-control rounded-4 border border-black p-2 mt-2">
+                        <input name="" type="number" class="form-control rounded-4 border border-black p-2 mt-2">
                         <label for="" class="form-label fs-4 mt-3">Confirmar senha:</label>
-                        <input type="password" class="form-control rounded-4 border border-black p-2 mt-2">
+                        <input name="senha2" type="password" class="form-control rounded-4 border border-black p-2 mt-2">
                         
                         
                     </div>
                 </div>
-            </form>
+           
             <button type="submit" class="btn border border-black mt-4 rounded-4" style="background-color: #aed896; float: right;">Cadastrar-se</button>
+        </form>
         </div>
         <br>
     </div>
