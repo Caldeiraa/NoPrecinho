@@ -9,9 +9,9 @@ class CadastroUsuario{
     }
     mostrarTodos(email, senha) {
         return new Promise((resolve, reject) => {
-            let sql = `SELECT 'usuario' AS tipo_conta, id_usuario AS id, senha FROM usuario WHERE email_usuario = '${email}' AND senha = '${senha}'
+            let sql = `SELECT 'usuario' AS tipo_conta, id_usuario AS id FROM usuario WHERE email_usuario = '${email}' AND senha = '${senha}'
                        UNION ALL
-                       SELECT 'mercado' AS tipo_conta, id_mercado AS id, senha FROM mercado WHERE email_mercado = '${email}' AND senha = '${senha}';`;
+                       SELECT 'mercado' AS tipo_conta, id_mercado AS id FROM mercado WHERE email_mercado = '${email}' AND senha = '${senha}';`;
             this.conexao.query(sql, function(erro, retorno) {
                 if (erro) {
                     reject([400, erro]);
