@@ -1,5 +1,5 @@
 const CadastroUsuario = require("../models/CadastroUsuario")
-
+ 
 class CadastroUController{
     create(req, res){
         let nome_usuario = req.body.nome_usuario
