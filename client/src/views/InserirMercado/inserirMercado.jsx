@@ -53,39 +53,58 @@ function InserirMercado(){
 
     return(
 
-        <div className="container">
-            <h1>Adicionar Mercado</h1>
-            <form onSubmit={CadastrarMercado}>
-                <label>Nome Fantasia:</label>
-                <input type="text" id="" value={nome_fantasia} onChange={e => setNome_fantasia(e.target.value)} />
-                <label>Razão Social:</label>
-                <input type="text" id="" value={razao_social} onChange={e => setRazao_social(e.target.value)} />
-                <label>CNPJ:</label>
-                <input type="text" id="" value={cnpj} onChange={e => setCnpj(e.target.value)} />
-                <label>Telefone:</label>
-                <input type="text" id="" value={telefone_mercado} onChange={e => setTelefone_mercado(e.target.value)} />
-                <label>CEP:</label>
-                <input type="text" id="" value={cep_mercado} onChange={e => setCep_mercado(e.target.value)} />
-                <label>Estado:</label>
-                <input type="text" id="" value={estado_mercado} onChange={e => setEstado_mercado(e.target.value)} />
-                <label>Cidade:</label>
-                <input type="text" id="" value={cidade_mercado} onChange={e => setCidade_mercado(e.target.value)} />
-                <label>Bairro:</label>
-                <input type="text" id="" value={bairro_mercado} onChange={e => setBairro_mercado(e.target.value)} />
-                <label>Rua:</label>
-                <input type="text" id="" value={rua_mercado} onChange={e => setRua_mercado(e.target.value)} />
-                <label>E-mail:</label>
-                <input type="text" id="" value={email_mercado} onChange={e => setEmail_mercado(e.target.value)} />
-                <label>Logo:</label>
-                <input type="text" id="" value={logo_mercado} onChange={e => setLogo_mercado(e.target.value)} />
-                <label>Descrição:</label>
-                <input type="text" id="" value={descricao_mercado} onChange={e => setDescricao_mercado(e.target.value)} />
-                <label>Senha:</label>
-                <input type="text" id="" value={senha} onChange={e => setSenha(e.target.value)} />
+        <div class="conteudo" >
+                <div class="container-fluid p-0 text-center cabecalho">
+                    <nav class="navbar navbar-expand-lg d-flex justify-content-center align-items-center">
+                        <a class="navbar-brand fs-4" href="#">NoPrecinho</a>
+                        <img class="logo" src="img/NP.png" alt=""/>
+                    </nav>
+                    
+                </div>
+            
+                <h3 class="mt-5 text-center">Cadastro de mercado</h3>
+            
+                <div class="container mt-5"/>
+                    <form onSubmit={CadastrarMercado}/>
+                        <div class="row"/>
+                            <div class="col-md"/>
+                                <label for="" class="form-label fs-4 mt-4">Nome Fantasia:</label>
+                                <input value={nome_fantasia} onChange={e => setNome_fantasia(e.target.value)} type="text" class="form-control rounded-4 border border-black p-2 mt-2"/>
+                                <label for="" class="form-label fs-4 mt-4">CNPJ:</label>
+                                <input type="text" id="" value={cnpj} onChange={e => setCnpj(e.target.value)} type= "" class="form-control rounded-4 border border-black p-2 mt-2"/>
+                                <label for="" class="form-label fs-4 mt-4">CEP:</label>
+                                <input value={cep_mercado} onChange={e => setCep_mercado(e.target.value)} type="" class="form-control rounded-4 border border-black p-2 mt-2" placeholder="*****-***"/>
+                                <label for="" class="form-label fs-4 mt-4">E-mail:</label>
+                                <input value={email_mercado} onChange={e => setEmail_mercado(e.target.value)} type="text" class="form-control rounded-4 border border-black p-2 mt-2" placeholder="exemplo@gmail.com" />
+                                <label for="" class="form-label fs-4 mt-4">Senha:</label>
+                                <input value={senha} onChange={e => setSenha(e.target.value)}  type="password" class="form-control rounded-4 border border-black p-2 mt-2" />
+                            <div/>
+            
+                            <div class="col-2">
+            
+                            </div>
+            
+                            <div class="col-md"/>
+                                <label for="" class="form-label fs-4 mt-4">Razão Social:</label>
+                                <input value={razao_social} onChange={e => setRazao_social(e.target.value)} type="text" class="form-control rounded-4 border border-black p-2 mt-2"/>
+                                <label for="" class="form-label fs-4 mt-4">Telefone:</label>
+                                <input value={telefone_mercado} onChange={e => setTelefone_mercado(e.target.value)} type="text" class="form-control rounded-4 border border-black p-2 mt-2"/>
+                                <label for="" class="form-label fs-4 mt-4">Cidade:</label>
+                                <input value={cidade_mercado} onChange={e => setCidade_mercado(e.target.value)} type="email" class="form-control rounded-4 border border-black p-2 mt-2"/>
+                                <label for="" class="form-label fs-4 mt-4">Logo:</label>
+                                <input value={logo_mercado} onChange={e => setLogo_mercado(e.target.value)} class="form-control rounded-4 border border-black p-2 mt-2" type="file" id="formFile"/>
+                                <label for="" class="form-label fs-4 mt-4">Confirmar Senha:</label>
+                                <input type="password" class="form-control rounded-4 border border-black p-2 mt-2"/>
+                            <div/>
+                        <div/>
+                        <button type="submit" class="btn border border-black mt-5 rounded-4"/>Cadastrar-se<button/>
+                    <form/>
+                    
+                <div/>
+                
+            </div>
 
-                <button type='submit'>Cadastrar</button>
-            </form>
-        </div>
+        
     )
 }
 export default InserirMercado

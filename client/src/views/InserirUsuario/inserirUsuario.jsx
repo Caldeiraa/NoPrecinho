@@ -1,4 +1,6 @@
 import { useState } from "react";
+import React from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function InserirUsuario(){
     const [nome_usuario, setNome_usuario] = useState('')
@@ -50,35 +52,57 @@ function InserirUsuario(){
 
     return(
 
-        <div className="container">
-            <h1>Adicionar Usuários</h1>
-            <form onSubmit={CadastrarUsuario}>
-                <label>Nome:</label>
-                <input type="text" id="" value={nome_usuario} onChange={e => setNome_usuario(e.target.value)} />
-                <label>CPF:</label>
-                <input type="text" id="" value={cpf_usuario} onChange={e => setCpf_usuario(e.target.value)} />
-                <label>CEP:</label>
-                <input type="text" id="" value={cep_usuario} onChange={e => setCep_usuario(e.target.value)} />
-                <label>Estado:</label>
-                <input type="text" id="" value={estado_usuario} onChange={e => setEstado_usuario(e.target.value)} />
-                <label>Cidade:</label>
-                <input type="text" id="" value={cidade_usuario} onChange={e => setCidade_usuario(e.target.value)} />
-                <label>Bairro:</label>
-                <input type="text" id="" value={bairro_usuario} onChange={e => setBairro_usuario(e.target.value)} />
-                <label>Rua:</label>
-                <input type="text" id="" value={rua_usuario} onChange={e => setRua_usuario(e.target.value)} />
-                <label>Telefone:</label>
-                <input type="text" id="" value={telefone_usuario} onChange={e => setTelefone_usuario(e.target.value)} />
-                <label>E-mail:</label>
-                <input type="text" id="" value={email_usuario} onChange={e => setEmail_usuario(e.target.value)} />
-                <label>Nome User:</label>
-                <input type="text" id="" value={nomeUser_usuario} onChange={e => setNomeUser_usuario(e.target.value)} />
-                <label>Senha:</label>
-                <input type="password" id="" value={senha_usuario} onChange={e => setSenha_usuario(e.target.value)} />
+        <div className="conteudo" >
+            <div className="container-fluid p-0 text-center cabecalho"/>
+                <nav className="navbar navbar-expand-lg d-flex justify-content-center align-items-center">
+                    <a className="navbar-brand fs-4" href="#">NoPrecinho</a>
+                    
+                </nav>
+            <div/>
+            <h3 className="mt-5 text-center">Cadastro de Usuário: </h3>
+            <div  className="container mt-5"/>
+                <form onSubmit={CadastrarUsuario}/>
+                    <div className="row"/>
+                        <div className="col-md"/>
+                            <label for="" className="form-label fs-4 mt-3">Nome Completo:</label>
+                            <input value={nome_usuario} onChange={e => setNome_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2"/>
+                            <label for="" className="form-label fs-4 mt-3">CPF:</label>
+                            <input value={cpf_usuario} onChange={e => setCpf_usuario(e.target.value)} name="cpf_usuario" type="text" className="form-control rounded-4 border border-black p-2 mt-2"/>
+                            <label for="" className="form-label fs-4 mt-3">Telefone:</label>
+                            <input value={telefone_usuario} onChange={e => setTelefone_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2"/>
+                            <label for="" className="form-label fs-4 mt-3">E-mail:</label>
+                            <input value={email_usuario} onChange={e => setEmail_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2"/>
+                            <label for="" className="form-label fs-4 mt-3">Nome de usuário:</label>
+                            <input value={nomeUser_usuario} onChange={e => setNomeUser_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2"/>
+                            <label for="" className="form-label fs-4 mt-3">Senha:</label>
+                            <input value={senha_usuario} onChange={e => setSenha_usuario(e.target.value)} name="" type="password" className="form-control rounded-4 border border-black p-2 mt-2"/>
+                        <div/>
 
-                <button type='submit'>Cadastrar</button>
-            </form>
+                        <div className="col-2">
+
+                        </div>
+
+                        <div className="col-md"/>
+                            <label for="" className="form-label fs-4 mt-3">CEP:</label>
+                            <input value={cep_usuario} onChange={e => setCep_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2"/>
+                            <label for="" className="form-label fs-4 mt-3">Estado:</label>
+                            <input value={estado_usuario} onChange={e => setEstado_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2"/>
+                            <label for="" className="form-label fs-4 mt-3">Cidade:</label>
+                            <input value={cidade_usuario} onChange={e => setCidade_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2"/>
+                            <label for="" className="form-label fs-4 mt-3">Bairro:</label>
+                            <input value={bairro_usuario} onChange={e => setBairro_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2"/>
+                            <label for="" className="form-label fs-4 mt-3">Rua:</label>
+                            <input value={rua_usuario} onChange={e => setRua_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2"/>
+                            <label for="" className="form-label fs-4 mt-3">Confirmar senha:</label>
+                            <input name="" type="password" className="form-control rounded-4 border border-black p-2 mt-2"/>
+                            
+                        <div/>
+                    <div/>
+                    <button type="submit" className="btn border border-black mt-4 rounded-4" >Cadastrar</button>
+                <form/>
+            <div/>
         </div>
-    )
+
+    );
 }
 export default InserirUsuario
