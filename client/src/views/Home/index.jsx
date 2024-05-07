@@ -1,10 +1,13 @@
 import React from 'react';
+import './estilo.css';
+import carrefour from './img/Carrefour-Logo.png'
+
 
 function Home() {
   return (
-    <div className="conteudo">
-      <div className="cabecalho">
-        <nav className="navbar navbar-expand-lg fixed-top">
+    <div class="conteudo">
+      <div class="cabecalho">
+        <nav class="navbar navbar-expand-lg fixed-top">
           <div className="container-fluid d-flex justify-content-around">
             <a className="navbar-brand me-auto" href="#">NoPrecinho</a>
             <img className="logo me-auto" src="img/NP.png" alt="NoPrecinho Logo" />
@@ -51,7 +54,7 @@ function Home() {
         <h3>Parceiros</h3>
         <div className="slider-wrapper">
           <ul className="image-list">
-            <li><img className="image-item" src="img/Carrefour-Logo.png" alt="Carrefour Logo" /></li>
+            <li><img className="image-item" src={carrefour} alt="Carrefour Logo" /></li>
             <li><img className="image-item tt" src="img/extrabom-2x.webp" alt="Extrabom Logo" /></li>
             <li><img className="image-item" src="img/header-logo.png" alt="Header Logo" /></li>
             <li><img className="image-item" src="img/logo-bh-white.png" alt="BH Logo" /></li>

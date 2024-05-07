@@ -71,7 +71,7 @@ function InserirMercado(){
                                 <label for="" class="form-label fs-4 mt-4">Nome Fantasia:</label>
                                 <input value={nome_fantasia} onChange={e => setNome_fantasia(e.target.value)} type="text" class="form-control rounded-4 border border-black p-2 mt-2"/>
                                 <label for="" class="form-label fs-4 mt-4">CNPJ:</label>
-                                <input type="text" id="" value={cnpj} onChange={e => setCnpj(e.target.value)} type= "" class="form-control rounded-4 border border-black p-2 mt-2"/>
+                                <input type="text" id="" value={cnpj} onChange={e => setCnpj(e.target.value)}  class="form-control rounded-4 border border-black p-2 mt-2"/>
                                 <label for="" class="form-label fs-4 mt-4">CEP:</label>
                                 <input value={cep_mercado} onChange={e => setCep_mercado(e.target.value)} type="" class="form-control rounded-4 border border-black p-2 mt-2" placeholder="*****-***"/>
                                 <label for="" class="form-label fs-4 mt-4">E-mail:</label>
