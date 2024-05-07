@@ -1,5 +1,5 @@
 import { useState } from "react";
-import css from './estilo.css'
+// import Css from './estilo.css'
 function Login(){
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
@@ -51,7 +51,7 @@ function Login(){
                     <button type="submit" class="btn border border-black mt-5 rounded-4" >Cadastrar-se</button>
                     <span class="linha"></span>
                 </div>
-                <h3>Não tem uma conta?<a href="cadastrese.html">Cadastre-se</a></h3>
+                <h5>Não tem uma conta?<a href="cadastrese.html">Cadastre-se</a></h5>
             <div/>
             </form>
             

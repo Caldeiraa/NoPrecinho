@@ -1,0 +1,56 @@
+.minibox2{
+    width: 500px;
+    height: 250px;
+    margin-left: 47%;
+    padding: 25px;
+    border: 1px solid #000000;
+    background-color: white;
+    display: block;
+    margin-top: 50px;   
+    border-radius: 100px;
+    text-align: center;
+}
+
+
+.box2{
+    width: 900px;
+    height: 600px;
+    margin: 0 auto; 
+    margin-left: 50px;
+    padding: 25px;
+    border: 1px solid #000000;
+    background-color: white;
+    display: block;
+    margin-top: 125px;   
+    border-radius: 100px;
+}
+
+.iconi{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:100px; 
+}
+.conteudo2{
+    margin-top:50px; 
+    text-align: center;
+}
+
+.carrinho{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.minibox{
+    width: 500px;
+    height: 250px;
+    margin-left: 47%;
+    padding: 25px;
+    border: 1px solid #000000;
+    background-color: white;
+    display: block;
+    margin-top: 125px;   
+    border-radius: 100px;
+    text-align: center;
+}
