@@ -1,5 +1,6 @@
 import React from 'react';
 import './estilo.css';
+import './js/barraParceiros'
 import carrefour from './img/Carrefour-Logo.png'
 import extrabom from './img/extrabom-2x.webp'
 import perin from './img/header-logo.png'
