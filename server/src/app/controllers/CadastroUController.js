@@ -40,6 +40,7 @@ class CadastroUController{
             }
         )
     }
+
 }
 
 module.exports = new CadastroUController()
