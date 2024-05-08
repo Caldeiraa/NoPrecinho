@@ -1,6 +1,11 @@
 import React from 'react';
 import './estilo.css';
 import carrefour from './img/Carrefour-Logo.png'
+import extrabom from './img/extrabom-2x.webp'
+import perin from './img/header-logo.png'
+import assai from './img/Logo_assai.png'
+import bh from './img/logo-bh-white.png'
+import np from './img/NP.png'
 
 
 function Home() {
@@ -10,7 +15,7 @@ function Home() {
         <nav class="navbar navbar-expand-lg fixed-top">
           <div className="container-fluid d-flex justify-content-around">
             <a className="navbar-brand me-auto" href="#">NoPrecinho</a>
-            <img className="logo me-auto" src="img/NP.png" alt="NoPrecinho Logo" />
+            <img className="logo me-auto" src={np} alt="NoPrecinho Logo" />
             <div className="offcanvas offcanvas-end oi" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
               <div className="offcanvas-header">
                 <h5 className="offcanvas-title" id="offcanvasNavbarLabel" style={{ color: 'white' }}>jose</h5>
@@ -55,15 +60,15 @@ function Home() {
         <div className="slider-wrapper">
           <ul className="image-list">
             <li><img className="image-item" src={carrefour} alt="Carrefour Logo" /></li>
-            <li><img className="image-item tt" src="img/extrabom-2x.webp" alt="Extrabom Logo" /></li>
-            <li><img className="image-item" src="img/header-logo.png" alt="Header Logo" /></li>
-            <li><img className="image-item" src="img/logo-bh-white.png" alt="BH Logo" /></li>
-            <li><img className="image-item" src="img/Logo_assai.png" alt="Assai Logo" /></li>
-            <li><img className="image-item tt" src="img/extrabom-2x.webp" alt="Extrabom Logo" /></li>
-            <li><img className="image-item" src="img/Carrefour-Logo.png" alt="Carrefour Logo" /></li>
-            <li><img className="image-item" src="img/logo-bh-white.png" alt="BH Logo" /></li>
-            <li><img className="image-item" src="img/header-logo.png" alt="Header Logo" /></li>
-            <li><img className="image-item" src="img/Logo_assai.png" alt="Assai Logo" /></li>
+            <li><img className="image-item tt" src={extrabom} alt="Extrabom Logo" /></li>
+            <li><img className="image-item" src={perin} alt="Header Logo" /></li>
+            <li><img className="image-item" src={bh} alt="BH Logo" /></li>
+            <li><img className="image-item" src={assai} alt="Assai Logo" /></li>
+            <li><img className="image-item" src={carrefour} alt="Carrefour Logo" /></li>
+            <li><img className="image-item tt" src={extrabom} alt="Extrabom Logo" /></li>
+            <li><img className="image-item" src={perin} alt="Header Logo" /></li>
+            <li><img className="image-item" src={bh} alt="BH Logo" /></li>
+            <li><img className="image-item" src={assai} alt="Assai Logo" /></li>
           </ul>
         </div>
         <div className="slider-scrollbar">
