@@ -9,8 +9,9 @@ class CadastroPMercadoController{
         let foto_prod_mercado = req.body.foto_prod_mercado
         let descircao_prod_mercado = req.body.descircao_prod_mercado
         let mercado_id = req.body.mercado_id
+        let id_subCategoria = req.body.id_subCategoria
 
-        CadastroProdMercado.inserir(nome_prod_mercado,marca_mercado,peso_mercado,preco_mercado,foto_prod_mercado,descircao_prod_mercado,mercado_id).then(resposta=>{
+        CadastroProdMercado.inserir(nome_prod_mercado,marca_mercado,peso_mercado,preco_mercado,foto_prod_mercado,descircao_prod_mercado,mercado_id,id_subCategoria).then(resposta=>{
             res.status(resposta[0]).json(resposta[1])
         }).catch(
             resposta =>{

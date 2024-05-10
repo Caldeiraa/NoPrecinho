@@ -64,43 +64,51 @@ function InserirMercado(){
             
                 <h3 class="mt-5 text-center">Cadastro de mercado</h3>
             
-                <div class="container mt-5"/>
-                    <form onSubmit={CadastrarMercado}/>
-                        <div class="row"/>
-                            <div class="col-md"/>
+                <div class="container mt-5">
+                    <form onSubmit={CadastrarMercado}>
+                        <div class="row">
+                            <div class="col-md">
                                 <label for="" class="form-label fs-4 mt-4">Nome Fantasia:</label>
                                 <input value={nome_fantasia} onChange={e => setNome_fantasia(e.target.value)} type="text" class="form-control rounded-4 border border-black p-2 mt-2"/>
                                 <label for="" class="form-label fs-4 mt-4">CNPJ:</label>
                                 <input type="text" id="" value={cnpj} onChange={e => setCnpj(e.target.value)}  class="form-control rounded-4 border border-black p-2 mt-2"/>
-                                <label for="" class="form-label fs-4 mt-4">CEP:</label>
-                                <input value={cep_mercado} onChange={e => setCep_mercado(e.target.value)} type="" class="form-control rounded-4 border border-black p-2 mt-2" placeholder="*****-***"/>
                                 <label for="" class="form-label fs-4 mt-4">E-mail:</label>
                                 <input value={email_mercado} onChange={e => setEmail_mercado(e.target.value)} type="text" class="form-control rounded-4 border border-black p-2 mt-2" placeholder="exemplo@gmail.com" />
+                                <label for="" class="form-label fs-4 mt-4">CEP:</label>
+                                <input value={cep_mercado} onChange={e => setCep_mercado(e.target.value)} type="" class="form-control rounded-4 border border-black p-2 mt-2" placeholder="****-***"/>
+                                <label for="" class="form-label fs-4 mt-4">Cidade:</label>
+                                <input value={cidade_mercado} onChange={e => setCidade_mercado(e.target.value)} type="text" class="form-control rounded-4 border border-black p-2 mt-2" />
+                                <label for="" class="form-label fs-4 mt-4">Rua:</label>
+                                <input value={rua_mercado} onChange={e => setRua_mercado(e.target.value)} type="text" class="form-control rounded-4 border border-black p-2 mt-2"  />
                                 <label for="" class="form-label fs-4 mt-4">Senha:</label>
                                 <input value={senha} onChange={e => setSenha(e.target.value)}  type="password" class="form-control rounded-4 border border-black p-2 mt-2" />
-                            <div/>
+                            </div>
             
                             <div class="col-2">
             
                             </div>
             
-                            <div class="col-md"/>
+                            <div class="col-md">
                                 <label for="" class="form-label fs-4 mt-4">Razão Social:</label>
                                 <input value={razao_social} onChange={e => setRazao_social(e.target.value)} type="text" class="form-control rounded-4 border border-black p-2 mt-2"/>
                                 <label for="" class="form-label fs-4 mt-4">Telefone:</label>
                                 <input value={telefone_mercado} onChange={e => setTelefone_mercado(e.target.value)} type="text" class="form-control rounded-4 border border-black p-2 mt-2"/>
-                                <label for="" class="form-label fs-4 mt-4">Cidade:</label>
-                                <input value={cidade_mercado} onChange={e => setCidade_mercado(e.target.value)} type="email" class="form-control rounded-4 border border-black p-2 mt-2"/>
                                 <label for="" class="form-label fs-4 mt-4">Logo:</label>
-                                <input value={logo_mercado} onChange={e => setLogo_mercado(e.target.value)} class="form-control rounded-4 border border-black p-2 mt-2" type="file" id="formFile"/>
+                                <input value={logo_mercado} onChange={e => setLogo_mercado(e.target.value)} type="text" class="form-control rounded-4 border border-black p-2 mt-2"/>
+                                {/* <input value={logo_mercado} onChange={e => setLogo_mercado(e.target.value)} class="form-control rounded-4 border border-black p-2 mt-2" type="tex" id="formFile"/> */}
+                                <label for="" class="form-label fs-4 mt-4">Estado:</label>
+                                <input value={estado_mercado} onChange={e => setEstado_mercado(e.target.value)} type="text" class="form-control rounded-4 border border-black p-2 mt-2"/>
+                                <label for="" class="form-label fs-4 mt-4">Bairro:</label>
+                                <input value={bairro_mercado} onChange={e => setBairro_mercado(e.target.value)} type="text" class="form-control rounded-4 border border-black p-2 mt-2"/>
+                                <label for="" class="form-label fs-4 mt-4">Descrição:</label>
+                                <input value={descricao_mercado} onChange={e => setDescricao_mercado(e.target.value)} type="text" class="form-control rounded-4 border border-black p-2 mt-2" placeholder="****-***"/>
                                 <label for="" class="form-label fs-4 mt-4">Confirmar Senha:</label>
                                 <input type="password" class="form-control rounded-4 border border-black p-2 mt-2"/>
-                            <div/>
-                        <div/>
-                        <button type="submit" class="btn border border-black mt-5 rounded-4"/>Cadastrar-se<button/>
-                    <form/>
-                    
-                <div/>
+                            </div>
+                        </div>
+                        <button type="submit" className="btn border border-black mt-4 rounded-4" >Cadastrar</button>
+                    </form>
+                </div>
                 
             </div>
 
