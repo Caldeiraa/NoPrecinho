@@ -60,10 +60,10 @@ function InserirUsuario(){
                 </nav>
             <div/>
             <h3 className="mt-5 text-center">Cadastro de Usuário: </h3>
-            <div  className="container mt-5"/>
-                <form onSubmit={CadastrarUsuario}/>
-                    <div className="row"/>
-                        <div className="col-md"/>
+            <div  className="container mt-5">
+                <form onSubmit={CadastrarUsuario}>
+                    <div className="row">
+                        <div className="col-md-6">
                             <label for="" className="form-label fs-4 mt-3">Nome Completo:</label>
                             <input value={nome_usuario} onChange={e => setNome_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2"/>
                             <label for="" className="form-label fs-4 mt-3">CPF:</label>
@@ -76,13 +76,13 @@ function InserirUsuario(){
                             <input value={nomeUser_usuario} onChange={e => setNomeUser_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2"/>
                             <label for="" className="form-label fs-4 mt-3">Senha:</label>
                             <input value={senha_usuario} onChange={e => setSenha_usuario(e.target.value)} name="" type="password" className="form-control rounded-4 border border-black p-2 mt-2"/>
-                        <div/>
+                        </div>
 
                         <div className="col-2">
 
                         </div>
 
-                        <div className="col-md"/>
+                        <div className="col-md">
                             <label for="" className="form-label fs-4 mt-3">CEP:</label>
                             <input value={cep_usuario} onChange={e => setCep_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2"/>
                             <label for="" className="form-label fs-4 mt-3">Estado:</label>
@@ -96,11 +96,11 @@ function InserirUsuario(){
                             <label for="" className="form-label fs-4 mt-3">Confirmar senha:</label>
                             <input name="" type="password" className="form-control rounded-4 border border-black p-2 mt-2"/>
                             
-                        <div/>
-                    <div/>
+                        </div>
+                    </div>
                     <button type="submit" className="btn border border-black mt-4 rounded-4" >Cadastrar</button>
-                <form/>
-            <div/>
+                </form>
+            </div>
         </div>
 
     );
