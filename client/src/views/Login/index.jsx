@@ -51,7 +51,7 @@ function Login(){
                     <button type="submit" class="btn border border-black mt-5 rounded-4" >Cadastrar-se</button>
                     <span class="linha"></span>
                 </div>
-                <h5>Não tem uma conta?<a href="cadastrese.html">Cadastre-se</a></h5>
+                <h5>Não tem uma conta?<a href="">Cadastre-se</a></h5>
             <div/>
             </form>
             

@@ -1,3 +1,12 @@
+#cadastro{
+    width: 100vh;
+}
+
+.cadastrobtn{
+    float: right;
+    background-color: #aed896
+    
+}
 .logo{
     width: 50px;
     height: 50px;

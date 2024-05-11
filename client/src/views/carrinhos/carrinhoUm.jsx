@@ -10,7 +10,7 @@ import React from 'react'
         </nav>
     </div>
     
-    <div class="container">
+    <div id='conteudo' class="container">
         <div class="row">
             <div class="col-md-6">
                 <div class="box2 justify-content-center">
