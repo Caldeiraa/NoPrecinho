@@ -1,5 +1,6 @@
 import { useState } from "react";
 // import Css from './estilo.css'
+import logo from '../../img/NP.png'
 function Login(){
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
@@ -12,7 +13,7 @@ function Login(){
         }
         try{
             const resposta = await fetch('/login',{
-                method: 'GET',
+                method: 'POST',
                 headers:{
                     'Content-Type':'application/json'
                 },
@@ -33,26 +34,26 @@ function Login(){
             <div class="container-fluid p-0 text-center cabecalho">
                 <nav class="navbar navbar-expand-lg d-flex justify-content-center align-items-center">
                     <a class="navbar-brand fs-4" href="#">NoPrecinho</a>
-                    <img class="logo" src="img/NP.png" alt=""/>
+                    <img class="logo" src={logo} alt=""/>
                 </nav>
                 
             </div>
         
             <form onSubmit={Logar}>
-                <div class="box justify-content-center"/>
-                    <div><img src="img/NP.png" alt="logo" id="logo"/></div>
+                <div class="box justify-content-center">
+                    <div><img class="logo" src={logo} alt=""/></div>
                     <label for=""><h2 class="form-label">E-mail:</h2></label>
                     <input value={email} onChange={e => setEmail(e.target.value)} type="text" class="form-control  rounded-4 border border-black"/>
                     <label for=""><h2 class="form-label">Senha:</h2></label>
                     <input value={senha} onChange={e => setSenha(e.target.value)} type="text" class="form-control  rounded-4 border border-black"/>
                     <p></p>
                     <a href="recuperacao.html" class="form-label ms-3">Esqueci a Senha</a>
-                <div class="enviar" >
-                    <button type="submit" class="btn border border-black mt-5 rounded-4" >Cadastrar-se</button>
-                    <span class="linha"></span>
+                    <div class="enviar" >
+                        <button type="submit" class="btn border border-black mt-5 rounded-4" >Entrar</button>
+                        <span class="linha"></span>
+                    </div>
+                    <h5>Não tem uma conta?<a href="cadastrese.html">Cadastre-se</a></h5>
                 </div>
-                <h5>Não tem uma conta?<a href="cadastrese.html">Cadastre-se</a></h5>
-            <div/>
             </form>
             
         </div>
