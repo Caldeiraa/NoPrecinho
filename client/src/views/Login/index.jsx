@@ -48,12 +48,12 @@ function Login(){
                     <input value={senha} onChange={e => setSenha(e.target.value)} type="text" class="form-control  rounded-4 border border-black"/>
                     <p></p>
                     <a href="recuperacao.html" class="form-label ms-3">Esqueci a Senha</a>
-                    <div class="enviar" >
-                        <button type="submit" class="btn border border-black mt-5 rounded-4" >Entrar</button>
-                        <span class="linha"></span>
-                    </div>
-                    <h5>Não tem uma conta?<a href="cadastrese.html">Cadastre-se</a></h5>
+                <div class="enviar" >
+                    <button type="submit" class="btn border border-black mt-5 rounded-4" >Cadastrar-se</button>
+                    <span class="linha"></span>
                 </div>
+                <h5>Não tem uma conta?<a href="cadastrese.html">Cadastre-se</a></h5>
+            <div/>
             </form>
             
         </div>

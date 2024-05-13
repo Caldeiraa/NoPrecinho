@@ -1,7 +1,8 @@
+/*
 const initSlider = () => {
     const imageList = document.querySelector(".slider-wrapper .image-list");
     const sliderScrollbar = document.querySelector(".container .slider-scrollbar");
-    const scrollbarThumb = sliderScrollbar.querySelector(".scrollbar-thumb");
+    //const scrollbarThumb = sliderScrollbar.querySelector(".scrollbar-thumb");
     const maxScrollLeft = imageList.scrollWidth - imageList.clientWidth;
     
     // Handle scrollbar thumb drag
@@ -49,4 +50,4 @@ const initSlider = () => {
 }
 
 window.addEventListener("resize", initSlider);
-window.addEventListener("load", initSlider);
+window.addEventListener("load", initSlider);*/

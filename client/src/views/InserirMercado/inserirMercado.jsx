@@ -1,21 +1,21 @@
 import { useState } from "react";
 
-function InserirMercado(){
+function InserirMercado() {
     const [nome_fantasia, setNome_fantasia] = useState('')
     const [razao_social, setRazao_social] = useState('')
     const [cnpj, setCnpj] = useState('')
     const [telefone_mercado, setTelefone_mercado] = useState('')
-    const [cep_mercado, setCep_mercado]= useState('')
+    const [cep_mercado, setCep_mercado] = useState('')
     const [estado_mercado, setEstado_mercado] = useState('')
     const [cidade_mercado, setCidade_mercado] = useState('')
-    const [bairro_mercado, setBairro_mercado]= useState('')
-    const [rua_mercado, setRua_mercado]= useState('')
-    const [email_mercado,setEmail_mercado]= useState('')
-    const [logo_mercado,setLogo_mercado]= useState('')
-    const [descricao_mercado,setDescricao_mercado]= useState('')
-    const [senha,setSenha]= useState('')
+    const [bairro_mercado, setBairro_mercado] = useState('')
+    const [rua_mercado, setRua_mercado] = useState('')
+    const [email_mercado, setEmail_mercado] = useState('')
+    const [logo_mercado, setLogo_mercado] = useState('')
+    const [descricao_mercado, setDescricao_mercado] = useState('')
+    const [senha, setSenha] = useState('')
 
-    async function CadastrarMercado(event){
+    async function CadastrarMercado(event) {
         event.preventDefault()
         const mercadoData = {
             nome_fantasia,
@@ -32,87 +32,124 @@ function InserirMercado(){
             descricao_mercado,
             senha
         }
-        try{
-            const resposta = await fetch('/cadastroMercado',{
+        try {
+            const resposta = await fetch('/cadastroMercado', {
                 method: 'POST',
-                headers:{
-                    'Content-Type':'application/json'
+                headers: {
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(mercadoData)
             })
-            if(!resposta.ok){
+            if (!resposta.ok) {
                 console.debug("Erro ao criar Mercado")
-            }else{
+            } else {
                 console.debug("usuario Mercado")
                 alert('Inserido')
             }
-        }catch(error){
+        } catch (error) {
             console.debug(error)
         }
     }
 
-    return(
+    return (
 
         <div class="conteudo" >
-                <div class="container-fluid p-0 text-center cabecalho">
-                    <nav class="navbar navbar-expand-lg d-flex justify-content-center align-items-center">
-                        <a class="navbar-brand fs-4" href="#">NoPrecinho</a>
-                        <img class="logo" src="img/NP.png" alt=""/>
-                    </nav>
-                    
-                </div>
-            
-                <h3 class="mt-5 text-center">Cadastro de mercado</h3>
-            
-                <div class="container mt-5">
-                    <form onSubmit={CadastrarMercado}>
-                        <div class="row">
-                            <div class="col-md">
-                                <label for="" class="form-label fs-4 mt-4">Nome Fantasia:</label>
-                                <input value={nome_fantasia} onChange={e => setNome_fantasia(e.target.value)} type="text" class="form-control rounded-4 border border-black p-2 mt-2"/>
-                                <label for="" class="form-label fs-4 mt-4">CNPJ:</label>
-                                <input type="text" id="" value={cnpj} onChange={e => setCnpj(e.target.value)}  class="form-control rounded-4 border border-black p-2 mt-2"/>
-                                <label for="" class="form-label fs-4 mt-4">E-mail:</label>
-                                <input value={email_mercado} onChange={e => setEmail_mercado(e.target.value)} type="text" class="form-control rounded-4 border border-black p-2 mt-2" placeholder="exemplo@gmail.com" />
-                                <label for="" class="form-label fs-4 mt-4">CEP:</label>
-                                <input value={cep_mercado} onChange={e => setCep_mercado(e.target.value)} type="" class="form-control rounded-4 border border-black p-2 mt-2" placeholder="****-***"/>
-                                <label for="" class="form-label fs-4 mt-4">Cidade:</label>
-                                <input value={cidade_mercado} onChange={e => setCidade_mercado(e.target.value)} type="text" class="form-control rounded-4 border border-black p-2 mt-2" />
-                                <label for="" class="form-label fs-4 mt-4">Rua:</label>
-                                <input value={rua_mercado} onChange={e => setRua_mercado(e.target.value)} type="text" class="form-control rounded-4 border border-black p-2 mt-2"  />
-                                <label for="" class="form-label fs-4 mt-4">Senha:</label>
-                                <input value={senha} onChange={e => setSenha(e.target.value)}  type="password" class="form-control rounded-4 border border-black p-2 mt-2" />
+            <div class="cabecalho">
+                <nav class="navbar navbar-expand-lg fixed-top">
+                    <div className="container-fluid d-flex justify-content-around">
+                        <a className="navbar-brand me-auto" href="#">NoPrecinho</a>
+                        <div className="offcanvas offcanvas-end teste" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                            <div className="offcanvas-header">
+                                <h5 className="offcanvas-title" id="offcanvasNavbarLabel" style={{ color: 'white' }}>NoPrecinho</h5>
+                                <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                             </div>
-            
-                            <div class="col-2">
-            
-                            </div>
-            
-                            <div class="col-md">
-                                <label for="" class="form-label fs-4 mt-4">Razão Social:</label>
-                                <input value={razao_social} onChange={e => setRazao_social(e.target.value)} type="text" class="form-control rounded-4 border border-black p-2 mt-2"/>
-                                <label for="" class="form-label fs-4 mt-4">Telefone:</label>
-                                <input value={telefone_mercado} onChange={e => setTelefone_mercado(e.target.value)} type="text" class="form-control rounded-4 border border-black p-2 mt-2"/>
-                                <label for="" class="form-label fs-4 mt-4">Logo:</label>
-                                <input value={logo_mercado} onChange={e => setLogo_mercado(e.target.value)} type="text" class="form-control rounded-4 border border-black p-2 mt-2"/>
-                                {/* <input value={logo_mercado} onChange={e => setLogo_mercado(e.target.value)} class="form-control rounded-4 border border-black p-2 mt-2" type="tex" id="formFile"/> */}
-                                <label for="" class="form-label fs-4 mt-4">Estado:</label>
-                                <input value={estado_mercado} onChange={e => setEstado_mercado(e.target.value)} type="text" class="form-control rounded-4 border border-black p-2 mt-2"/>
-                                <label for="" class="form-label fs-4 mt-4">Bairro:</label>
-                                <input value={bairro_mercado} onChange={e => setBairro_mercado(e.target.value)} type="text" class="form-control rounded-4 border border-black p-2 mt-2"/>
-                                <label for="" class="form-label fs-4 mt-4">Descrição:</label>
-                                <input value={descricao_mercado} onChange={e => setDescricao_mercado(e.target.value)} type="text" class="form-control rounded-4 border border-black p-2 mt-2" placeholder="****-***"/>
-                                <label for="" class="form-label fs-4 mt-4">Confirmar Senha:</label>
-                                <input type="password" class="form-control rounded-4 border border-black p-2 mt-2"/>
+                            <div className="offcanvas-body">
+                                <ul className="navbar-nav flex-grow-1 ms-5 justify-content-center">
+                                    <li className="nav-item">
+                                        <a className="nav-link mx-lg-2" aria-current="page" href="#">Home</a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a className="nav-link mx-lg-2" href="#">Sobre</a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a className="nav-link mx-lg-2" href="#">Serviços</a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a className="nav-link mx-lg-2" href="#">Portfólios</a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a className="nav-link mx-lg-2 mr-5" href="#">Contato</a>
+                                    </li>
+                                    <li className="ms-5">
+                                        <form className="d-flex" role="search">
+                                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                                            <button className="btn " type="submit">Search</button>
+                                        </form>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                        <button type="submit" className="btn border border-black mt-4 rounded-4" >Cadastrar</button>
-                    </form>
-                </div>
-                
+                        <a href="#" className="login-button">Login</a>
+                        <button className="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                </nav>
             </div>
 
-        
+            <div id="cadastro" className="container pt-5">
+            <h3 className="mt-5 text-center pt-3">Cadastro de Usuário:</h3>
+            <div className="">
+                <form onSubmit={CadastrarMercado}>
+                    <div className="row">
+                        <div className="col-md-5 ">
+                            <label for="" className="form-label fs-4 mt-3">Nome fantasia:</label>
+                            <input value={nome_fantasia} onChange={e => setNome_fantasia(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
+                            <label for="" className="form-label fs-4 mt-3">CNPJ:</label>
+                            <input value={cnpj} onChange={e => setCnpj(e.target.value)} name="cpf_usuario" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
+                            <label for="" className="form-label fs-4 mt-3">E-mail:</label>
+                            <input value={email_mercado} onChange={e => setEmail_mercado(e.target.value)} name="" type="email" className="form-control rounded-4 border border-black p-2 mt-2" />
+                            <label for="" className="form-label fs-4 mt-3">CEP:</label>
+                            <input value={cep_mercado} onChange={e => setCep_mercado(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
+                            <label for="" className="form-label fs-4 mt-3">Cidade:</label>
+                            <input value={cidade_mercado} onChange={e => setCidade_mercado(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
+                            <label for="" className="form-label fs-4 mt-3">Rua:</label>
+                            <input value={rua_mercado} onChange={e => setRua_mercado(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
+                            <label for="" className="form-label fs-4 mt-3">Senha:</label>
+                            <input value={senha} onChange={e => setSenha(e.target.value)} name="" type="password" className="form-control rounded-4 border border-black p-2 mt-2" />
+                        </div>
+
+                        <div className="col-2">
+
+                        </div>
+
+                        <div className="col-md-5">
+                            <label for="" className="form-label fs-4 mt-3">Razão social:</label>
+                            <input value={razao_social} onChange={e => setRazao_social(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
+                            <label for="" className="form-label fs-4 mt-3">Telefone:</label>
+                            <input value={telefone_mercado} onChange={e => setTelefone_mercado(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
+                            <label for="" className="form-label fs-4 mt-3">Logo:</label>
+                            <input value={logo_mercado} onChange={e => setLogo_mercado(e.target.value)} name="" type="file" className="form-control rounded-4 border border-black p-2 mt-2" />
+                            <label for="" className="form-label fs-4 mt-3">Estado:</label>
+                            <input value={estado_mercado} onChange={e => setEstado_mercado(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
+                            <label for="" className="form-label fs-4 mt-3">Bairro:</label>
+                            <input value={bairro_mercado} onChange={e => setBairro_mercado(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
+                            <label for="" className="form-label fs-4 mt-3">Descrição:</label>
+                            <input value={descricao_mercado} onChange={e => setDescricao_mercado(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
+                            <label for="" className="form-label fs-4 mt-3">Confirmar senha:</label>
+                            <input name="" type="password" className="form-control rounded-4 border border-black p-2 mt-2" />
+
+                        </div>
+                    </div>
+                    <button type="submit" className="btn border border-black  rounded-4 mt-5 cadastrobtn" >Cadastrar</button>
+                </form>
+            </div>
+        </div>
+
+
+        </div>
+
+
     )
 }
 export default InserirMercado

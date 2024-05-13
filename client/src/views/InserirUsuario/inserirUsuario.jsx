@@ -1,21 +1,22 @@
 import { useState } from "react";
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import './estilo.css'
 
-function InserirUsuario(){
+function InserirUsuario() {
     const [nome_usuario, setNome_usuario] = useState('')
     const [cpf_usuario, setCpf_usuario] = useState('')
     const [cep_usuario, setCep_usuario] = useState('')
     const [estado_usuario, setEstado_usuario] = useState('')
-    const [cidade_usuario, setCidade_usuario]= useState('')
+    const [cidade_usuario, setCidade_usuario] = useState('')
     const [bairro_usuario, setBairro_usuario] = useState('')
     const [rua_usuario, setRua_usuario] = useState('')
-    const [telefone_usuario, setTelefone_usuario]= useState('')
-    const [email_usuario, setEmail_usuario]= useState('')
-    const [nomeUser_usuario,setNomeUser_usuario]= useState('')
-    const [senha_usuario,setSenha_usuario]= useState('')
+    const [telefone_usuario, setTelefone_usuario] = useState('')
+    const [email_usuario, setEmail_usuario] = useState('')
+    const [nomeUser_usuario, setNomeUser_usuario] = useState('')
+    const [senha_usuario, setSenha_usuario] = useState('')
 
-    async function CadastrarUsuario(event){
+    async function CadastrarUsuario(event) {
         event.preventDefault()
         const usuarioData = {
             nome_usuario,
@@ -30,78 +31,117 @@ function InserirUsuario(){
             nomeUser_usuario,
             senha_usuario
         }
-        try{
-            const resposta = await fetch('/cadastroUsuario',{
+        try {
+            const resposta = await fetch('/cadastroUsuario', {
                 method: 'POST',
-                headers:{
-                    'Content-Type':'application/json'
+                headers: {
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(usuarioData)
             })
-            if(!resposta.ok){
+            if (!resposta.ok) {
                 throw resposta
                 console.debug("Erro ao criar usuario")
-            }else{
+            } else {
                 console.debug("usuario Inserido")
                 alert('Inserido')
             }
-        }catch(error){
+        } catch (error) {
             console.debug(error)
         }
     }
 
-    return(
+    return (
 
-        <div className="conteudo" >
-            <div className="container-fluid p-0 text-center cabecalho"/>
-                <nav className="navbar navbar-expand-lg d-flex justify-content-center align-items-center">
-                    <a className="navbar-brand fs-4" href="#">NoPrecinho</a>
-                    
-                </nav>
-            <div/>
+    <div className="conteudo" >
+        <div class="cabecalho">
+            <nav class="navbar navbar-expand-lg fixed-top">
+                <div className="container-fluid d-flex justify-content-around">
+                    <a className="navbar-brand me-auto" href="#">NoPrecinho</a>
+                    <div className="offcanvas offcanvas-end teste" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                        <div className="offcanvas-header">
+                            <h5 className="offcanvas-title" id="offcanvasNavbarLabel" style={{ color: 'white' }}>NoPrecinho</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div className="offcanvas-body">
+                            <ul className="navbar-nav flex-grow-1 ms-5 justify-content-center">
+                                <li className="nav-item">
+                                    <a className="nav-link mx-lg-2" aria-current="page" href="#">Home</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link mx-lg-2" href="#">Sobre</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link mx-lg-2" href="#">Serviços</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link mx-lg-2" href="#">Portfólios</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link mx-lg-2 mr-5" href="#">Contato</a>
+                                </li>
+                                <li className="ms-5">
+                                    <form className="d-flex" role="search">
+                                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                                        <button className="btn " type="submit">Search</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="#" className="login-button">Login</a>
+                    <button className="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+        <div id="cadastro" className="container pt-5">
             <h3 className="mt-5 text-center">Cadastro de Usuário: </h3>
-            <div  className="container mt-5">
+            <div className="mt-5">
                 <form onSubmit={CadastrarUsuario}>
                     <div className="row">
-                        <div className="col-md-6">
+                        <div className="col-md-5">
                             <label for="" className="form-label fs-4 mt-3">Nome Completo:</label>
-                            <input value={nome_usuario} onChange={e => setNome_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2"/>
+                            <input value={nome_usuario} onChange={e => setNome_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
                             <label for="" className="form-label fs-4 mt-3">CPF:</label>
-                            <input value={cpf_usuario} onChange={e => setCpf_usuario(e.target.value)} name="cpf_usuario" type="text" className="form-control rounded-4 border border-black p-2 mt-2"/>
+                            <input value={cpf_usuario} onChange={e => setCpf_usuario(e.target.value)} name="cpf_usuario" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
                             <label for="" className="form-label fs-4 mt-3">Telefone:</label>
-                            <input value={telefone_usuario} onChange={e => setTelefone_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2"/>
+                            <input value={telefone_usuario} onChange={e => setTelefone_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
                             <label for="" className="form-label fs-4 mt-3">E-mail:</label>
-                            <input value={email_usuario} onChange={e => setEmail_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2"/>
+                            <input value={email_usuario} onChange={e => setEmail_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
                             <label for="" className="form-label fs-4 mt-3">Nome de usuário:</label>
-                            <input value={nomeUser_usuario} onChange={e => setNomeUser_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2"/>
+                            <input value={nomeUser_usuario} onChange={e => setNomeUser_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
                             <label for="" className="form-label fs-4 mt-3">Senha:</label>
-                            <input value={senha_usuario} onChange={e => setSenha_usuario(e.target.value)} name="" type="password" className="form-control rounded-4 border border-black p-2 mt-2"/>
+                            <input value={senha_usuario} onChange={e => setSenha_usuario(e.target.value)} name="" type="password" className="form-control rounded-4 border border-black p-2 mt-2" />
                         </div>
 
                         <div className="col-2">
 
                         </div>
 
-                        <div className="col-md">
+                        <div className="col-md-5">
                             <label for="" className="form-label fs-4 mt-3">CEP:</label>
-                            <input value={cep_usuario} onChange={e => setCep_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2"/>
+                            <input value={cep_usuario} onChange={e => setCep_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
                             <label for="" className="form-label fs-4 mt-3">Estado:</label>
-                            <input value={estado_usuario} onChange={e => setEstado_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2"/>
+                            <input value={estado_usuario} onChange={e => setEstado_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
                             <label for="" className="form-label fs-4 mt-3">Cidade:</label>
-                            <input value={cidade_usuario} onChange={e => setCidade_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2"/>
+                            <input value={cidade_usuario} onChange={e => setCidade_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
                             <label for="" className="form-label fs-4 mt-3">Bairro:</label>
-                            <input value={bairro_usuario} onChange={e => setBairro_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2"/>
+                            <input value={bairro_usuario} onChange={e => setBairro_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
                             <label for="" className="form-label fs-4 mt-3">Rua:</label>
-                            <input value={rua_usuario} onChange={e => setRua_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2"/>
+                            <input value={rua_usuario} onChange={e => setRua_usuario(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
                             <label for="" className="form-label fs-4 mt-3">Confirmar senha:</label>
-                            <input name="" type="password" className="form-control rounded-4 border border-black p-2 mt-2"/>
-                            
+                            <input name="" type="password" className="form-control rounded-4 border border-black p-2 mt-2" />
+
                         </div>
                     </div>
-                    <button type="submit" className="btn border border-black mt-4 rounded-4" >Cadastrar</button>
+                    <button type="submit" className="btn border border-black mt-4 rounded-4 mt-5 cadastrobtn" >Cadastrar</button>
                 </form>
             </div>
         </div>
+
+    </div>
 
     );
 }

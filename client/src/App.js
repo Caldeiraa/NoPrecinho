@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap/dist/js/bootstrap.bundle'
+// import 'bootstrap/dist/js/bootstrap.bundle'
 import ListaUsu from './views/ListaUsuarios/ListaUsuarios';
 import Login from './views/Login/index'
 import Categorias from './views/categorias/categorias'
