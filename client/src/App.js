@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
-// import 'bootstrap/dist/js/bootstrap.bundle'
+import Navbar from './components/Navbar';
 import ListaUsu from './views/ListaUsuarios/ListaUsuarios';
 import Login from './views/Login/index'
 import Categorias from './views/categorias/categorias'
@@ -15,10 +15,12 @@ import Recuperacao from './views/Recuperacao/index';
 import CadastroProdMer from './views/cadastroProduto/cadastroProdMer';
 import CadastroProdUsu from './views/cadastroProduto/cadastroProdUsu';
 import Cadastrese from './views/cadastrese/index';
+import FeedMercado from './views/FeedMercado/feedMercado';
 
 function App() {
   return (
     <BrowserRouter>
+    <Navbar/>
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/categoria' element={<Categorias/>}/>
@@ -32,6 +34,7 @@ function App() {
         <Route path='/cadastro/produto/mercado' element={<CadastroProdMer/>}/>
         <Route path='/cadastro/produto/usuario' element={<CadastroProdUsu/>}/>
         <Route path='/cadastrese' element={<Cadastrese/>}/>
+        <Route path='/feedM' element={<FeedMercado/>}/>
       </Routes>
     </BrowserRouter>
   );

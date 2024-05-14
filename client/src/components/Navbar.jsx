@@ -1,17 +1,17 @@
 import React from 'react'
+import estilo from './Navbar.css'
 
- function index() {
-  return (
-    <div class="conteudo">
+function Navbar() {
+    return (
         <div class="cabecalho">
             <nav class="navbar navbar-expand-lg fixed-top">
                 <div className="container-fluid d-flex justify-content-around">
                     <a className="navbar-brand me-auto" href="#">NoPrecinho</a>
-                        <div className="offcanvas offcanvas-end teste" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                            <div className="offcanvas-header">
-                                <h5 className="offcanvas-title" id="offcanvasNavbarLabel" style={{ color: 'white' }}>NoPrecinho</h5>
-                                <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                            </div>
+                    <div className="offcanvas offcanvas-end teste" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                        <div className="offcanvas-header">
+                            <h5 className="offcanvas-title" id="offcanvasNavbarLabel" style={{ color: 'white' }}>NoPrecinho</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
                         <div className="offcanvas-body">
                             <ul className="navbar-nav flex-grow-1 ms-5 justify-content-center">
                                 <li className="nav-item">
@@ -45,18 +45,7 @@ import React from 'react'
                 </div>
             </nav>
         </div>
-
-    <div class="box">
-        <div><img src="img/NP.png" alt="logo" id="logo"/></div><br/><br/>
-        <label for="" class="form-label"><h2 class="info">Selecione:</h2></label>
-        <div class="enviar">
-            <span class="linha"></span>
-        </div>
-        
-        <a class="botaoCadastrese btn border border-black mt-4 rounded-5 " href="usuario2.html">Usuário</a>
-        <a class="botaoCadastrese btn border border-black mt-5 rounded-5" href="mercado2.html ">Mercado</a>
-    </div>
-</div>
-  )
+    )
 }
-export default index
+
+export default Navbar

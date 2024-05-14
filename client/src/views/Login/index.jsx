@@ -30,14 +30,6 @@ function Login(){
     }
     return(
         <div class="conteudo">
-            <div class="container-fluid p-0 text-center cabecalho">
-                <nav class="navbar navbar-expand-lg d-flex justify-content-center align-items-center">
-                    <a class="navbar-brand fs-4" href="#">NoPrecinho</a>
-                    <img class="logo" src="img/NP.png" alt=""/>
-                </nav>
-                
-            </div>
-        
             <form onSubmit={Logar}>
                 <div class="box justify-content-center"/>
                     <div><img src="img/NP.png" alt="logo" id="logo"/></div>

@@ -4,6 +4,10 @@
     box-sizing: border-box;
     
   }
+
+  .feedLogo{
+    
+  }
   
   body {
     display: flex;
@@ -19,7 +23,7 @@
     
   }
   .slider-wrapper {
-    position: relative;
+    position: relative; 
   }
   
   .parceiros{
