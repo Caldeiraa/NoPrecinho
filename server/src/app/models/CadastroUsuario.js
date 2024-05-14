@@ -30,6 +30,16 @@ class CadastroUsuario{
             })
         })
     }
+    atualizar(nome_usuario,id_usuario){
+        return new Promise((resolve,reject)=>{
+            let sql = `UPDATE usuario SET nome_usuario = '${nome_usuario}' WHERE id_usuario = '${id_usuario}'`
+            this.conexao.query(sql,function(erro,retorno){
+                if(erro) reject([400,erro]) //erro                
+
+                resolve([201,"Atualizado com sucesso"])
+            })
+        })
+    }
 
 }
 

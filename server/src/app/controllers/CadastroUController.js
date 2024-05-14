@@ -1,5 +1,7 @@
 const CadastroUsuario = require("../models/CadastroUsuario")
  
+let usuarios = [];
+
 class CadastroUController{
     create(req, res){
         let nome_usuario = req.body.nome_usuario
@@ -13,7 +15,7 @@ class CadastroUController{
         let email_usuario = req.body.email_usuario
         let nomeUser_usuario = req.body.nomeUser_usuario
         let senha_usuario = req.body.senha_usuario
-
+        let id_usuario = req.params.id_usuario
         
         CadastroUsuario.inserir(nome_usuario,cpf_usuario,cep_usuario,estado_usuario,cidade_usuario,bairro_usuario,rua_usuario,telefone_usuario,email_usuario,nomeUser_usuario,senha_usuario).then(resposta=>{
             res.status(resposta[0]).json(resposta[1])
@@ -36,6 +38,22 @@ class CadastroUController{
         )
     }
 
+    update(req,res){
+        let id_usuario = parseInt(req.params.id_usuario)
+        let nome_usuario = req.body.nome_usuario
+
+        console.debug("PUT :: /usuarios/:id")
+        CadastroUsuario.atualizar(nome_usuario,id_usuario).then(resposta=>{
+            res.status(resposta[0]).json(resposta[1])
+            }
+        ).catch(
+            resposta =>{
+                
+                res.status(resposta[0]).json("Erro: "+resposta[1].errno)
+            }
+        )
+        
+    }
 }
 
 module.exports = new CadastroUController()

@@ -29,4 +29,6 @@ routes.get("/cadastroM",cadastroMercado.index)
 routes.get("/cadastroPM",CadastroPMercado.index)
 routes.get("/feed",FeedMercado.index)
 
+routes.put("/usuarios/:id",cadastroUsuario.update)
+
 module.exports = routes
