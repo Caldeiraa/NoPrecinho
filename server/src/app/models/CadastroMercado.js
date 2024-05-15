@@ -31,6 +31,30 @@ class CadastroMercado{
         })
     }
 
+    atualizar(nome_fantasia,id_mercado){
+        return new Promise((resolve,reject)=>{
+            let sql = `UPDATE mercado SET nome_fantasia = '${nome_fantasia}' WHERE id_mercado = '${id_mercado}'`
+            this.conexao.query(sql,function(erro,retorno){
+                if(erro) reject([400,erro]) //erro                
+
+                resolve([201,"Atualizado com sucesso"])
+            })
+        })
+    }
+    
+
+    deletar(id_mercado){
+        return new Promise((resolve,reject)=>{
+            let sql = `DELETE FROM mercado WHERE id_mercado = '${id_mercado}'`
+            this.conexao.query(sql,function(erro,retorno){
+                if(erro) reject([400,erro])
+                
+                resolve([201,"Deletado com sucesso"])
+            })
+        })
+    }
+
+
 }
 
 module.exports = new CadastroMercado()

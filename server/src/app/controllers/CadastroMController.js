@@ -35,6 +35,38 @@ class CadastroMController{
             }
         )
     }
+
+    update(req,res){
+        let id_mercado = parseInt(req.params.id_mercado)
+        let nome_fantasia = req.body.nome_fantasia
+
+        console.debug("PUT :: /usuarios/:id")
+        CadastroMercado.atualizar(nome_fantasia,id_mercado).then(resposta=>{
+            res.status(resposta[0]).json(resposta[1])
+            }
+        ).catch(
+            resposta =>{
+                
+                res.status(resposta[0]).json("Erro: "+resposta[1].errno)
+            }
+        )
+        
+    }
+
+    destroy(req,res){
+        let  id_mercado = req.params.id_mercado
+
+        console.debug("DELETE :: /usuario/:id")
+        CadastroMercado.deletar(id_mercado).then(resposta=>{
+            res.status(resposta[0]).json(resposta[1])
+            }
+       ).catch(
+            resposta =>{
+                res.status(resposta[0]).json("Erro: "+resposta[1].errno)
+            }
+       )
+    }
+
 }
 
 module.exports = new CadastroMController()
