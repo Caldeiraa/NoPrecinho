@@ -46,6 +46,7 @@ class CadastroMercado{
     deletar(id_mercado){
         return new Promise((resolve,reject)=>{
             let sql = `DELETE FROM mercado WHERE id_mercado = '${id_mercado}'`
+            console.log("!")
             this.conexao.query(sql,function(erro,retorno){
                 if(erro) reject([400,erro])
                 

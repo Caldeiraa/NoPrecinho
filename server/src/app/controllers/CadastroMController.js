@@ -54,9 +54,9 @@ class CadastroMController{
     }
 
     destroy(req,res){
-        let  id_mercado = req.params.id_mercado
 
-        console.debug("DELETE :: /usuario/:id")
+        let  id_mercado = parseInt(req.params.id_mercado) 
+        console.debug("DELETE :: /mercado/:id"+id_mercado)
         CadastroMercado.deletar(id_mercado).then(resposta=>{
             res.status(resposta[0]).json(resposta[1])
             }
