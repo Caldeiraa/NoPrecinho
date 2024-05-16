@@ -40,7 +40,7 @@ class CadastroMController{
         let id_mercado = parseInt(req.params.id_mercado)
         let nome_fantasia = req.body.nome_fantasia
 
-        console.debug("PUT :: /usuarios/:id")
+        console.debug("PUT :: /mercados/:id")
         CadastroMercado.atualizar(nome_fantasia,id_mercado).then(resposta=>{
             res.status(resposta[0]).json(resposta[1])
             }

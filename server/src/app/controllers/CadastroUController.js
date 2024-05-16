@@ -56,9 +56,9 @@ class CadastroUController{
     }
 
     destroy(req,res){
-        let  id_usuario = req.params.id_usuario
+        let  id_usuario = parseInt(req.params.id_usuario) 
 
-        console.debug("DELETE :: /usuario/:id")
+        console.debug("DELETE :: /usuario/:id" +id_usuario)
         CadastroUsuario.deletar(id_usuario).then(resposta=>{
             res.status(resposta[0]).json(resposta[1])
             }
