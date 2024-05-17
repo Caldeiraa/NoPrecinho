@@ -1,0 +1,22 @@
+.box-prod{
+    width: 500px;
+    height: 500px;
+    background-color: #353B3C;
+    border-radius: 20px;
+
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    
+    
+}
+
+.box-prod a{
+    color: white;
+    text-align: center;
+    
+}
+
+#cadastro{
+    width: 100vw;
+}
