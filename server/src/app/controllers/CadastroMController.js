@@ -12,18 +12,28 @@ class CadastroMController{
         let bairro_mercado = req.body.bairro_mercado
         let rua_mercado = req.body.rua_mercado
         let email_mercado = req.body.email_mercado
-        let logo_mercado = req.body.logo_mercado
+        let logo_mercado = req.files.imagem.name
         let descricao_mercado = req.body.descricao_mercado
         let senha_mercado = req.body.senha_mercado
 
-        CadastroMercado.inserir(nome_fantasia,razao_social,cnpj,telefone_mercado,cep_mercado,estado_mercado,cidade_mercado,bairro_mercado,rua_mercado,email_mercado,logo_mercado,descricao_mercado,senha_mercado).then(resposta=>{
+        logo_mercado = logo_mercado.split(".")
+        let extensao = logo_mercado[logo_mercado.length-1]
+
+        if(extensao === "jpg" || extensao === "png" ){
+            logo_mercado = new Date().getTime()+"."+[logo_mercado.length-1]
+            let arquivo = req.files.imagem
+           
+            CadastroMercado.inserir(arquivo,nome_fantasia,razao_social,cnpj,telefone_mercado,cep_mercado,estado_mercado,cidade_mercado,bairro_mercado,rua_mercado,email_mercado,logo_mercado,descricao_mercado,senha_mercado).then(resposta=>{
             res.status(resposta[0]).json(resposta[1])
-        }).catch(
-            resposta =>{
+            }).catch(
+                resposta =>{
                 console.debug(resposta[1])
                 res.status(resposta[0]).json("Erro: "+resposta[1].errno)
+            })
+        }else{
+            res.status(415).json({alert:"Arquivo nao suportado"})
         }
-        )
+       
     }
 
     index(req,res){

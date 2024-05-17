@@ -25,7 +25,7 @@ class CadastroProdMercado{
              ('${nome_prod_mercado}','${marca_mercado}','${peso_mercado}','${preco_mercado}','${foto_prod_mercado}','${descircao_prod_mercado}','${mercado_id},'${id_subCategoria}')`
             this.conexao.query(sql,function(erro,retorno){
                 if(erro) reject([400,erro]) //erro
-                arquivo.mv(caminhoServer + "/../../img"+foto_prod_mercado)
+                arquivo.mv(caminhoServer + "/../img"+foto_prod_mercado)
                 resolve([201,"Inserido"])
             })
         })
