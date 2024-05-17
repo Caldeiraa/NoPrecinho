@@ -31,30 +31,49 @@ class CadastroMercado{
         })
     }
 
-    atualizar(nome_fantasia,id_mercado){
-        return new Promise((resolve,reject)=>{
-            let sql = `UPDATE mercado SET nome_fantasia = '${nome_fantasia}' WHERE id_mercado = '${id_mercado}'`
-            this.conexao.query(sql,function(erro,retorno){
-                if(erro) reject([400,erro]) //erro                
-
-                resolve([201,"Atualizado com sucesso"])
-            })
-        })
+    atualizar(nome_fantasia, id_mercado) {
+        return new Promise((resolve, reject) => {
+            // Verifica se o nome_fantasia está definido
+            if (!nome_fantasia) {
+                reject([400, "O nome_fantasia não foi fornecido"]);
+                return;
+            }
+    
+            let sql = `UPDATE mercado SET nome_fantasia = '${nome_fantasia}' WHERE id_mercado = '${id_mercado}'`;
+    
+            this.conexao.query(sql, function (erro, retorno) {
+                if (erro) {
+                    reject([400, erro]); // erro
+                    return;
+                }
+    
+                // Verifica se a atualização afetou alguma linha
+                if (retorno.affectedRows > 0) {
+                    resolve([201, "Atualizado com sucesso"]);
+                } else {
+                    reject([404, "ID do mercado não encontrado"]);
+                }
+            });
+        });
     }
     
-
-    deletar(id_mercado){
-        return new Promise((resolve,reject)=>{
-            let sql = `DELETE FROM mercado WHERE id_mercado = '${id_mercado}'`
-            console.log("!")
-            this.conexao.query(sql,function(erro,retorno){
-                if(erro) reject([400,erro])
-                
-                resolve([201,"Deletado com sucesso"])
-            })
-        })
+    deletar(id_mercado) {
+        return new Promise((resolve, reject) => {
+            let sql = `DELETE FROM mercado WHERE id_mercado = '${id_mercado}'`;
+    
+            this.conexao.query(sql, function (erro, resultado) {
+                if (erro) {
+                    reject([400, erro]);
+                    return;
+                }
+                if (resultado.affectedRows > 0) {
+                    resolve([201, "Mercado deletado com sucesso"]);
+                } else {
+                    resolve([404, "Mercado não encontrado"]);
+                }
+            });
+        });
     }
-
 
 }
 
