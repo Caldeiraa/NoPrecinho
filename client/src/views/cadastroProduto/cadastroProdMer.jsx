@@ -46,7 +46,7 @@ function CadastroProdMer() {
                 <div class="row">
                     <div class="col-md">
                         <div class="box-prod">
-                            <input type="file" />
+                            <input value={foto_produto} onChange={e => setFoto_produto(e.target.value)} type="file" />
                         </div>
                     </div>
 
@@ -56,13 +56,13 @@ function CadastroProdMer() {
                         <label for="" class="form-label fs-4 mt-3">Tipo:</label>
                         <input value={nome_produto} onChange={e => setNome_produto(e.target.value)} name="" type="text" class="form-control rounded-4 mb-5 border border-black" />
                         <label for="" class="form-label fs-4 mt-3">Preço:</label>
-                        <input value={nome_produto} onChange={e => setNome_produto(e.target.value)} name="" type="text" class="form-control rounded-4 mb-5 border border-black" />
+                        <input value={preco_produto} onChange={e => setPreco_produto(e.target.value)} name="" type="text" class="form-control rounded-4 mb-5 border border-black" />
                     </div>
                     <div class="col-md">
                         <label for="" class="form-label fs-4 mt-3">Marca:</label>
-                        <input value={nome_produto} onChange={e => setNome_produto(e.target.value)} name="" type="text" class="form-control rounded-4 border mb-5 border-black" />
+                        <input value={marca_produto} onChange={e => setMarca_produto(e.target.value)} name="" type="text" class="form-control rounded-4 border mb-5 border-black" />
                         <label for="" class="form-label fs-4 mt-3">Peso(Kg):</label>
-                        <input value={nome_produto} onChange={e => setNome_produto(e.target.value)} name="" type="text" class="form-control rounded-4 border mb-5 border-black" />
+                        <input value={peso_produto} onChange={e => setPeso_produto(e.target.value)} name="" type="text" class="form-control rounded-4 border mb-5 border-black" />
                         <label for="" class="form-label fs-4 mt-3">Categoria:</label>
                         <select class="form-select form-select-md rounded-4 border border-black mb-5" aria-label="Medium select example">
                             <option selected>Selecione uma categoria:</option>
