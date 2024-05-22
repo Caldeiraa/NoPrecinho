@@ -10,13 +10,17 @@ import np from './img/NP.png'
 
 
 function Home() {
+  async function Mercado(){
+    window.location.href = "/feedM"
+  }
+
   return (
     <div class="conteudo">  
       <div className="container parceiros">
         <h3>Parceiros</h3>
         <div className="slider-wrapper">
           <ul className="image-list">
-            <li><img className="image-item" src={carrefour} alt="Carrefour Logo" /></li>
+            <li><img className="image-item" src={carrefour} onClick={Mercado} alt="Carrefour Logo" /></li>
             <li><img className="image-item tt" src={extrabom} alt="Extrabom Logo" /></li>
             <li><img className="image-item" src={perin} alt="Header Logo" /></li>
             <li><img className="image-item" src={bh} alt="BH Logo" /></li>

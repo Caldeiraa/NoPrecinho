@@ -18,7 +18,6 @@ class CadastroPMercadoController{
             foto_prod_mercado = new Date().getTime()+"."+[foto_prod_mercado.length-1]
             let arquivo = req.files.imagem
         
-
             CadastroProdMercado.inserir(arquivo,nome_prod_mercado,marca_mercado,peso_mercado,preco_mercado,foto_prod_mercado,descircao_prod_mercado,mercado_id,id_subCategoria).then(resposta=>{
                 res.status(resposta[0]).json(resposta[1])
             }).catch(
@@ -31,7 +30,6 @@ class CadastroPMercadoController{
             res.status(415).json({alert:"Arquivo nao suportado"})
         }
     }
-
 
     index(req,res){
         CadastroProdMercado.mostrarTodos().then(resposta=>{

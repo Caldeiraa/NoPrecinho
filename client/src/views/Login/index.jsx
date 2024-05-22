@@ -29,6 +29,12 @@ function Login(){
             console.debug(error)
         }
     }
+    async function RecuperacaoSenha(){
+        window.location.href = "/recuperacao"
+      }
+      async function Cadastrese(){
+        window.location.href = "/cadastrese"
+      }
     return(
         <div class="conteudo">
             <form onSubmit={Logar}>
@@ -39,12 +45,12 @@ function Login(){
                     <label for=""><h2 class="form-label">Senha:</h2></label>
                     <input value={senha} onChange={e => setSenha(e.target.value)} type="text" class="form-control  rounded-4 border border-black"/>
                     <p></p>
-                    <a href="recuperacao.html" class="form-label ms-3">Esqueci a Senha</a>
+                    <a class="form-label ms-3" onClick={RecuperacaoSenha}>Esqueci a Senha</a>
                 <div class="enviar" >
-                    <button type="submit" class="btn border border-black mt-5 rounded-4" >Cadastrar-se</button>
+                    <button type="submit" class="btn border border-black mt-5 rounded-4" >Entrar</button>
                     <span class="linha"></span>
                 </div>
-                <h5>Não tem uma conta?<a href="cadastrese.html">Cadastre-se</a></h5>
+                <h5>Não tem uma conta?<a onClick={Cadastrese}>Cadastre-se</a></h5>
             </div>
             </form>
             

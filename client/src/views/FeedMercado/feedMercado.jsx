@@ -9,7 +9,7 @@ function FeedMercado() {
     carregarProdutos()
   },[])
 
-
+ 
   async function carregarProdutos(){
     try {
       const resposta = await fetch('/cadastroPM' )
