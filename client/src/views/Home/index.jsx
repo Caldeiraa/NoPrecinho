@@ -21,12 +21,12 @@ function Home() {
         <div className="slider-wrapper">
           <ul className="image-list">
             <li><img className="image-item" src={carrefour} onClick={Mercado} alt="Carrefour Logo" /></li>
-            <li><img className="image-item tt" src={extrabom} alt="Extrabom Logo" /></li>
+            <li><img className="image-item" src={extrabom} alt="Extrabom Logo" /></li>
             <li><img className="image-item" src={perin} alt="Header Logo" /></li>
             <li><img className="image-item" src={bh} alt="BH Logo" /></li>
             <li><img className="image-item" src={assai} alt="Assai Logo" /></li>
             <li><img className="image-item" src={carrefour} alt="Carrefour Logo" /></li>
-            <li><img className="image-item tt" src={extrabom} alt="Extrabom Logo" /></li>
+            <li><img className="image-item" src={extrabom} alt="Extrabom Logo" /></li>
             <li><img className="image-item" src={perin} alt="Header Logo" /></li>
             <li><img className="image-item" src={bh} alt="BH Logo" /></li>
             <li><img className="image-item" src={assai} alt="Assai Logo" /></li>

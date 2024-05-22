@@ -1,13 +1,13 @@
 import React from 'react'
-import np from './img/NP.png'
-import mc from './img/mercearia.png'
-import cn from './img/carne.png'
-import bd from './img/bebidas.png'
-import lp from './img/limpeza.png'
-import pc from './img/pereciveis.png'
-import pd from './img/padaria.png'
-import ht from './img/hortifruit.png'
-import hg from './img/higiêne.png'
+import np from '../../img/NP.png'
+import mc from '../../img/mercearia.png'
+import cn from '../../img/carne.png'
+import bd from '../../img/bebidas.png'
+import lp from '../../img/limpeza.png'
+import pc from '../../img/pereciveis.png'
+import pd from '../../img/padaria.png'
+import ht from '../../img/hortifruit.png'
+import hg from '../../img/higiêne.png'
 
 function categorias() {
   return (

@@ -1,4 +1,6 @@
 import React from 'react'
+import styles from './index.module.css'
+import logo from '../../img/NP.png'
 
  function index() {
     async function Mercado(){
@@ -9,21 +11,18 @@ import React from 'react'
       }
   return (
     <div class="conteudo">
-        <div class="cabecalho">
-            
-        </div>
-
-    <div class="box">
-        <div><img src="img/NP.png" alt="logo" id="logo"/></div><br/><br/>
-        <label for="" class="form-label"><h2 class="info">Selecione:</h2></label>
-        <div class="enviar">
-            <span class="linha"></span>
-        </div>
-        
-        <a class="botaoCadastrese btn border border-black mt-4 rounded-5 "  onClick={Usuario}>Usuário</a>
-        <a class="botaoCadastrese btn border border-black mt-5 rounded-5"  onClick={Mercado}>Mercado</a>
+      <div className={styles.box}>
+          <div><img src={logo} alt="logo" className={styles.logo}/></div>
+          <label for="" class="form-label"><h2>Selecione:</h2></label>
+          <div className={styles.enviar}>
+              <span className={styles.linha}></span>
+          </div>
+          
+          <button className={styles.botaoCadastrese} onClick={Usuario}>Usuário</button>
+          <button className={styles.botaoCadastrese} onClick={Mercado}>Mercado</button>
+          
+      </div>
     </div>
-</div>
   )
 }
 export default index

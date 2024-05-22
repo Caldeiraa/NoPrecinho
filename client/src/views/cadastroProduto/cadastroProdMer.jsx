@@ -9,7 +9,7 @@ function CadastroProdMer() {
     const[foto_produto, setFoto_produto] = useState('')
     const[descricao_produto, setDescricao_produto] = useState('')
 
-    async function cadastrarProdutos(event){
+    async function cadastrarProdutosMER(event){
         event.preventDefault()
         const produtoData = {
             nome_produto,
@@ -46,7 +46,7 @@ function CadastroProdMer() {
                 <div class="row">
                     <div class="col-md">
                         <div class="box-prod">
-                            <input value={foto_produto} onChange={e => setFoto_produto(e.target.value)} type="file" />
+                        <a class="box-prod" href=""><input value={foto_produto} onchange={e => setFoto_produto(e.target.value)} type="file" /></a>
                         </div>
                     </div>
 
@@ -54,7 +54,7 @@ function CadastroProdMer() {
                         <label for="" class="form-label fs-4 mt-3">Nome Completo:</label>
                         <input value={nome_produto} onChange={e => setNome_produto(e.target.value)} name="" type="text" class="form-control rounded-4 mb-5 border border-black" />
                         <label for="" class="form-label fs-4 mt-3">Tipo:</label>
-                        <input value={nome_produto} onChange={e => setNome_produto(e.target.value)} name="" type="text" class="form-control rounded-4 mb-5 border border-black" />
+                        <input value={nome_produto} onChange={e => setNome_produto(e.target.value)} name="" type="text" class="form-control rounded-4 mb-5 border border-black" /> 
                         <label for="" class="form-label fs-4 mt-3">Preço:</label>
                         <input value={preco_produto} onChange={e => setPreco_produto(e.target.value)} name="" type="text" class="form-control rounded-4 mb-5 border border-black" />
                     </div>
@@ -66,14 +66,14 @@ function CadastroProdMer() {
                         <label for="" class="form-label fs-4 mt-3">Categoria:</label>
                         <select class="form-select form-select-md rounded-4 border border-black mb-5" aria-label="Medium select example">
                             <option selected>Selecione uma categoria:</option>
-                            <option value="1">One</option>
+                            <option value="1">One8</option>
                             <option value="2">Two</option>
                             <option value="3">Three</option>
                         </select>
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn border border-black rounded-4 fs-4 float-end">Cadastrar</button>
+            <button type="submit" onClick={cadastrarProdutosMER} class="btn border border-black rounded-4 fs-4 float-end">Cadastrar</button>
         </div>
     )
 }

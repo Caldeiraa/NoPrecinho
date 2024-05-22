@@ -1,6 +1,7 @@
 import { useState } from "react";
 // import Css from './estilo.css'
 import logo from '../../img/NP.png'
+import style from './estilo.css'
 function Login(){
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
@@ -38,7 +39,7 @@ function Login(){
     return(
         <div class="conteudo">
             <form onSubmit={Logar}>
-            <div class="box justify-content-center">
+            <div class="box">
                 <div><img class="logo" src={logo} alt=""/></div>
                     <label for=""><h2 class="form-label">E-mail:</h2></label>
                     <input value={email} onChange={e => setEmail(e.target.value)} type="text" class="form-control  rounded-4 border border-black"/>
