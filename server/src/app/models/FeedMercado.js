@@ -9,13 +9,7 @@ class FeedMercado{
     }
     mostrarTodos() {
         return new Promise((resolve, reject) => {
-            let sql = `SELECT 
-            mercado.logo_mercado, produto_mercado.foto_produto,   produto_mercado.nome_produto,  produto_mercado.marca_produto,  produto_mercado.peso_produto, 
-            produto_mercado.preco_produto, mercado.nome_fantasia AS nome_mercado
-            FROM 
-            produto_mercado
-            JOIN 
-            mercado ON produto_mercado.mercado_id = mercado.id_mercado;`;
+            let sql = `select * from vw_produtos_mercado;`;
             this.conexao.query(sql, function(erro, retorno) {
                 if (erro) {
                     reject([400, erro]);
