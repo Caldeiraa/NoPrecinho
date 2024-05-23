@@ -24,7 +24,7 @@ routes.post("/cadastroMercado",cadastroMercado.create)
 routes.post("/cadastroPMer",CadastroPMercado.create)
 
 routes.get("/cadastroU",cadastroUsuario.index)
-routes.get("/login",Login.index)
+routes.post("/login",Login.index)
 routes.get("/cadastroM",cadastroMercado.index)
 routes.get("/cadastroPM",CadastroPMercado.index)
 routes.get("/feed",FeedMercado.index)
