@@ -38,7 +38,6 @@ function InserirUsuario() {
                 body: JSON.stringify(usuarioData)
             })
             if (!resposta.ok) {
-                throw resposta
                 console.debug("Erro ao criar usuario")
             } else {
                 console.debug("usuario Inserido")

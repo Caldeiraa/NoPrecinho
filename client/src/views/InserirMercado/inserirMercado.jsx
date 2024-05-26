@@ -14,7 +14,7 @@ function InserirMercado() {
     const [email_mercado, setEmail_mercado] = useState('')
     const [logo_mercado, setLogo_mercado] = useState('')
     const [descricao_mercado, setDescricao_mercado] = useState('')
-    const [senha, setSenha] = useState('')
+    const [senha_mercado, setSenha_mercado] = useState('')
 
     async function CadastrarMercado(event) {
         event.preventDefault()
@@ -31,7 +31,7 @@ function InserirMercado() {
             email_mercado,
             logo_mercado,
             descricao_mercado,
-            senha
+            senha_mercado
         }
         try {
             const resposta = await fetch('/cadastroMercado', {
@@ -74,7 +74,7 @@ function InserirMercado() {
                             <label for="" className="form-label fs-4 mt-3">Rua:</label>
                             <input value={rua_mercado} onChange={e => setRua_mercado(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
                             <label for="" className="form-label fs-4 mt-3">Senha:</label>
-                            <input value={senha} onChange={e => setSenha(e.target.value)} name="" type="password" className="form-control rounded-4 border border-black p-2 mt-2" />
+                            <input value={senha_mercado} onChange={e => setSenha_mercado(e.target.value)} name="" type="password" className="form-control rounded-4 border border-black p-2 mt-2" />
                         </div>
 
                         <div className="col-2">

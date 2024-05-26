@@ -19,13 +19,11 @@ function Login() {
                 alert("Usuário ou senha inválidos")
                 throw new Error("Erro na requisição:" + resposta.status)
             }else{
-                alert("usuario!!!")
                 window.location.href = "/"
             }
 
             const dados = await resposta.json()
             localStorage.setItem('token', dados.token)
-            window.location.href = "gestaoUsu"
         } catch (error) {
             console.error("Error ao fazer login", error)
         }

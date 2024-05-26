@@ -1,5 +1,6 @@
 const mysql = require("mysql2")
 const dbConfig = require("../config")
+const bcrypt = require('bcrypt');
 
 const caminhoServer = require("path")
 
@@ -20,9 +21,12 @@ class CadastroUsuario {
     }
 
     inserir(nome_usuario, cpf_usuario, cep_usuario, estado_usuario, cidade_usuario, bairro_usuario, rua_usuario, telefone_usuario, email_usuario, nomeUser_usuario, senha_usuario) {
+        let salt = bcrypt.genSaltSync(10)
+        let hash = bcrypt.hashSync(senha_usuario, salt)
+        
         return new Promise((resolve, reject) => {
             let sql = `INSERT INTO usuario (nome_usuario,cpf_usuario,cep_usuario,estado_usuario,cidade_usuario,bairro_usuario,rua_usuario,telefone_usuario,email_usuario,nome_user_usuario,senha) VALUE
-             ('${nome_usuario}','${cpf_usuario}','${cep_usuario}','${estado_usuario}','${cidade_usuario}','${bairro_usuario}','${rua_usuario}','${telefone_usuario}','${email_usuario}','${nomeUser_usuario}','${senha_usuario}')`
+             ('${nome_usuario}','${cpf_usuario}','${cep_usuario}','${estado_usuario}','${cidade_usuario}','${bairro_usuario}','${rua_usuario}','${telefone_usuario}','${email_usuario}','${nomeUser_usuario}','${hash}')`
             this.conexao.query(sql, function (erro, retorno) {
                 if (erro) reject([400, erro]) //erro
 
