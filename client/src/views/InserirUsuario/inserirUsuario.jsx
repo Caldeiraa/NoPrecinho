@@ -16,6 +16,7 @@ function InserirUsuario() {
 
     async function CadastrarUsuario(event) {
         event.preventDefault()
+
         const usuarioData = {
             nome_usuario,
             cpf_usuario,
@@ -32,16 +33,20 @@ function InserirUsuario() {
         try {
             const resposta = await fetch('/cadastroUsuario', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
+                headers:{
+                    'Content-Type':'application/json'
                 },
                 body: JSON.stringify(usuarioData)
             })
             if (!resposta.ok) {
-                console.debug("Erro ao criar usuario")
+                console.debug("Erro ao criar usuario ")
+                alert("NÃO FOI")
             } else {
-                console.debug("usuario Inserido")
                 alert('Inserido')
+                console.debug("usuario Inserido")
+                window.location.href  = "/"
+                
+                
             }
         } catch (error) {
             console.debug(error)
@@ -91,7 +96,7 @@ function InserirUsuario() {
 
                         </div>
                     </div>
-                    <button type="submit" className="btn border border-black mt-4 rounded-4 mt-5 cadastrobtn" >Cadastrar</button>
+                    <button type="submit" className="btn border border-black mt-4 rounded-4 mt-5 cadastrobtn">Cadastrar</button>
                 </form>
             </div>
         </div>

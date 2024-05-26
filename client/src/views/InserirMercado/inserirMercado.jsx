@@ -43,9 +43,12 @@ function InserirMercado() {
             })
             if (!resposta.ok) {
                 console.debug("Erro ao criar Mercado")
+                alert("n foi")
             } else {
+                alert("foi")
                 console.debug("usuario Mercado")
-                alert('Inserido')
+                window.location.href  = "/"
+                
             }
         } catch (error) {
             console.debug(error)
@@ -99,7 +102,7 @@ function InserirMercado() {
 
                         </div>
                     </div>
-                    <button type="submit" className="btn border border-black  rounded-4 mt-5 cadastrobtn" >Cadastrar</button>
+                    <button type="submit" className="btn border border-black  rounded-4 mt-5 cadastrobtn">Cadastrar</button>
                 </form>
             </div>
         </div>

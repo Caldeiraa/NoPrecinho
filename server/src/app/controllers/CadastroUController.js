@@ -3,7 +3,8 @@ const CadastroUsuario = require("../models/CadastroUsuario")
 
 class CadastroUController{
     create(req, res){
-        const { nome_usuario, cpf_usuario, cep_usuario, estado_usuario, cidade_usuario, bairro_usuario, rua_usuario, telefone_usuario, email_usuario, 
+        console.log(req.body)
+        let { nome_usuario, cpf_usuario, cep_usuario, estado_usuario, cidade_usuario, bairro_usuario, rua_usuario, telefone_usuario, email_usuario, 
             nomeUser_usuario, senha_usuario } = req.body;
 
         CadastroUsuario.inserir(nome_usuario,cpf_usuario,cep_usuario,estado_usuario,cidade_usuario,bairro_usuario,rua_usuario,telefone_usuario,email_usuario,nomeUser_usuario,senha_usuario).then(resposta=>{
