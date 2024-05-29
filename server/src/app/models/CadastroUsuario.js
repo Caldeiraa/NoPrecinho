@@ -64,6 +64,34 @@ class CadastroUsuario {
         })
     }
 
+    verificaUsuarioSenha(email, senha) {
+        return new Promise((resolve, reject) => {
+            // Consulta parametrizada para evitar injeção de SQL
+            let sql = 'SELECT * FROM usuario WHERE email_usuario = ?';
+    
+            this.conexao.query(sql, [email], function(erro, retorno) {
+                if (erro) {
+                    console.debug(erro);
+                    reject([400, erro]);
+                } else {
+                    if (retorno.length === 0) {
+                        resolve([401, "usuario ou senha invalida"]);
+                    } else {
+                        let hash = retorno[0].senha;
+                        let logado = bcrypt.compareSync(senha, hash);
+                        if (logado) {
+                            let { id_usuario, nome_user_usuario } = retorno[0];
+                            resolve([200, "logado", id_usuario, nome_user_usuario]);
+                        } else {
+                            resolve([401, "usuario ou senha invalida"]);
+                        }
+                    }
+                }
+            });
+        });
+    }
+
+
 }
 
 module.exports = new CadastroUsuario()

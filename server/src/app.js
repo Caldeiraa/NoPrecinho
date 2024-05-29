@@ -15,6 +15,8 @@ class App{
         this.server.use(express.static("public"))
 
         this.server.use(fileupload())
+
+        this.server.use(express.urlencoded({extended:false}))
     }
 
     routes(){
