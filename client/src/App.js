@@ -9,7 +9,6 @@ import Categorias from './views/categorias/categorias'
 import InserirUsuario from './views/InserirUsuario/inserirUsuario';
 import InserirMercado from './views/InserirMercado/inserirMercado';
 import Home from './views/Home/index'
-import CarrinhoUm from './views/carrinhos/carrinhoUm'
 import CarrinhoDois from './views/carrinhos/carrinhoDois';
 import Recuperacao from './views/Recuperacao/index';
 import CadastroProdMer from './views/cadastroProduto/cadastroProdMer';
@@ -28,7 +27,6 @@ function App() {
         <Route path='/cadastro/mercado' element={<InserirMercado/>}/>
         <Route path='/usuarios' element={<ListaUsu/>}/>
         <Route path='/login' element={<Login/>}/>
-        <Route path='/carrinho/default' element={<CarrinhoUm/>}/>
         <Route path='/carrinho/comparacao' element={<CarrinhoDois/>}/>
         <Route path='/recuperacao' element={<Recuperacao/>}/>
         <Route path='/cadastro/produto/mercado' element={<CadastroProdMer/>}/>

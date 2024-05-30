@@ -1,7 +1,7 @@
-.minibox2{
+ .minibox2{
     width: 500px;
     height: 250px;
-    margin-left: 47%;
+    margin-left: 70%;
     padding: 25px;
     border: 1px solid #000000;
     background-color: white;
@@ -16,14 +16,13 @@
     width: 900px;
     height: 600px;
     margin: 0 auto; 
-    margin-left: 50px;
     padding: 25px;
     border: 1px solid #000000;
     background-color: white;
     display: block;
     margin-top: 125px;   
     border-radius: 100px;
-}
+}   
 
 .iconi{
     display: flex;
@@ -45,7 +44,7 @@
 .minibox{
     width: 500px;
     height: 250px;
-    margin-left: 47%;
+    margin-left: 70%;
     padding: 25px;
     border: 1px solid #000000;
     background-color: white;
@@ -53,4 +52,8 @@
     margin-top: 125px;   
     border-radius: 100px;
     text-align: center;
+}
+
+#conteudo{
+    width: 100vw;
 }

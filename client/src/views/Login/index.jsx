@@ -19,6 +19,7 @@ function Login() {
                 alert("Usuário ou senha inválidos")
                 throw new Error("Erro na requisição:" + resposta.status)
             }else{
+                
                 window.location.href = "/"
             }
 

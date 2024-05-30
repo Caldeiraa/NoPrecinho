@@ -38,15 +38,6 @@ function FeedMercado() {
             </div>
           ))}
         </div>
-        <div className="prod-item">
-          {produto_mercado.map(produto_mercado=>(
-            <div key={produto_mercado.id_produto_mercado}>
-                <span>{produto_mercado.id_produto_mercado}</span>
-                <span>{produto_mercado.nome_produto}</span>
-                <span>{produto_mercado.marca_produto}</span>
-            </div>
-          ))}
-        </div>
       </div>
     </div>
   )
