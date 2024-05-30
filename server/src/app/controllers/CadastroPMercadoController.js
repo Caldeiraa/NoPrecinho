@@ -40,6 +40,10 @@ class CadastroPMercadoController{
             }
         )
     }
+
+    comparar(req,res){
+
+    }
 }
 
 module.exports = new CadastroPMercadoController()

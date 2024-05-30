@@ -22,9 +22,10 @@ routes.get("/getCadastroPM",(req,res)=>{
 routes.post("/cadastroUsuario",cadastroUsuario.create)
 routes.post("/cadastroMercado",cadastroMercado.create)
 routes.post("/cadastroPMer",CadastroPMercado.create)
+routes.post("/login",cadastroUsuario.logar)
 
 routes.get("/cadastroU",cadastroUsuario.index)
-routes.post("/login",cadastroUsuario.logar)
+routes.get("/produto/:id_prod",FeedMercado.show)
 routes.get("/cadastroM",cadastroMercado.index)
 routes.get("/cadastroPM",CadastroPMercado.index)
 routes.get("/feed",FeedMercado.index)

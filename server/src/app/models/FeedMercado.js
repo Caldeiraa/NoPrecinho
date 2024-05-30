@@ -19,6 +19,21 @@ class FeedMercado{
             });
         });
     }
+    mostrarUm(id_prod) {
+        return new Promise((resolve, reject) => {
+            let sql = `SELECT produto_mercado.*, mercado.nome_fantasia AS nome_mercado
+            FROM produto_mercado
+            JOIN mercado ON produto_mercado.mercado_id = mercado.id_mercado
+            WHERE produto_mercado.id_produto_mercado = '${id_prod}';`;
+            this.conexao.query(sql, function(erro, retorno) {
+                if (erro) {
+                    reject([400, erro]);
+                } else {
+                    resolve([201, retorno]);
+                }
+            });
+        });
+    }
 
 }
 
