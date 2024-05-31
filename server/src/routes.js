@@ -23,6 +23,7 @@ routes.post("/cadastroUsuario",cadastroUsuario.create)
 routes.post("/cadastroMercado",cadastroMercado.create)
 routes.post("/cadastroPMer",CadastroPMercado.create)
 routes.post("/login",cadastroUsuario.logar)
+routes.post("/comparacao",CadastroPMercado.comparar)
 
 routes.get("/cadastroU",cadastroUsuario.index)
 routes.get("/produto/:id_prod",FeedMercado.show)
@@ -30,10 +31,10 @@ routes.get("/cadastroM",cadastroMercado.index)
 routes.get("/cadastroPM",CadastroPMercado.index)
 routes.get("/feed",FeedMercado.index)
 
-
 routes.put("/usuarios/:id_usuario",cadastroUsuario.update)
 routes.put("/mercados/:id_mercado",cadastroMercado.update)
 
 routes.delete("/usuarios/:id_usuario",cadastroUsuario.destroy)
 routes.delete("/mercados/:id_mercado",cadastroMercado.destroy)
+
 module.exports = routes

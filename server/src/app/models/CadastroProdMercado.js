@@ -25,41 +25,30 @@ class CadastroProdMercado{
              ('${nome_prod_mercado}','${marca_mercado}','${peso_mercado}','${preco_mercado}','${foto_prod_mercado}','${descircao_prod_mercado}','${mercado_id},'${id_subCategoria}')`
             this.conexao.query(sql,function(erro,retorno){
                 if(erro) reject([400,erro]) //erro
-                arquivo.mv(caminhoServer + "/../img"+foto_prod_mercado)
+                arquivo.mv(caminhoServer + "/../Public/img/"+foto_prod_mercado)
                 resolve([201,"Inserido"])
             })
         })
     }
 
-    comparacao(){
-        /*async function verificarProdutos() {
-            try {
-              // Seleciona todos os registros da tabela produto_mercado
-              const produtos = await knex('produto_mercado').select('*');
-          
-              // Percorre os resultados e verifica os valores
-              produtos.forEach(produto => {
-                // Lógica para verificar os valores do produto
-                console.log(`Nome do Produto: ${produto.nome_produto}, Preço: ${produto.preco_produto}`);
-              });
-            } catch (error) {
-              console.error('Erro ao verificar os produtos:', error);
-            } finally {
-              // Fecha a conexão com o banco de dados
-              await knex.destroy();
-            }
-          }
-          
-          // Chama a função para verificar os produtos
-          verificarProdutos();*/
+    comparacao(nome_prod,marca_prod){
 
         return new Promise ((resolve, reject)=>{
-            let sql = `INSERT INTO produto_mercado (nome_produto,marca_produto,peso_produto,preco_produto,foto_produto,descricao,mercado_id,sub,sub_categoria_id) VALUE
-             ('${nome_prod_mercado}','${marca_mercado}','${peso_mercado}','${preco_mercado}','${foto_prod_mercado}','${descircao_prod_mercado}','${mercado_id},'${id_subCategoria}')`
+            let sql = `SELECT p1.id_produto_mercado, p1.nome_produto, p1.marca_produto, p1.preco_produto, p1.mercado_id
+            FROM produto_mercado p1
+            JOIN (
+                SELECT nome_produto, marca_produto
+                FROM produto_mercado
+                WHERE nome_produto = '${nome_prod}' AND marca_produto = '${marca_prod}'
+                GROUP BY nome_produto, marca_produto
+                HAVING COUNT(DISTINCT mercado_id) > 1
+            ) p2 ON p1.nome_produto = p2.nome_produto AND p1.marca_produto = p2.marca_produto
+            WHERE p1.nome_produto =  '${nome_prod}' AND p1.marca_produto = '${marca_prod}'
+            ORDER BY p1.nome_produto, p1.marca_produto, p1.mercado_id;`
             this.conexao.query(sql,function(erro,retorno){
-                if(erro) reject([400,erro]) //erro
-                arquivo.mv(caminhoServer + "/../img"+foto_prod_mercado)
-                resolve([201,"Inserido"])
+                if(erro) reject([400,erro])
+
+                resolve([201,retorno])
             })
         })
     }
