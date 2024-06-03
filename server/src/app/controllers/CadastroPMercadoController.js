@@ -42,8 +42,32 @@ class CadastroPMercadoController{
     }
 
     comparar(req,res){
-        let {nome_prod,marca_prod} = req.body
+        let { nome_prod, marca_prod, novos_produtos } = req.body;
 
+        // Inicializa os arrays com os valores fornecidos
+        let nome = [nome_prod];
+        let marca = [marca_prod];
+    
+        // Adiciona novos produtos dinamicamente se fornecidos
+        if (Array.isArray(novos_produtos)) {
+            novos_produtos.forEach(produto => {
+                nome.push(produto.nome);
+                marca.push(produto.marca);
+            });
+        }
+    
+        // Verifica o tamanho dos arrays
+        console.log(`Tamanho do array nome: ${nome.length}`);
+        console.log(`Tamanho do array marca: ${marca.length}`);
+    
+        // Retorna os arrays e seus tamanhos na resposta
+        res.send({
+            nome: nome,
+            tamanhoNome: nome.length,
+            marca: marca,
+            tamanhoMarca: marca.length
+        });
+    
         CadastroProdMercado.comparacao(nome_prod,marca_prod).then(resposta=>{
             res.status(resposta[0]).json(resposta[1])
         }).catch(
