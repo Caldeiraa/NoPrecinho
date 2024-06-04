@@ -6,14 +6,14 @@ class CadastroMController{
     create(req, res){
         console.log(req.file)
         let {nome_fantasia,razao_social,cnpj,telefone_mercado,cep_mercado,estado_mercado,cidade_mercado,bairro_mercado,rua_mercado,email_mercado,descricao_mercado,senha_mercado} = req.body
-        let logo_mercado = req.files.imagem.name
+        let logo_mercado = req.files.logo_mercado.name
 
         logo_mercado = logo_mercado.split(".")
         let extensao = logo_mercado[logo_mercado.length-1]
 
         if(extensao === "jpg" || extensao === "png" || extensao === "jpeg" ){
-            logo_mercado = new Date().getTime()+"."+[logo_mercado.length-1]
-            let arquivo = req.files.imag8em
+            logo_mercado = new Date().getTime()+"."+ extensao
+            let arquivo = req.files.logo_mercado
            
             CadastroMercado.inserir(arquivo,nome_fantasia,razao_social,cnpj,telefone_mercado,cep_mercado,estado_mercado,cidade_mercado,bairro_mercado,rua_mercado,email_mercado,logo_mercado,descricao_mercado,senha_mercado).then(resposta=>{
             res.status(resposta[0]).json(resposta[1])

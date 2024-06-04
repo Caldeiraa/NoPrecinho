@@ -25,10 +25,11 @@ function categorias() {
             <div class="container-fluid d-flex justify-content-evenly align-items-center">
                 <div class="col-box d-flex flex-column align-items-center justify-content-evenly">
                     <div class="box-c" id="1">
-                        <a href="">
+                        <a href="/cadastro/produto/mercado/1">
                         <img  class="ms-4" src={mc} alt=""/>
-                            <h3>Mercearia</h3> 
+                            <h3>Mercearia</h3>
                         </a>
+                        
                     </div>
 
                     <div class="box-c" id="2">

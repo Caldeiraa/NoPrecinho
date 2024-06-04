@@ -22,7 +22,7 @@ class CadastroProdMercado{
     inserir(arquivo,nome_prod_mercado,marca_mercado,peso_mercado,preco_mercado,foto_prod_mercado,descircao_prod_mercado,mercado_id,id_subCategoria){
         return new Promise ((resolve, reject)=>{
             let sql = `INSERT INTO produto_mercado (nome_produto,marca_produto,peso_produto,preco_produto,foto_produto,descricao,mercado_id,sub,sub_categoria_id) VALUE
-             ('${nome_prod_mercado}','${marca_mercado}','${peso_mercado}','${preco_mercado}','${foto_prod_mercado}','${descircao_prod_mercado}','${mercado_id},'${id_subCategoria}')`
+             ('${nome_prod_mercado}','${marca_mercado}','${peso_mercado}','${preco_mercado}','${foto_prod_mercado}','${descircao_prod_mercado}','${mercado_id}','${id_subCategoria}')`
             this.conexao.query(sql,function(erro,retorno){
                 if(erro) reject([400,erro]) //erro
                 arquivo.mv(caminhoServer + "/../Public/img/"+foto_prod_mercado)

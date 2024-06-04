@@ -24,8 +24,10 @@ class CadastroMercado{
             let sql = `INSERT INTO mercado (nome_fantasia,razao_social,cnpj,telefone_mercado,cep_mercado,estado_mercado,cidade_mercado,bairro_mercado,rua_mercado,email_mercado,logo_mercado,descricao_mercado,senha) VALUE
              ('${nome_fantasia}','${razao_social}','${cnpj}','${telefone_mercado}','${cep_mercado}','${estado_mercado}','${cidade_mercado}','${bairro_mercado}','${rua_mercado}','${email_mercado}','${logo_mercado}','${descricao_mercado}','${senha_mercado}')`
             this.conexao.query(sql,function(erro,retorno){
-                if(erro) reject([400,erro]) //erro
-                arquivo.mv(caminhoServer+"/../img"+logo_mercado)
+                if(erro){
+                   reject([400,erro]) //erro 
+                } 
+                arquivo.mv(caminhoServer+"/../public/img/"+logo_mercado)
                 resolve([201,"Inserido"])
             })
         })

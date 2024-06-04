@@ -12,34 +12,52 @@ function InserirMercado() {
     const [bairro_mercado, setBairro_mercado] = useState('')
     const [rua_mercado, setRua_mercado] = useState('')
     const [email_mercado, setEmail_mercado] = useState('')
-    const [logo_mercado, setLogo_mercado] = useState('')
+    const [logo_mercado, setLogo_mercado] = useState(null)
     const [descricao_mercado, setDescricao_mercado] = useState('')
     const [senha_mercado, setSenha_mercado] = useState('')
 
     async function CadastrarMercado(event) {
         event.preventDefault()
-        const mercadoData = {
-            nome_fantasia,
-            razao_social,
-            cnpj,
-            telefone_mercado,
-            cep_mercado,
-            estado_mercado,
-            cidade_mercado,
-            bairro_mercado,
-            rua_mercado,
-            email_mercado,
-            logo_mercado,
-            descricao_mercado,
-            senha_mercado
+        // const mercadoData = {
+        //     nome_fantasia,
+        //     razao_social,
+        //     cnpj,
+        //     telefone_mercado,
+        //     cep_mercado,
+        //     estado_mercado,
+        //     cidade_mercado,
+        //     bairro_mercado,
+        //     rua_mercado,
+        //     email_mercado,
+        //     logo_mercado,
+        //     descricao_mercado,
+        //     senha_mercado
+        // }
+
+        const formData = new FormData()
+        formData.append("nome_fantasia",nome_fantasia)
+        formData.append("razao_social",razao_social)
+        formData.append("cnpj",cnpj)
+        formData.append("telefone_mercado",telefone_mercado)
+        formData.append("cep_mercado",cep_mercado)
+        formData.append("estado_mercado",estado_mercado)
+        formData.append("cidade_mercado",cidade_mercado)
+        formData.append("bairro_mercado",bairro_mercado)
+        formData.append("rua_mercado",rua_mercado)
+        formData.append("email_mercado",email_mercado)
+        
+        formData.append("descricao_mercado",descricao_mercado)
+        formData.append("senha_mercado",senha_mercado)
+
+        if(logo_mercado){
+           formData.append("logo_mercado",logo_mercado) 
         }
+
         try {
             const resposta = await fetch('/cadastroMercado', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(mercadoData)
+                body: formData
+                
             })
             if (!resposta.ok) {
                 console.debug("Erro ao criar Mercado")
@@ -90,7 +108,7 @@ function InserirMercado() {
                             <label for="" className="form-label fs-4 mt-3">Telefone:</label>
                             <input value={telefone_mercado} onChange={e => setTelefone_mercado(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
                             <label for="" className="form-label fs-4 mt-3">Logo:</label>
-                            <input value={logo_mercado} onChange={e => setLogo_mercado(e.target.value)} name="" type="file" className="form-control rounded-4 border border-black p-2 mt-2" />
+                            <input onChange={e => setLogo_mercado(e.target.files[0])} name="logo_mercado" type="file" className="form-control rounded-4 border border-black p-2 mt-2" />
                             <label for="" className="form-label fs-4 mt-3">Estado:</label>
                             <input value={estado_mercado} onChange={e => setEstado_mercado(e.target.value)} name="" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
                             <label for="" className="form-label fs-4 mt-3">Bairro:</label>

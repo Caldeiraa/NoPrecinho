@@ -20,6 +20,7 @@ class App{
     }
 
     routes(){
+        this.server.use("/public/img",express.static("public/img"))
         this.server.use(routes)
     }
 

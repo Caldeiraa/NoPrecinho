@@ -29,7 +29,7 @@ function App() {
         <Route path='/login' element={<Login/>}/>
         <Route path='/carrinho/comparacao' element={<CarrinhoDois/>}/>
         <Route path='/recuperacao' element={<Recuperacao/>}/>
-        <Route path='/cadastro/produto/mercado' element={<CadastroProdMer/>}/>
+        <Route path='/cadastro/produto/mercado/:id_categoria' element={<CadastroProdMer/>}/>
         <Route path='/cadastro/produto/usuario' element={<CadastroProdUsu/>}/>
         <Route path='/cadastrese' element={<Cadastrese/>}/>
         <Route path='/feedM' element={<FeedMercado/>}/>

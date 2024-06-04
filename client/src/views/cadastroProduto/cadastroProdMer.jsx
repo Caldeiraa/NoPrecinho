@@ -1,5 +1,5 @@
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 function CadastroProdMer() {
     const[nome_produto, setNome_produto] = useState('')
@@ -8,6 +8,12 @@ function CadastroProdMer() {
     const[preco_produto, setPreco_produto] = useState('')
     const[foto_produto, setFoto_produto] = useState('')
     const[descricao_produto, setDescricao_produto] = useState('')
+
+    const {id_categoria} = useParams()
+
+    useEffect(()=>{
+        console.log(id_categoria)
+    },[])
 
     async function cadastrarProdutosMER(event){
         event.preventDefault()
