@@ -33,8 +33,10 @@ routes.get("/feed",FeedMercado.index)
 
 routes.put("/usuarios/:id_usuario",cadastroUsuario.update)
 routes.put("/mercados/:id_mercado",cadastroMercado.update)
+routes.put("/cadastroProdM/:id_produto",CadastroPMercado.update)
 
 routes.delete("/usuarios/:id_usuario",cadastroUsuario.destroy)
 routes.delete("/mercados/:id_mercado",cadastroMercado.destroy)
+routes.put("/cadastroPM/:id_produto",CadastroPMercado.destroy)
 
 module.exports = routes

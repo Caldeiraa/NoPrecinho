@@ -76,6 +76,39 @@ class CadastroPMercadoController{
             }
         )
     }
+
+    update(req,res){
+       
+        let  id_produto = parseInt(req.params.id_produto) 
+        let {preco_novo} = req.body
+
+        CadastroProdMercado.atualizar(id_produto,preco_novo).then(resposta=>{
+            res.status(resposta[0]).json(resposta[1])
+            }
+        ).catch(
+            resposta =>{
+                
+                res.status(resposta[0]).json("Erro: "+resposta[1].errno)
+            }
+        )
+        
+    }
+
+    destroy(req,res){
+       
+        let  id_produto = parseInt(req.params.id_produto) 
+        
+        CadastroProdMercado.deletar(id_produto).then(resposta=>{
+            res.status(resposta[0]).json(resposta[1])
+            }
+        ).catch(
+            resposta =>{
+                
+                res.status(resposta[0]).json("Erro: "+resposta[1].errno)
+            }
+        )
+        
+    }
 }
 
 module.exports = new CadastroPMercadoController()

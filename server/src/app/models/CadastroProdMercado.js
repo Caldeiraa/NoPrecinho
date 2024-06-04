@@ -73,7 +73,51 @@ class CadastroProdMercado{
             // Iniciar a comparação dos produtos
             compareProducts(nome_prod, marca_prod);
         });
-    }    
+    } 
+    
+    atualizar(id_produto,preco_novo) {
+        return new Promise((resolve, reject) => {
+            // Verifica se o nome_fantasia está definido
+    
+            let sql = `UPDATE produto_mercado
+            SET preco_produto = '${preco_novo}'
+            WHERE id_produto_mercado = '${id_produto}';`;
+    
+            this.conexao.query(sql, function (erro, retorno) {
+                if (erro) {
+                    reject([400, erro]); // erro
+                    return;
+                }
+                if (retorno.affectedRows > 0) {
+                    resolve([201, "Atualizado com sucesso"]);
+                } else {
+                    reject([404, "ID do mercado não encontrado"]);
+                }
+            });
+        });
+    }
+
+    deletar(id_produto) {
+        return new Promise((resolve, reject) => {
+            // Verifica se o nome_fantasia está definido
+    
+            let sql = `UPDATE produto_mercado
+                SET status = 'Desativado'
+                WHERE id_produto_mercado = '${id_produto}';`;
+    
+            this.conexao.query(sql, function (erro, retorno) {
+                if (erro) {
+                    reject([400, erro]); // erro
+                    return;
+                }
+                if (retorno.affectedRows > 0) {
+                    resolve([201, "Atualizado com sucesso"]);
+                } else {
+                    reject([404, "ID do mercado não encontrado"]);
+                }
+            });
+        });
+    }
     
 }
 
