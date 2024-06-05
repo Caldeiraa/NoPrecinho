@@ -23,6 +23,7 @@ routes.post("/cadastroUsuario",cadastroUsuario.create)
 routes.post("/cadastroMercado",cadastroMercado.create)
 routes.post("/cadastroPMer",CadastroPMercado.create)
 routes.post("/login",cadastroUsuario.logar)
+//routes.post("/logar",Login.index)
 routes.post("/comparacao",CadastroPMercado.comparar)
 
 routes.get("/cadastroU",cadastroUsuario.index)
