@@ -38,19 +38,17 @@ function Login() {
     return (
         <div class="conteudo">
             <form>
-                <div class="box">
-                    <div><img class="logo" src={logo} alt="" /></div>
+                <div class="box d-flex flex-column align-itens-center">
+                    <img class="logoLogin" src={logo} alt="" />
                     <label for=""><h2 class="form-label">E-mail:</h2></label>
                     <input value={email} onChange={e => setEmail(e.target.value)} type="text" class="form-control  rounded-4 border border-black" />
                     <label for=""><h2 class="form-label">Senha:</h2></label>
                     <input value={senha} onChange={e => setSenha(e.target.value)} type="text" class="form-control  rounded-4 border border-black" />
                     <p></p>
                     <a class="form-label ms-3" onClick={RecuperacaoSenha}>Esqueci a Senha</a>
-                    <div class="enviar" >
-                        <button type="submit" class="btn border border-black mt-5 rounded-4" onClick={Logar} >Entrar</button>
-                        <span class="linha"></span>
-                    </div>
-                    <h5>Não tem uma conta?<a onClick={Cadastrese}>Cadastre-se</a></h5>
+                        <button type="submit" class="btn border border-black mt-5 rounded-4 btnLogar align-self-center" onClick={Logar} >Entrar</button>
+                    <span class="linha"></span>
+                    <h5>Não tem uma conta?<a class="form-label" onClick={Cadastrese}>Cadastre-se</a></h5>
                 </div>
             </form>
 

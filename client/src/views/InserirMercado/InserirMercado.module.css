@@ -4,10 +4,10 @@
 
 .cadastrobtn{
     float: right;
-    background-color: #aed896
+    background-color: #009970;
+    color: white;
+    font-weight: bold;
+    align-self: ;
     
 }
 
-.formMercado{
-    color:blue;
-}

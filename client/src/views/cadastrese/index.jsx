@@ -11,8 +11,8 @@ import logo from '../../img/NP.png'
       }
   return (
     <div class="conteudo">
-      <div className={styles.box}>
-          <div><img src={logo} alt="logo" className={styles.logo}/></div>
+      <div class="box d-flex flex-column align-itens-center">
+          <img src={logo} alt="logo" className={styles.logo}/>
           <label for="" class="form-label"><h2>Selecione:</h2></label>
           <div className={styles.enviar}>
               <span className={styles.linha}></span>

@@ -11,15 +11,7 @@
     justify-content: center;
 }
 
-.botaoCadastrese{
-    text-align: center;
-    margin-left: 15%;
-    width: 450px;
-    height: 65px;
-    background-color:#7ed957;
-    color: black;
-    font-size: 25px;
-}
+
 
 .linha{
     width: 100%;
@@ -29,11 +21,17 @@
 }
 
 
-.enviar{
-    margin-bottom: 20px;
-}
-
-.logo{
+.logoLogin{
     width: 250px;
     height: 250px;
+    align-self: center;
+    justify-self: center;
+}
+
+.btnLogar{
+    background-color: #009970;
+    color: white;
+    font-weight: bold;
+    width: 200px;
+    height: 40px;
 }

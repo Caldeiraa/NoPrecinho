@@ -18,22 +18,7 @@ function InserirMercado() {
 
     async function CadastrarMercado(event) {
         event.preventDefault()
-        // const mercadoData = {
-        //     nome_fantasia,
-        //     razao_social,
-        //     cnpj,
-        //     telefone_mercado,
-        //     cep_mercado,
-        //     estado_mercado,
-        //     cidade_mercado,
-        //     bairro_mercado,
-        //     rua_mercado,
-        //     email_mercado,
-        //     logo_mercado,
-        //     descricao_mercado,
-        //     senha_mercado
-        // }
-
+        
         const formData = new FormData()
         formData.append("nome_fantasia",nome_fantasia)
         formData.append("razao_social",razao_social)
@@ -45,7 +30,6 @@ function InserirMercado() {
         formData.append("bairro_mercado",bairro_mercado)
         formData.append("rua_mercado",rua_mercado)
         formData.append("email_mercado",email_mercado)
-        
         formData.append("descricao_mercado",descricao_mercado)
         formData.append("senha_mercado",senha_mercado)
 
