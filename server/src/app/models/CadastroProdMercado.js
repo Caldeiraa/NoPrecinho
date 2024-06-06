@@ -21,11 +21,10 @@ class CadastroProdMercado{
 
     inserir(nome_prod_mercado, marca_mercado, peso_mercado, preco_mercado, foto_prod_mercado, descricao_prod, mercado_id, id_subCategoria, arquivo) {
         return new Promise((resolve, reject) => {
-            let sql = `INSERT INTO produto_mercado 
+            let sql     = `INSERT INTO produto_mercado 
                        (nome_produto, marca_produto, peso_produto, preco_produto, foto_produto, descricao, mercado_id, sub_categoria_id) 
-                       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
-            
-            this.conexao.query(sql, [nome_prod_mercado, marca_mercado, peso_mercado, preco_mercado, foto_prod_mercado, descricao_prod, mercado_id, id_subCategoria], function(erro, retorno) {
+                       VALUES ('${nome_prod_mercado}', '${marca_mercado}', '${peso_mercado}', '${preco_mercado}', '${foto_prod_mercado}', '${descricao_prod}', '${mercado_id}', '${id_subCategoria}')`;
+            this.conexao.query(sql, function(erro, retorno) {
                 if (erro) {
                     reject([400, erro]); // erro
                 } else {
@@ -36,9 +35,6 @@ class CadastroProdMercado{
         });
     }
     
-<<<<<<< HEAD
-    
-=======
     mostrarSubCategoria(categoria_id){
         return new Promise((resolve, reject) => {
             let sql     = `SELECT nome_sub_categoria
@@ -52,7 +48,6 @@ class CadastroProdMercado{
         });
     }
 
->>>>>>> 5a2d1099bb28bcb6de91734b95d07b042deee9a5
 
     comparacao(nome_prod, marca_prod) {
         return new Promise((resolve, reject) => {

@@ -19,7 +19,7 @@ function categorias() {
                 
                 <div class="col-box d-flex flex-column align-items-center justify-content-evenly">
                     <div class="box-c" id="1">
-                        <a href="/cadastro/produto/mercado/1">
+                        <a href="/cadastro/produto/mercado/">
                         <img  class="logoCate" src={mc} alt=""/>
                             <h3>Mercearia</h3>
                         </a>
