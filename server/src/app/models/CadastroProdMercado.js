@@ -36,7 +36,23 @@ class CadastroProdMercado{
         });
     }
     
+<<<<<<< HEAD
     
+=======
+    mostrarSubCategoria(categoria_id){
+        return new Promise((resolve, reject) => {
+            let sql     = `SELECT nome_sub_categoria
+            FROM sub_categoria
+            WHERE categoria_id = '${categoria_id}';`
+            this.conexao.query(sql,function(erro,retorno){
+                if(erro) reject([400,erro])
+                    
+                resolve([201,retorno])
+            })
+        });
+    }
+
+>>>>>>> 5a2d1099bb28bcb6de91734b95d07b042deee9a5
 
     comparacao(nome_prod, marca_prod) {
         return new Promise((resolve, reject) => {
