@@ -6,30 +6,29 @@ class CadastroPMercadoController{
         let marca_mercado = req.body.marca_mercado
         let peso_mercado = req.body.peso_mercado
         let preco_mercado = req.body.preco_mercado
-        let foto_prod_mercado = req.files.imagem.name
+        let foto_produto = req.files.foto_produto.name
         let descricao_prod = req.body.descricao_prod
         let mercado_id = req.body.mercado_id
         let id_subCategoria = req.body.id_subCategoria
-
-        foto_prod_mercado = foto_prod_mercado.split(".")
-        let extensao = foto_prod_mercado[foto_prod_mercado.length-1]
-
-        if(extensao === "jpg" || extensao === "png"){
-            foto_prod_mercado = new Date().getTime()+"."+extensao
-            let arquivo = req.files.imagem
+    
+        foto_produto = foto_produto.split(".")
+        let extensao = foto_produto[foto_produto.length-1]
+    
+        if(extensao === "jpg" || extensao === "png" || extensao === "jpeg"){
+            foto_produto = new Date().getTime()+"."+extensao
+            let arquivo = req.files.foto_produto
         
-            CadastroProdMercado.inserir(nome_prod_mercado,marca_mercado,peso_mercado,preco_mercado,foto_prod_mercado,descricao_prod,mercado_id,id_subCategoria,arquivo).then(resposta=>{
+            CadastroProdMercado.inserir(nome_prod_mercado, marca_mercado, peso_mercado, preco_mercado, foto_produto, descricao_prod, mercado_id, id_subCategoria, arquivo).then(resposta=>{
                 res.status(resposta[0]).json(resposta[1])
-            }).catch(
-                resposta =>{
-                    console.debug(resposta[1])
-                    res.status(resposta[0]).json("Erro: "+resposta[1].errno)
-            }
-            )
-        }else{
+            }).catch(resposta =>{
+                console.debug(resposta[1])
+                res.status(resposta[0]).json("Erro: "+resposta[1].errno)
+            })
+        } else {
             res.status(415).json({alert:"Arquivo nao suportado"})
         }
     }
+    
 
     index(req,res){
         CadastroProdMercado.mostrarTodos().then(resposta=>{
