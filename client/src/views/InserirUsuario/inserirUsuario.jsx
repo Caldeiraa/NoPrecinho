@@ -44,7 +44,7 @@ function InserirUsuario() {
             } else {
                 alert('Inserido')
                 console.debug("usuario Inserido")
-                window.location.href  = "/"
+                window.location.href  = "/login"
                 
                 
             }

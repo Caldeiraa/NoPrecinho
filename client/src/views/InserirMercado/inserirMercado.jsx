@@ -44,12 +44,10 @@ function InserirMercado() {
                 
             })
             if (!resposta.ok) {
-                console.debug("Erro ao criar Mercado")
-                alert("n foi")
+                alert("Erro ao realizar cadastro")
             } else {
-                alert("foi")
-                console.debug("usuario Mercado")
-                window.location.href  = "/"
+                alert("mercado inserido")
+                window.location.href  = "/login"
                 
             }
         } catch (error) {

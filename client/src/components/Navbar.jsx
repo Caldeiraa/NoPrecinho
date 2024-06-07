@@ -34,6 +34,9 @@ function Navbar() {
                                     <a className="nav-link mx-lg-2" href="#" onClick={Cadastrar} >Cadastre-se</a>
                                 </li>
                                 <li className="nav-item">
+                                    <a className="nav-link mx-lg-2" href="/categoria" onClick={Cadastrar} >Cadastrar Produtos</a>
+                                </li>
+                                <li className="nav-item">
                                     <a className="nav-link mx-lg-2" href="#"onClick={Carrinho}>Carrinho</a>
                                 </li>
                                 <li className="ms-2">
