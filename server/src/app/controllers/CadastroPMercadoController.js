@@ -6,7 +6,7 @@ class CadastroPMercadoController{
         let marca_mercado = req.body.marca_mercado
         let peso_mercado = req.body.peso_mercado
         let preco_mercado = req.body.preco_mercado
-        let foto_prod_mercado = req.files.imagem.name
+        let foto_prod_mercado = req.files.foto_produto.name
         let descricao_prod = req.body.descricao_prod
         let mercado_id = req.body.mercado_id
         let id_subCategoria = req.body.id_subCategoria
@@ -16,7 +16,7 @@ class CadastroPMercadoController{
 
         if(extensao === "jpg" || extensao === "png"){
             foto_prod_mercado = new Date().getTime()+"."+extensao
-            let arquivo = req.files.imagem
+            let arquivo = req.files.foto_produto
         
             CadastroProdMercado.inserir(nome_prod_mercado,marca_mercado,peso_mercado,preco_mercado,foto_prod_mercado,descricao_prod,mercado_id,id_subCategoria,arquivo).then(resposta=>{
                 res.status(resposta[0]).json(resposta[1])
@@ -41,34 +41,10 @@ class CadastroPMercadoController{
         )
     }
 
-    comparar(req,res){
-        let { nome_prod, marca_prod, novos_produtos } = req.body;
-
-        // Inicializa os arrays com os valores fornecidos
-        let nome = [nome_prod];
-        let marca = [marca_prod];
-    
-        // Adiciona novos produtos dinamicamente se fornecidos
-        if (Array.isArray(novos_produtos)) {
-            novos_produtos.forEach(produto => {
-                nome.push(produto.nome);
-                marca.push(produto.marca);
-            });
-        }
-    
-        // Verifica o tamanho dos arrays
-        console.log(`Tamanho do array nome: ${nome.length}`);
-        console.log(`Tamanho do array marca: ${marca.length}`);
-    
-        // Retorna os arrays e seus tamanhos na resposta
-        res.send({
-            nome: nome,
-            tamanhoNome: nome.length,
-            marca: marca,
-            tamanhoMarca: marca.length
-        });
-    
-        CadastroProdMercado.comparacao(nome_prod,marca_prod).then(resposta=>{
+    indexSubCategoria(req,res){
+        let categoria_id = req.params.categoria_id
+        
+        CadastroProdMercado.mostrarSubCategoria(categoria_id).then(resposta=>{
             res.status(resposta[0]).json(resposta[1])
         }).catch(
             resposta =>{
@@ -76,6 +52,32 @@ class CadastroPMercadoController{
             }
         )
     }
+
+    comparar(req, res) {
+        let { produtos } = req.body;
+    
+        if (!Array.isArray(produtos)) {
+            return res.status(400).json({ error: "O formato da requisição é inválido." });
+        }
+    
+        const compararProdutos = async () => {
+            let respostas = [];
+            for (let produto of produtos) {
+                let { nome_prod, marca_prod } = produto;
+                try {
+                    let resposta = await CadastroProdMercado.comparacao(nome_prod, marca_prod);
+                    respostas.push({ status: resposta[0], data: resposta[1] });
+                } catch (erro) {
+                    respostas.push({ status: erro[0], data: "Erro: " + erro[1].errno });
+                }
+            }
+            res.send(respostas);
+        };
+    
+        compararProdutos();
+    }
+    
+    
 
     update(req,res){
        

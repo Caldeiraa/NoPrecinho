@@ -30,6 +30,7 @@ routes.get("/produto/:id_prod",FeedMercado.show)
 routes.get("/cadastroM",cadastroMercado.index)
 routes.get("/cadastroPM",CadastroPMercado.index)
 routes.get("/feed",FeedMercado.index)
+routes.get("/mostrarSub/:categoria_id",CadastroPMercado.indexSubCategoria)
 
 routes.put("/usuarios/:id_usuario",cadastroUsuario.update)
 routes.put("/mercados/:id_mercado",cadastroMercado.update)
