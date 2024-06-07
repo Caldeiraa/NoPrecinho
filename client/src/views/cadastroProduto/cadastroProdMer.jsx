@@ -53,7 +53,7 @@ function CadastroProdMer() {
     async function carregarCategorias(){
         try {
           //Fazer uma chamada da API
-          const resposta = await fetch('/categorias/'+id_categoria)
+          const resposta = await fetch('/mostrarSub/'+id_categoria)
   
           if(!resposta.ok){
             //Exibindo erro API
