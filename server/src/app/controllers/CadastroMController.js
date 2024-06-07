@@ -77,10 +77,10 @@ class CadastroMController{
             resposta =>{
                 console.log(resposta)
                 let mercado_id = resposta[2]
-                let usuario_tipo = resposta[3]
+                let tipo = resposta[3]
                 let token = ''
                 if(resposta[0] === 200){
-                    token = jwt.sign({mercado_id, usuario_tipo}, secret,{expiresIn:300})
+                    token = jwt.sign({mercado_id, tipo}, secret,{expiresIn:300})
                 }
                 res.status(resposta[0]).json({token})
             }
@@ -98,8 +98,8 @@ class CadastroMController{
                 return res.status(401).json("Usuário não autenticado")
             }else{
                 req.mercado_id = decoded.mercado_id
-                req.usuario_tipo = decoded.usuario_tipo
-                console.debug("Id:"+ decoded.usuario_tipo + "Tipo:"+ decoded.mercado_id)
+                req.tipo = decoded.tipo
+                console.debug("Id:"+ decoded.tipo + "Tipo:"+ decoded.mercado_id)
                 next()
             }
         })                

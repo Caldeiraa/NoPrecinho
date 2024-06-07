@@ -94,8 +94,8 @@ class CadastroMercado{
                         let hash = retorno[0].senha;
                         let logado = bcrypt.compareSync(senha, hash);
                         if (logado) {
-                            let { id_mercado, nome_fantasia } = retorno[0];
-                            resolve([200, "logado", id_mercado, nome_fantasia]);
+                            let { id_mercado, nome_fantasia,tipo } = retorno[0];
+                            resolve([200, "logado", id_mercado, nome_fantasia,tipo]);
                         } else {
                             resolve([401, "usuario ou senha invalida"]);
                         }
