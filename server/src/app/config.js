@@ -1,9 +1,9 @@
 const config = {
-    db:{
-        host:"localhost",
-        user:"root",
-        password:"",
-        database:"np"
+        db:{
+            host:"localhost",
+            user:"root",
+            password:"",
+            database:"np"
+        }
     }
-}
-module.exports = config
+    module.exports = config
