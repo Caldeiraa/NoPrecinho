@@ -13,11 +13,11 @@ function CadastroProdMer() {
 
     const {id_categoria} = useParams()
 
-    const[categorias, setCategorias] = useState([])
+    const[subCategorias, setSubCategorias] = useState([])
 
     useEffect(()=>{
         console.log(id_categoria)
-        carregarCategorias()
+        carregarSubCategorias()
     },[])
 
     async function cadastrarProdutosMER(event){
@@ -50,7 +50,7 @@ function CadastroProdMer() {
         }
     }
 
-    async function carregarCategorias(){
+    async function carregarSubCategorias(){
         try {
           //Fazer uma chamada da API
           const resposta = await fetch('/mostrarSub/'+id_categoria)
@@ -61,7 +61,7 @@ function CadastroProdMer() {
           }else{
             //Exibindo sucesso API
             let dados = await resposta.json()
-            setCategorias(dados)
+            setSubCategorias(dados)
           }
         } catch (error) {
           console.error("Erro ao buscar categorias"+error)
@@ -95,10 +95,10 @@ function CadastroProdMer() {
                         <label for="" class="form-label fs-4 mt-3">Categoria:</label>
                         <select class="form-select form-select-md rounded-4 border border-black mb-5" aria-label="Medium select example">
                             <option selected>Selecione uma categoria:</option>
-                            {categorias.map(categoria=>(
-                            <option key={categoria.id_categoria}
-                                value={categoria.id_categoria}>
-                                    {categoria.nome_categoria}
+                            {subCategorias.map(subCategorias=>(
+                            <option key={subCategorias.id_sub_categoria}
+                                value={subCategorias.id_sub_categoria}>
+                                    {subCategorias.nome_sub_categoria}
                             </option>
                             ))}
                         </select>

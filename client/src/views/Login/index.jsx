@@ -18,12 +18,13 @@ function Login() {
             if (!resposta.ok) {
                 alert("Usuário ou senha inválidos")
                 throw new Error("Erro na requisição:" + resposta.status)
-            }else{
-                const dados = await resposta.json()
-                localStorage.setItem('id_usuario', dados.id_usuario)
-                alert("logado")
-                window.location.href = "/"
             }
+            
+            const dados = await resposta.json()
+            localStorage.setItem('id_usuario', dados.id_usuario)
+            alert("logado")
+            window.location.href = "/"
+            
 
             
         } catch (error) {
