@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="conteudo">
+        <div class="container-fluid p-0 text-center cabecalho">
+            <nav class="navbar navbar-expand-lg d-flex justify-content-center align-items-center">
+                <a class="navbar-brand fs-4" href="#">NoPrecinho</a>
+                <img class="logo" src="img/NP.png" alt="">
+            </nav>
+            
+        </div>
+        <h3 class="mt-5 text-center">Cadastro de Usuário: </h3>
+        <div  class="container mt-5">
+            <form action="/cadastroUsuario" method="post" enctype="multipart/form-data">
+                <div id="CadastroUsuario" class="row">
+                    <div class="col-md">
+                        <label for="" class="form-label fs-4 mt-3">Nome Completo:</label>
+                        <input name="nome_usuario" type="text" class="form-control rounded-4 border border-black p-2 mt-2">
+                        <label for="" class="form-label fs-4 mt-3">CPF:</label>
+                        <input name="cpf_usuario" type="text" class="form-control rounded-4 border border-black p-2 mt-2">
+                        <label for="" class="form-label fs-4 mt-3">Telefone:</label>
+                        <input name="telefone_usuario" type="text" class="form-control rounded-4 border border-black p-2 mt-2">
+                        <label for="" class="form-label fs-4 mt-3">E-mail:</label>
+                        <input name="email_usuario" type="text" class="form-control rounded-4 border border-black p-2 mt-2">
+                        <label for="" class="form-label fs-4 mt-3">Nome de usuário:</label>
+                        <input name="nomeUser_usuario" type="text" class="form-control rounded-4 border border-black p-2 mt-2">
+                        <label for="" class="form-label fs-4 mt-3">Senha:</label>
+                        <input name="senha1" type="password" class="form-control rounded-4 border border-black p-2 mt-2">
+                    </div>
+    
+                    <div class="col-2">
+    
+                    </div>
+    
+                    <div class="col-md">
+                        <label for="" class="form-label fs-4 mt-3">CEP:</label>
+                        <input name="cep_usuario" type="text" class="form-control rounded-4 border border-black p-2 mt-2">
+                        <label for="" class="form-label fs-4 mt-3">Bairro:</label>
+                        <input name="bairro_usuario" type="text" class="form-control rounded-4 border border-black p-2 mt-2">
+                        <label for="" class="form-label fs-4 mt-3">Cidade:</label>
+                        <input name="cidade_usuario" type="text" class="form-control rounded-4 border border-black p-2 mt-2">
+                        <label for="" class="form-label fs-4 mt-3">Rua:</label>
+                        <input name="rua_usuario" type="text" class="form-control rounded-4 border border-black p-2 mt-2">
+                        <label for="" class="form-label fs-4 mt-3">N°:</label>
+                        <input name="" type="number" class="form-control rounded-4 border border-black p-2 mt-2">
+                        <label for="" class="form-label fs-4 mt-3">Confirmar senha:</label>
+                        <input name="senha2" type="password" class="form-control rounded-4 border border-black p-2 mt-2">
+                        
+                        
+                    </div>
+                </div>
+           
+            <button onclick="create()" type="submit" class="btn border border-black mt-4 rounded-4" style="background-color: #aed896; float: right;">Cadastrar-se</button>
+        </form>
+        </div>
+        <br>
+    </div>
+</body>
+</html>
