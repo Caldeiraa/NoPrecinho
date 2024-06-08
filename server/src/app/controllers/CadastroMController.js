@@ -72,7 +72,7 @@ class CadastroMController{
 
     logar(req, res){
         let{email, senha} = req.body
-        CadastroUsuario.verificaUsuarioSenha(email, senha).
+        CadastroMercado.verificaUsuarioSenha(email, senha).
         then(
             resposta =>{
                 console.log(resposta)
