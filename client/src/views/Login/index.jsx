@@ -6,9 +6,10 @@ function Login() {
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
 
-    async function Logar() {
+    async function Logar(event) {
+        event.preventDefault()
         try {
-            const resposta = await fetch("/login", {
+            const resposta = await fetch("/loginM", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
