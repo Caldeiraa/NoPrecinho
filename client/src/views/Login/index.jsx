@@ -22,7 +22,8 @@ function Login() {
             }
             
             const dados = await resposta.json()
-            localStorage.setItem('id_usuario', dados.id_usuario)
+            localStorage.setItem('token', dados.token)
+            console.debug(dados)
             alert("logado")
             window.location.href = "/"
             
