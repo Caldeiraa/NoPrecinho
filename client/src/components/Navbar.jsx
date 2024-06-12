@@ -31,9 +31,6 @@ function Navbar() {
                                     <a className="nav-link mx-lg-2" aria-current="page" href="#" onClick={Home}>Home</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link mx-lg-2" href="#" onClick={Cadastrar} >Cadastre-se</a>
-                                </li>
-                                <li className="nav-item">
                                     <a className="nav-link mx-lg-2" href="/categoria" onClick={Cadastrar} >Cadastrar Produtos</a>
                                 </li>
                                 <li className="nav-item">
