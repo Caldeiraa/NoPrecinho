@@ -10,7 +10,7 @@ function CadastroProdMer() {
     const [peso_mercado, setPeso_produto] = useState('')
     const [preco_mercado, setPreco_mercado] = useState('')
     const [foto_produto, setFoto_produto] = useState(null)
-    const[id_subCategoria, setId_subCategoria] = useState('')
+    const [id_subCategoria, setId_subCategoria] = useState('')
 
     const { id_categoria } = useParams()
     // const id_mercado = 
@@ -97,7 +97,7 @@ function CadastroProdMer() {
                     <div class="col-md">
                         <label for="" class="form-label fs-4 mt-3">Nome Completo:</label>
                         <input value={nome_prod_mercado} onChange={e => setNome_prod_mercado(e.target.value)} name="" type="text" class="form-control rounded-4 mb-5 border border-black" />
-                        <label for="" class="form-label fs-4 mt-3">Tipo:</label>
+                        <label for="" class="form-label fs-4 mt-3">Descrição:</label>
                         <input value={descricao_prod} onChange={e => setDescricao_prod(e.target.value)} name="" type="text" class="form-control rounded-4 mb-5 border border-black" />
                         <label for="" class="form-label fs-4 mt-3">Preço:</label>
                         <input value={preco_mercado} onChange={e => setPreco_mercado(e.target.value)} name="" type="text" class="form-control rounded-4 mb-5 border border-black" />
@@ -111,7 +111,7 @@ function CadastroProdMer() {
                         <select class="form-select form-select-md rounded-4 border border-black mb-5" value={id_subCategoria} onChange={e => setId_subCategoria(e.target.value)} aria-label="Medium select example">
                             <option selected>Selecione uma categoria:</option>
                             {subCategorias.map(subCategorias => (
-                                <option 
+                                <option
                                     value={subCategorias.id_sub_categoria}>
                                     {subCategorias.nome_sub_categoria}
                                 </option>

@@ -47,7 +47,7 @@ function Login() {
                     <label for=""><h2 class="form-label">E-mail:</h2></label>
                     <input value={email} onChange={e => setEmail(e.target.value)} type="text" class="form-control  rounded-4 border border-black" />
                     <label for=""><h2 class="form-label">Senha:</h2></label>
-                    <input value={senha} onChange={e => setSenha(e.target.value)} type="text" class="form-control  rounded-4 border border-black" />
+                    <input value={senha} onChange={e => setSenha(e.target.value)} type="password" class="form-control  rounded-4 border border-black" />
                     <p></p>
                     <a class="form-label ms-3" onClick={RecuperacaoSenha}>Esqueci a Senha</a>
                         <button type="submit" class="btn border border-black mt-5 rounded-4 btnLogar align-self-center" onClick={Logar} >Entrar</button>

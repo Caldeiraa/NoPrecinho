@@ -1,33 +1,38 @@
-.feedLogo{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding-bottom: 50px;
-    border-bottom: 1px solid black;
-  }
+/* Estilo para o contêiner dos produtos */
+.prod_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
 
-  .feedLogo img{
-    width: 150px;
-    height: 150px;
-    
-  }
+/* Estilo para cada item de produto */
+.prod_item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
-  .feed{
-    text-align: center;
-    margin-top: 35px;
-  }
+/* Estilo para as imagens dos produtos */
+.prod_item img {
+  width: 100%;   /* Define a largura como 100% do contêiner pai */
+  height: 150px; /* Define uma altura menor para todas as imagens */
+  object-fit: cover; /* Ajusta a imagem para cobrir o contêiner, cortando se necessário */
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
 
-  .prod_container {
-    display: grid;
-    gap: 50px 100px;
-    grid-template-columns: auto auto auto;
-    padding: 10px;
-  }
-  
-  .prod_item {
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    font-size: 30px;
-    text-align: center;
-  }
+/* Estilo para o nome do produto */
+.prod_item span {
+  display: block;
+  margin: 5px 0;
+}
+
+/* Estilo adicional para o preço do produto */
+.prod_item span:last-child {
+  font-weight: bold;
+  color: #000;
+}

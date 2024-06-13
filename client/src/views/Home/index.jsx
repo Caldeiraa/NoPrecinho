@@ -15,29 +15,14 @@ function Home() {
       document.title = "Home"
       const token = localStorage.getItem("token")
         if (!token) {
-            window.location.href = "/login"
-            alert("Efetue login")
+          alert("Efetue login")
+          window.location.href = "/login"
 
         } else {
             const decodedToken = jwtDecode(token)
             const mercado_id = decodedToken.mercado_id
-            // carregarUsuarios(token)
-            // carregarNomeUsuario(usuario_id)
         }
-    })
-
-    // async VerificarLogin(){
-    //   try {
-    //     if(!id_usuario){
-    //       window.location.href = "./"
-    //     }
-
-    //     const respota = await fetch(`/usuarios`)
-
-    //   } catch (error) {
-        
-    //   }
-    // }
+    },[])
 
     async function Mercado(){
       window.location.href = "/feedM"

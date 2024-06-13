@@ -14,7 +14,7 @@ class CadastroPMercadoController{
         foto_produto = foto_produto.split(".")
         let extensao = foto_produto[foto_produto.length-1]
 
-        if(extensao === "jpg" || extensao === "png"){
+        if(extensao === "jpg" || extensao === "png" || extensao === "JPEG"){
             foto_produto = new Date().getTime()+"."+extensao
             let arquivo = req.files.foto_produto
         
