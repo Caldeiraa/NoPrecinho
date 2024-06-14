@@ -15,7 +15,8 @@ class FeedMercadoController{
     }
     show(req,res){
         let {id_prod} = req.params
-        FeedMercado.mostrarUm(id_prod).then(resposta=>{
+        let {id_mercado} = req.body
+        FeedMercado.mostrarUm(id_prod,id_mercado).then(resposta=>{
             res.status(resposta[0]).json(resposta[1])
         }).catch(
             resposta =>{
