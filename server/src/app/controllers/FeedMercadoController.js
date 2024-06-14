@@ -3,7 +3,9 @@ const FeedMercado = require("../models/FeedMercado")
 class FeedMercadoController{
 
     index(req,res){
-        FeedMercado.mostrarTodos().then(resposta=>{
+        let {id_mercado} = req.body
+        FeedMercado.mostrarTodos(id_mercado).then(resposta=>{
+            
             res.status(resposta[0]).json(resposta[1])
         }).catch(
             resposta =>{
