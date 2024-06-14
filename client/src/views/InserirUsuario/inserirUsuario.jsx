@@ -44,6 +44,28 @@ function InserirUsuario() {
         }
     }
 
+    async function verificaCPF(cpf) {
+        try {
+            const resposta = await fetch(`https://viacep.com.br/ws/${cpf}/json/`);
+            
+            if (!resposta.ok) {
+                throw new Error('Erro na validação do CPF');
+            }
+            
+            const data = await resposta.json();
+            
+            if (data.erro) {
+                return false; // CPF inválido
+            } else {
+                return true; // CPF válido
+            }
+        } catch (error) {
+            console.debug("Erro ao verificar CPF:", error);
+            return false;
+        }
+    }
+
+
     async function CadastrarUsuario(event) {
         event.preventDefault();
 
