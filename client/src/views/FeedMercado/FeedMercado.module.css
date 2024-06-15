@@ -1,38 +1,42 @@
-/* Estilo para o contêiner dos produtos */
 .prod_container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 20px;
-  padding: 20px;
 }
 
-/* Estilo para cada item de produto */
 .prod_item {
-  background-color: #fff;
   border: 1px solid #ddd;
-  border-radius: 8px;
   padding: 20px;
-  text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Estilo para as imagens dos produtos */
-.prod_item img {
-  width: 100%;   /* Define a largura como 100% do contêiner pai */
-  height: 150px; /* Define uma altura menor para todas as imagens */
-  object-fit: cover; /* Ajusta a imagem para cobrir o contêiner, cortando se necessário */
   border-radius: 8px;
-  margin-bottom: 10px;
+  text-align: center;
+  width: 200px;
 }
 
-/* Estilo para o nome do produto */
+.prod_item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
 .prod_item span {
   display: block;
-  margin: 5px 0;
+  margin: 8px 0;
 }
 
-/* Estilo adicional para o preço do produto */
-.prod_item span:last-child {
-  font-weight: bold;
-  color: #000;
+.prod_item button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  max-width: 150px; /* Define the fixed width */
+  margin: 10px auto 0; /* Center the button */
+}
+
+.prod_item button:hover {
+  background-color: #218838;
 }

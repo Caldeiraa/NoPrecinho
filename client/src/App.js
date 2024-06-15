@@ -16,6 +16,7 @@ import CadastroProdMer from './views/cadastroProduto/cadastroProdMer';
 import CadastroProdUsu from './views/cadastroProduto/cadastroProdUsu';
 import FeedMercado from './views/FeedMercado/feedMercado';
 import TipoUsuario from './views/Login/tipoUsuario';
+import Produtos from './views/Produto/Produtos';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path='/cadastro/produto/mercado/:id_categoria' element={<CadastroProdMer/>}/>
         <Route path='/cadastro/produto/usuario' element={<CadastroProdUsu/>}/>
         <Route path='/feedM' element={<FeedMercado/>}/>
+        <Route path='/produto/:id_prod' element={<Produtos/>}/>
       </Routes>
     </BrowserRouter>
   );
