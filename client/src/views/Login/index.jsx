@@ -1,61 +1,61 @@
 import { useState } from "react";
 // import Css from './estilo.css'
-import logo from '../../img/NP.png'
-import style from './estilo.css'
-function Login() {
+function Login(){
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
 
-    async function Logar(event) {
+    async function Logar(event){
         event.preventDefault()
-        try {
-            const resposta = await fetch("/loginM", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
+        const loginData = {
+            email,
+            senha
+        }
+        try{
+            const resposta = await fetch('/login',{
+                method: 'GET',
+                headers:{
+                    'Content-Type':'application/json'
                 },
-                body: JSON.stringify({ email, senha })
+                body: JSON.stringify(loginData)
             })
-            if (!resposta.ok) {
-                alert("Usuário ou senha inválidos")
-                throw new Error("Erro na requisição:" + resposta.status)
+            if(!resposta.ok){
+                console.debug("usuario ou senha incorreto")
+            }else{
+                console.debug("logado")
+                alert('logado')
             }
-            
-            const dados = await resposta.json()
-            localStorage.setItem('id_usuario', dados.id_usuario)
-            alert("logado")
-            window.location.href = "/"
-            
-
-            
-        } catch (error) {
-            console.error("Error ao fazer login", error)
+        }catch(error){
+            console.debug(error)
         }
     }
-    async function RecuperacaoSenha() {
-        window.location.href = "/recuperacao"
-    }
-    async function Cadastrese() {
-        window.location.href = "/cadastrese"
-    }
-    return (
+    return(
         <div class="conteudo">
-            <form>
-                <div class="box d-flex flex-column align-itens-center">
-                    <img class="logoLogin" src={logo} alt="" />
+            <div class="container-fluid p-0 text-center cabecalho">
+                <nav class="navbar navbar-expand-lg d-flex justify-content-center align-items-center">
+                    <a class="navbar-brand fs-4" href="#">NoPrecinho</a>
+                    <img class="logo" src="img/NP.png" alt=""/>
+                </nav>
+                
+            </div>
+        
+            <form onSubmit={Logar}>
+                <div class="box justify-content-center"/>
+                    <div><img src="img/NP.png" alt="logo" id="logo"/></div>
                     <label for=""><h2 class="form-label">E-mail:</h2></label>
-                    <input value={email} onChange={e => setEmail(e.target.value)} type="text" class="form-control  rounded-4 border border-black" />
+                    <input value={email} onChange={e => setEmail(e.target.value)} type="text" class="form-control  rounded-4 border border-black"/>
                     <label for=""><h2 class="form-label">Senha:</h2></label>
-                    <input value={senha} onChange={e => setSenha(e.target.value)} type="text" class="form-control  rounded-4 border border-black" />
+                    <input value={senha} onChange={e => setSenha(e.target.value)} type="text" class="form-control  rounded-4 border border-black"/>
                     <p></p>
-                    <a class="form-label ms-3" onClick={RecuperacaoSenha}>Esqueci a Senha</a>
-                        <button type="submit" class="btn border border-black mt-5 rounded-4 btnLogar align-self-center" onClick={Logar} >Entrar</button>
+                    <a href="recuperacao.html" class="form-label ms-3">Esqueci a Senha</a>
+                <div class="enviar" >
+                    <button type="submit" class="btn border border-black mt-5 rounded-4" >Cadastrar-se</button>
                     <span class="linha"></span>
-                    <h5>Não tem uma conta?<a class="form-label" onClick={Cadastrese}>Cadastre-se</a></h5>
                 </div>
+                <h5>Não tem uma conta?<a href="cadastrese.html">Cadastre-se</a></h5>
+            <div/>
             </form>
-
+            
         </div>
     );
-}
-export default Login
+    }
+    export default Login
