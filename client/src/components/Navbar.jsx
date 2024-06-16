@@ -31,9 +31,6 @@ function Navbar() {
                                     <a className="nav-link mx-lg-2" aria-current="page" href="#" onClick={Home}>Home</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link mx-lg-2" href="#" onClick={Cadastrar} >Cadastre-se</a>
-                                </li>
-                                <li className="nav-item">
                                     <a className="nav-link mx-lg-2" href="/categoria" onClick={Cadastrar} >Cadastrar Produtos</a>
                                 </li>
                                 <li className="nav-item">
@@ -48,7 +45,7 @@ function Navbar() {
                             </ul>
                         </div>
                     </div>
-                    <a href="#" className="login-button" onClick={Login} >Login</a>
+                    <a href="#" className="login-button"  onClick={Login} >Login</a>
                     <button  className="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>

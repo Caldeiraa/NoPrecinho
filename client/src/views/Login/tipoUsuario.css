@@ -1,4 +1,4 @@
-.box {
+.boxTU{
     width: 700px;
     height: 700px;
     margin: 0 auto; 
@@ -9,7 +9,7 @@
     margin-top: 50px;
 }
 
-.linha{
+.linhaTU{
     width: 100%;
     display: block;
     margin-top: 10px;
@@ -17,11 +17,11 @@
 }
 
 
-.enviar{
+.enviarTU{
     margin-bottom: 20px;
 }
 
-.botaoCadastrese{
+.botaoCadastreseTU{
     text-align: center;
     margin-left: 15%;
     width: 450px;
@@ -34,7 +34,7 @@
     margin-bottom: 50px;
 }
 
-.logo{
+.logoTU{
     width: 250px;
     height: 250px;
     align-self: center;

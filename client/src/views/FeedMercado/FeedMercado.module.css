@@ -1,33 +1,42 @@
-.feedLogo{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding-bottom: 50px;
-    border-bottom: 1px solid black;
-  }
+.prod_container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
 
-  .feedLogo img{
-    width: 150px;
-    height: 150px;
-    
-  }
+.prod_item {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  width: 200px;
+}
 
-  .feed{
-    text-align: center;
-    margin-top: 35px;
-  }
+.prod_item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
 
-  .prod_container {
-    display: grid;
-    gap: 50px 100px;
-    grid-template-columns: auto auto auto;
-    padding: 10px;
-  }
-  
-  .prod_item {
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    font-size: 30px;
-    text-align: center;
-  }
+.prod_item span {
+  display: block;
+  margin: 8px 0;
+}
+
+.prod_item button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  max-width: 150px; /* Define the fixed width */
+  margin: 10px auto 0; /* Center the button */
+}
+
+.prod_item button:hover {
+  background-color: #218838;
+}

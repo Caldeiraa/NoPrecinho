@@ -37,7 +37,7 @@ class CadastroProdMercado{
     
     mostrarSubCategoria(categoria_id){
         return new Promise((resolve, reject) => {
-            let sql     = `SELECT nome_sub_categoria
+            let sql     = `SELECT id_sub_categoria, nome_sub_categoria
             FROM sub_categoria
             WHERE categoria_id = '${categoria_id}';`
             this.conexao.query(sql,function(erro,retorno){

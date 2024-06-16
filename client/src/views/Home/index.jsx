@@ -1,4 +1,5 @@
-import React from 'react';
+import {useState, useEffect} from 'react';
+import {jwtDecode} from 'jwt-decode'
 import './estilo.css';
 import './js/barraParceiros'
 import carrefour from './img/Carrefour-Logo.png'
@@ -10,9 +11,22 @@ import np from './img/NP.png'
 
 
 function Home() {
-  async function Mercado(){
-    window.location.href = "/feedM"
-  }
+    useEffect(()=>{
+      document.title = "Home"
+      const token = localStorage.getItem("token")
+        if (!token) {
+          alert("Efetue login")
+          window.location.href = "/login"
+
+        } else {
+            const decodedToken = jwtDecode(token)
+            const mercado_id = decodedToken.mercado_id
+        }
+    },[])
+
+    async function Mercado(){
+      window.location.href = "/feedM"
+    }
 
   return (
     <div class="conteudo">  

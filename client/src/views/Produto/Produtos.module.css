@@ -1,0 +1,20 @@
+.produtoDetalhe {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .produtoDetalhe img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .produtoDetalhe h1 {
+    margin: 20px 0;
+  }
+  
+  .produtoDetalhe p {
+    margin: 10px 0;
+    font-size: 18px;
+  }
+  
