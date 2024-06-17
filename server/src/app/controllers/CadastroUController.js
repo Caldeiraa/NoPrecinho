@@ -93,6 +93,10 @@ class CadastroUController{
             }
         })                
     }
+
+    recuperarSenha(req,res){
+        
+    }
    
 }
 
