@@ -14,6 +14,8 @@ function InserirUsuario() {
     const [email_usuario, setEmail_usuario] = useState('');
     const [nomeUser_usuario, setNomeUser_usuario] = useState('');
     const [senha_usuario, setSenha_usuario] = useState('');
+    const [confirmar_senha, setConfirmar_senha] = useState('');
+    const [erroMensagem, setErroMensagem] = useState('');
 
     async function handleCepChange(event) {
         const cep = event.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
@@ -65,14 +67,45 @@ function InserirUsuario() {
         }
     }
 
+    function camposPreenchidos() {
+        return (
+            nome_usuario &&
+            cpf_usuario &&
+            cep_usuario &&
+            estado_usuario &&
+            cidade_usuario &&
+            bairro_usuario &&
+            rua_usuario &&
+            telefone_usuario &&
+            email_usuario &&
+            nomeUser_usuario &&
+            senha_usuario &&
+            confirmar_senha
+        );
+    }
 
     async function CadastrarUsuario(event) {
         event.preventDefault();
-
+    
+        if (!camposPreenchidos()) {
+            setErroMensagem("Por favor, preencha todos os campos.");
+            return;
+        }
+    
+        if (senha_usuario !== confirmar_senha) {
+            setErroMensagem("As senhas não coincidem.");
+            return;
+        }
+    
+        setErroMensagem('');
+    
+        // Remover caracteres não numéricos do CEP
+        const cepLimpo = cep_usuario.replace(/\D/g, '');
+    
         const usuarioData = {
             nome_usuario,
             cpf_usuario,
-            cep_usuario,
+            cep_usuario: cepLimpo, // Enviar apenas os números do CEP
             estado_usuario,
             cidade_usuario,
             bairro_usuario,
@@ -82,7 +115,7 @@ function InserirUsuario() {
             nomeUser_usuario,
             senha_usuario
         };
-
+    
         try {
             const resposta = await fetch('/cadastroUsuario', {
                 method: 'POST',
@@ -91,26 +124,21 @@ function InserirUsuario() {
                 },
                 body: JSON.stringify(usuarioData)
             });
-
+    
             if (!resposta.ok) {
                 console.debug("Erro ao criar usuário");
                 alert("Erro ao criar usuário");
             } else {
-                alert('Inserido')
-                console.debug("usuario Inserido")
-                window.location.href  = "/login"
-                
-                
+                alert('Usuário inserido com sucesso');
+                console.debug("Usuário inserido com sucesso");
+                window.location.href = "/login";
             }
-
-            alert('Usuário inserido com sucesso');
-            console.debug("Usuário inserido com sucesso");
-            window.location.href = "/";
         } catch (error) {
             console.debug("Erro na requisição:", error);
             alert("Erro na requisição");
         }
     }
+    
 
     return (
         <div className="conteudo">
@@ -146,21 +174,22 @@ function InserirUsuario() {
                                 <InputMask mask="99999-999" value={cep_usuario} onChange={handleCepChange} id="cep" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
 
                                 <label htmlFor="estado" className="form-label fs-4 mt-3">Estado:</label>
-                                <input value={estado_usuario} onChange={e => setEstado_usuario(e.target.value)} id="estado" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
+                                <input value={estado_usuario} readOnly id="estado" type="text" className="form-control rounded-4 border border-black p-2 mt-2 campo-visual" />
 
                                 <label htmlFor="cidade" className="form-label fs-4 mt-3">Cidade:</label>
-                                <input value={cidade_usuario} onChange={e => setCidade_usuario(e.target.value)} id="cidade" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
+                                <input value={cidade_usuario} readOnly id="cidade" type="text" className="form-control rounded-4 border border-black p-2 mt-2 campo-visual" />
 
                                 <label htmlFor="bairro" className="form-label fs-4 mt-3">Bairro:</label>
-                                <input value={bairro_usuario} onChange={e => setBairro_usuario(e.target.value)} id="bairro" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
+                                <input value={bairro_usuario} readOnly id="bairro" type="text" className="form-control rounded-4 border border-black p-2 mt-2 campo-visual" />
 
                                 <label htmlFor="rua" className="form-label fs-4 mt-3">Rua:</label>
-                                <input value={rua_usuario} onChange={e => setRua_usuario(e.target.value)} id="rua" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
+                                <input value={rua_usuario} readOnly id="rua" type="text" className="form-control rounded-4 border border-black p-2 mt-2 campo-visual" />
 
                                 <label htmlFor="confirmar_senha" className="form-label fs-4 mt-3">Confirmar senha:</label>
-                                <input id="confirmar_senha" type="password" className="form-control rounded-4 border border-black p-2 mt-2" />
+                                <input value={confirmar_senha} onChange={e => setConfirmar_senha(e.target.value)} id="confirmar_senha" type="password" className="form-control rounded-4 border border-black p-2 mt-2" />
                             </div>
                         </div>
+                        {erroMensagem && <p className="text-danger mt-3">{erroMensagem}</p>}
                         <button type="submit" className="btn border border-black mt-4 rounded-4 mt-5 cadastrobtn">Cadastrar</button>
                     </form>
                 </div>
