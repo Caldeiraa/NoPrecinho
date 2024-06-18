@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from './FeedMercado.module.css';
 
 function FeedMercado() {
-  const [produto_mercado, setProdutoMercado] = useState([]);
+  const [produtoMercado, setProdutoMercado] = useState([]);
   const [carrinho, setCarrinho] = useState([]);
 
   useEffect(() => {
@@ -34,16 +34,28 @@ function FeedMercado() {
   }
 
   const adicionarAoCarrinho = (produto) => {
-    const novoCarrinho = [...carrinho, produto];
-    setCarrinho(novoCarrinho);
-    localStorage.setItem('carrinho', JSON.stringify(novoCarrinho));
+    const produtoExistente = carrinho.find(item => item.id_produto_mercado === produto.id_produto_mercado);
+
+    if (produtoExistente) {
+      const novoCarrinho = carrinho.map(item =>
+        item.id_produto_mercado === produto.id_produto_mercado
+          ? { ...item, quantidade: item.quantidade + 1 }
+          : item
+      );
+      setCarrinho(novoCarrinho);
+      localStorage.setItem('carrinho', JSON.stringify(novoCarrinho));
+    } else {
+      const novoCarrinho = [...carrinho, { ...produto, quantidade: 1 }];
+      setCarrinho(novoCarrinho);
+      localStorage.setItem('carrinho', JSON.stringify(novoCarrinho));
+    }
   };
 
   return (
     <div className="conteudo">
       <div className="container">
         <div className={styles.prod_container}>
-          {produto_mercado.map(produto => (
+          {produtoMercado.map(produto => (
             <div className={styles.prod_item} key={produto.id_produto_mercado}>
               <Link to={`/produto/${produto.id_produto_mercado}`}>
                 <img src={`http://localhost:5000/img/${produto.foto_produto}`} alt={produto.nome_produto} />
@@ -51,7 +63,6 @@ function FeedMercado() {
                 <span>{produto.marca_produto}</span>
                 <span>R$ {produto.preco_produto}</span>
               </Link>
-              oi
               <button onClick={() => adicionarAoCarrinho(produto)}>
                 {carrinho.find(item => item.id_produto_mercado === produto.id_produto_mercado)
                   ? 'Produto no carrinho'
