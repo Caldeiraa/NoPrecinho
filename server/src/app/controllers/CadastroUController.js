@@ -10,8 +10,7 @@ class CadastroUController{
 
         CadastroUsuario.inserir(nome_usuario,cpf_usuario,cep_usuario,estado_usuario,cidade_usuario,bairro_usuario,rua_usuario,telefone_usuario,email_usuario,nomeUser_usuario,senha_usuario).then(resposta=>{
             res.status(resposta[0]).json(resposta[1])
-        }).catch(
-            resposta =>{
+        }).catch(resposta =>{
                 console.debug(resposta[1])
                 res.status(resposta[0]).json("Erro: "+resposta[1].errno)
         })
