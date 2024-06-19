@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './estilo.css';
-import InputMask from 'react-input-mask'; // Se estiver usando máscara de input
+import InputMask from 'react-input-mask';
 
 function InserirUsuario() {
     const [nome_usuario, setNome_usuario] = useState('');
@@ -43,27 +43,6 @@ function InserirUsuario() {
                 console.debug("Erro ao buscar CEP:", error);
                 alert("Erro ao buscar CEP");
             }
-        }
-    }
-
-    async function verificaCPF(cpf) {
-        try {
-            const resposta = await fetch(`https://viacep.com.br/ws/${cpf}/json/`);
-            
-            if (!resposta.ok) {
-                throw new Error('Erro na validação do CPF');
-            }
-            
-            const data = await resposta.json();
-            
-            if (data.erro) {
-                return false; // CPF inválido
-            } else {
-                return true; // CPF válido
-            }
-        } catch (error) {
-            console.debug("Erro ao verificar CPF:", error);
-            return false;
         }
     }
 
@@ -138,7 +117,6 @@ function InserirUsuario() {
             alert("Erro na requisição");
         }
     }
-    
 
     return (
         <div className="conteudo">
@@ -155,7 +133,7 @@ function InserirUsuario() {
                                 <input value={cpf_usuario} onChange={e => setCpf_usuario(e.target.value)} id="cpf" type="text" maxLength="11" className="form-control rounded-4 border border-black p-2 mt-2" />
 
                                 <label htmlFor="telefone" className="form-label fs-4 mt-3">Telefone:</label>
-                                <input value={telefone_usuario} onChange={e => setTelefone_usuario(e.target.value)} id="telefone" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
+                                <InputMask mask="(99) 99999-9999" value={telefone_usuario} onChange={e => setTelefone_usuario(e.target.value)} id="telefone" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
 
                                 <label htmlFor="email" className="form-label fs-4 mt-3">E-mail:</label>
                                 <input value={email_usuario} onChange={e => setEmail_usuario(e.target.value)} id="email" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
@@ -189,7 +167,9 @@ function InserirUsuario() {
                                 <input value={confirmar_senha} onChange={e => setConfirmar_senha(e.target.value)} id="confirmar_senha" type="password" className="form-control rounded-4 border border-black p-2 mt-2" />
                             </div>
                         </div>
-                        {erroMensagem && <p className="text-danger mt-3">{erroMensagem}</p>}
+                        <div className="erro-mensagem-container">
+                            {erroMensagem && <p className="text-danger mt-3">{erroMensagem}</p>}
+                        </div>
                         <button type="submit" className="btn border border-black mt-4 rounded-4 mt-5 cadastrobtn">Cadastrar</button>
                     </form>
                 </div>

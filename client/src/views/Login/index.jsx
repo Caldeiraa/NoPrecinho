@@ -25,7 +25,7 @@ function Login() {
             localStorage.setItem('token', dados.token)
             console.debug(dados)
             alert("logado")
-            window.location.href = "/"
+            window.location.href = "/gerenciamentoM"
             
 
             

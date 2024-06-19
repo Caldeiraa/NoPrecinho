@@ -69,21 +69,21 @@ class CadastroUsuario {
             // Consulta parametrizada para evitar injeção de SQL
             let sql = 'SELECT * FROM usuario WHERE email_usuario = ?';
     
-            this.conexao.query(sql, [email], function(erro, retorno) {
+            this.conexao.query(sql, [email], function (erro, retorno) {
                 if (erro) {
                     console.debug(erro);
                     reject([400, erro]);
                 } else {
                     if (retorno.length === 0) {
-                        resolve([401, "usuario ou senha invalida"]);
+                        resolve([401, "Usuário ou senha inválidos"]);
                     } else {
                         let hash = retorno[0].senha;
                         let logado = bcrypt.compareSync(senha, hash);
                         if (logado) {
-                            let { id_usuario, nome_user_usuario,tipo } = retorno[0];
-                            resolve([200, "logado", id_usuario, nome_user_usuario,tipo]);
+                            let { id_usuario, nome_user_usuario, tipo } = retorno[0];
+                            resolve([200, "Logado com sucesso", id_usuario, tipo, nome_user_usuario]);
                         } else {
-                            resolve([401, "usuario ou senha invalida"]);
+                            resolve([401, "Usuário ou senha inválidos"]);
                         }
                     }
                 }
@@ -91,7 +91,26 @@ class CadastroUsuario {
         });
     }
 
+  
 
+    buscarNomeUsuario(idUsuario) {
+        return new Promise((resolve, reject) => {
+            let sql = 'SELECT nome_user_usuario FROM usuario WHERE id_usuario = ?';
+            this.conexao.query(sql, [idUsuario], (erro, resultado) => {
+                if (erro) {
+                    console.error('Erro ao buscar nome de usuário:', erro);
+                    reject(erro);
+                } else {
+                    if (resultado.length > 0) {
+                        resolve(resultado[0].nome_user_usuario);
+                    } else {
+                        reject(new Error('Usuário não encontrado'));
+                    }
+                }
+            });
+        });
+    }
 }
+    
 
 module.exports = new CadastroUsuario()

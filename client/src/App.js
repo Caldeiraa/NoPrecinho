@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './components/Navbar';
 import ListaUsu from './views/ListaUsuarios/ListaUsuarios';
 import LoginM from './views/Login/index'
@@ -17,6 +17,7 @@ import CadastroProdUsu from './views/cadastroProduto/cadastroProdUsu';
 import FeedMercado from './views/FeedMercado/feedMercado';
 import TipoUsuario from './views/Login/tipoUsuario';
 import Produtos from './views/Produto/Produtos';
+import GerenciamentoM from './views/GerenciamentoMercado/GerenciamentoM';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path='/cadastro/produto/usuario' element={<CadastroProdUsu/>}/>
         <Route path='/feedM' element={<FeedMercado/>}/>
         <Route path='/produto/:id_prod' element={<Produtos/>}/>
+        <Route path='/gerenciamentoM' element={<GerenciamentoM/>}/>
       </Routes>
     </BrowserRouter>
   );
