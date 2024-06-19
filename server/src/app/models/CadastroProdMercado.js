@@ -19,6 +19,17 @@ class CadastroProdMercado{
         })
     }
 
+    mostrarProdMercado(id_mercado){
+        return new Promise((resolve,reject)=>{
+            let sql = `SELECT * FROM produto_mercado WHERE mercado_id = '${id_mercado}';`
+            this.conexao.query(sql,function(erro,retorno){
+                if(erro) reject([400,erro])
+
+                resolve([201,retorno])
+            })
+        })
+    }
+
     inserir(nome_prod_mercado, marca_mercado, peso_mercado, preco_mercado, foto_prod_mercado, descricao_prod, mercado_id, id_subCategoria, arquivo) {
         return new Promise((resolve, reject) => {
             let sql     = `INSERT INTO produto_mercado 

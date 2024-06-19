@@ -41,6 +41,17 @@ class CadastroPMercadoController{
         )
     }
 
+    indexMercado(req,res){
+        let {id_mercado} = req.body
+        CadastroProdMercado.mostrarProdMercado(id_mercado).then(resposta=>{
+            res.status(resposta[0]).json(resposta[1])
+        }).catch(
+            resposta =>{
+                res.status(resposta[0]).json("Erro: "+resposta[1].errno)
+            }
+        )
+    }
+
     indexSubCategoria(req,res){
         let categoria_id = req.params.categoria_id
         
