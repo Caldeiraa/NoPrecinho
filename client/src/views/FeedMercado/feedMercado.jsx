@@ -62,6 +62,7 @@ function FeedMercado() {
                 <span>{produto.nome_produto}</span>
                 <span>{produto.marca_produto}</span>
                 <span>R$ {produto.preco_produto}</span>
+                <span>{produto.nome_mercado}</span>
               </Link>
               <button onClick={() => adicionarAoCarrinho(produto)}>
                 {carrinho.find(item => item.id_produto_mercado === produto.id_produto_mercado)

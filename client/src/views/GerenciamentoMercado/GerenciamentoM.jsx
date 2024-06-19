@@ -1,30 +1,48 @@
 import {useEffect, useState} from 'react'
 
 function GerenciamentoM() {
-    const[produtosC, setProdutosC] = ([])
+    const[produtosC, setProdutosC] = useState([])
 
     useEffect(()=>{
-        document.title = "Gerenciamento de Mercados"
-
-        async function Gerenciar(){
+        document.title = "Lista de usuários"
+        
+        async function carregarProdutosC(){
             try {
-                const resposta = await fetch('/feed/:id_mercado')
+                const resposta = await fetch('/produtos')
 
                 if(!resposta.ok){
+                    //Exibindo erro API
                     console.debug("HTTP erro: "+resposta.status)
-                }else{
+                  }else{
+                    //Exibindo sucesso API
                     let dados = await resposta.json()
                     setProdutosC(dados)
-                }
+                  }
             } catch (error) {
-                console.error("Erro ao buscar produtos"+error)                
+                console.error("Erro ao buscar produtos"+error)
             }
         }
-
-        GerenciamentoM()
+        carregarProdutosC()
     },[])
+
+    
   return (
-    <div>GerenciamentoM</div>
+    <div className='container'>
+      <h1>Todos os produtos</h1>
+      <table>
+        <tr>
+          <th>nome</th>
+        </tr>
+        <tbody>
+        {produtosC.map(produto_mercado=>(
+          <tr key={produto_mercado.id_produto_mercado}>
+            <td>{produto_mercado.id_produto_mercado}</td>
+            <td>{produto_mercado.nome_produto}</td>
+          </tr>
+        ))}
+        </tbody>
+      </table>
+    </div>
   )
 }
 
