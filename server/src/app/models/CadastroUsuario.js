@@ -80,8 +80,8 @@ class CadastroUsuario {
                         let hash = retorno[0].senha;
                         let logado = bcrypt.compareSync(senha, hash);
                         if (logado) {
-                            let { id_usuario, nome_user_usuario } = retorno[0];
-                            resolve([200, "logado", id_usuario, nome_user_usuario]);
+                            let { id_usuario, nome_user_usuario,tipo } = retorno[0];
+                            resolve([200, "logado", id_usuario, nome_user_usuario,tipo]);
                         } else {
                             resolve([401, "usuario ou senha invalida"]);
                         }

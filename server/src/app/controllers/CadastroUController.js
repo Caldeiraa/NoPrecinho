@@ -65,10 +65,10 @@ class CadastroUController{
             resposta =>{
                 console.log(resposta)
                 let usuario_id = resposta[2]
-                let usuario_tipo = resposta[3]
+                let tipo = resposta[3]
                 let token = ''
                 if(resposta[0] === 200){
-                    token = jwt.sign({usuario_id, usuario_tipo}, secret,{expiresIn:300})
+                    token = jwt.sign({usuario_id, tipo}, secret,{expiresIn:300})
                 }
                 res.status(resposta[0]).json({token})
             }
@@ -86,8 +86,8 @@ class CadastroUController{
                 return res.status(401).json("Usuário não autenticado")
             }else{
                 req.usuario_id = decoded.usuario_id
-                req.usuario_tipo = decoded.usuario_tipo
-                console.debug("Id:"+ decoded.usuario_tipo + "Tipo:"+ decoded.usuario_id)
+                req.tipo = decoded.tipo
+                console.debug("Id:"+ decoded.tipo + "Tipo:"+ decoded.usuario_id)
                 next()
             }
         })                
