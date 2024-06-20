@@ -59,6 +59,7 @@ function CarrinhoDois() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({ produtos: dadosParaComparar })
+        
       });
       if (!response.ok) {
         throw new Error(`Erro de rede: ${response.status}`);
