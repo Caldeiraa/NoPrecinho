@@ -18,6 +18,7 @@ import FeedMercado from './views/FeedMercado/feedMercado';
 import TipoUsuario from './views/Login/tipoUsuario';
 import Produtos from './views/Produto/Produtos';
 import GerenciamentoM from './views/GerenciamentoMercado/GerenciamentoM';
+import EditarProduto from './views/EditarProduto/EditarProduto';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         <Route path='/feedM' element={<FeedMercado/>}/>
         <Route path='/produto/:id_prod' element={<Produtos/>}/>
         <Route path='/gerenciamentoM' element={<GerenciamentoM/>}/>
+        <Route path='/produto/:id/editar' element={<EditarProduto/>}/>
       </Routes>
     </BrowserRouter>
   );
