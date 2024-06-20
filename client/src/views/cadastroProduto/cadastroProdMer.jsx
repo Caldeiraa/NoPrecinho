@@ -4,7 +4,7 @@ import { jwtDecode } from 'jwt-decode'
 import estilo from './estiloCadProd.css'
 
 function CadastroProdMer() {
-    const [nome_prod_mercado, setNome_prod_mercado] = useState('')
+    const [nome_prod, setNome_prod] = useState('')
     const [marca_mercado, setMarca_mercado] = useState('')
     const [descricao_prod, setDescricao_prod] = useState('')
     const [peso_mercado, setPeso_produto] = useState('')
@@ -37,7 +37,7 @@ function CadastroProdMer() {
         alert(mercado_id)
         const formData = new FormData()
         formData.append("mercado_id", mercado_id)
-        formData.append("nome_prod_mercado", nome_prod_mercado)
+        formData.append("nome_prod", nome_prod)
         formData.append("marca_mercado", marca_mercado)
         formData.append("descricao_prod", descricao_prod)
         formData.append("peso_mercado", peso_mercado)
@@ -96,7 +96,7 @@ function CadastroProdMer() {
 
                     <div class="col-md">
                         <label for="" class="form-label fs-4 mt-3">Nome Completo:</label>
-                        <input value={nome_prod_mercado} onChange={e => setNome_prod_mercado(e.target.value)} name="" type="text" class="form-control rounded-4 mb-5 border border-black" />
+                        <input value={nome_prod} onChange={e => setNome_prod(e.target.value)} name="" type="text" class="form-control rounded-4 mb-5 border border-black" />
                         <label for="" class="form-label fs-4 mt-3">Descrição:</label>
                         <input value={descricao_prod} onChange={e => setDescricao_prod(e.target.value)} name="" type="text" class="form-control rounded-4 mb-5 border border-black" />
                         <label for="" class="form-label fs-4 mt-3">Preço:</label>

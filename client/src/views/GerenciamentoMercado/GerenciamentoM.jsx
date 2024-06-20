@@ -60,8 +60,7 @@ function GerenciamentoM() {
             <tr key={produto_mercado.id_produto_mercado}>
               <td>
                 <img
-                  src={produto_mercado.foto_produto}
-                  alt={produto_mercado.nome_produto}
+                  src={`http://localhost:5000/img/${produto_mercado.foto_produto}`}
                   onError={(e) => {
                     e.target.onerror = null;
                     e.target.src = 'https://via.placeholder.com/100'; // Placeholder image if there's an error

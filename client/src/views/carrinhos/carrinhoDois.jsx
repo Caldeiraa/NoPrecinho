@@ -143,16 +143,16 @@ function CarrinhoDois() {
       <div className="box2 d-flex align-items-center justify-content-center flex-column">
         <div className="texto">
           {produtosCarrinho.length > 0 ? (
-            <div className="container mt-5">
               <ul className="list-group">
                 {produtosCarrinho.map(produto => (
                   <li key={produto.id_produto_mercado} className="list-group-item">
                     <div className="d-flex justify-content-between align-items-center">
-                      <div>
-                        <img className="carrinho-img" src={`http://localhost:5000/img/${produto.foto_produto}`} alt={produto.nome_produto} />
-                        <span className="carrinho-title">{produto.nome_produto}</span>
+                      <div className='carrinho-img'>
+                        <img className="FOTOCARRINHO" src={`http://localhost:5000/img/${produto.foto_produto}`} />
                       </div>
-                      <span className="carrinho-subtitle me-5">{produto.marca_produto}</span>
+                      <span className="carrinho-title">{produto.nome_produto}</span>
+                      <span className="carrinho-subtitle">{produto.marca_produto}</span>
+                      <span className=''>{produto.nome_mercado}</span>
                       <div className="d-flex align-items-center">
                         <button className="btn btn-sm btn-outline-danger me-2" onClick={() => alterarQuantidade(produto.id_produto_mercado, -1)}>-</button>
                         <span className="me-2">{produto.quantidade}</span>
@@ -162,13 +162,12 @@ function CarrinhoDois() {
                   </li>
                 ))}
               </ul>
-            </div>
           ) : carregarMensagem1()}
         </div>
       </div>
 
       {comparacaoResultados && (
-        <div className="box2 d-flex align-items-center justify-content-center flex-column mt-5">
+        <div className="minibox d-flex align-items-center justify-content-center flex-column mt-5">
           <div className="tituloCarrinho">
             <h1>Resultados da Comparação</h1>
           </div>

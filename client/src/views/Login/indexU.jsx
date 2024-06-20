@@ -20,7 +20,7 @@ function Login() {
 
             if (!resposta.ok) {
                 const errorMessage = await resposta.text();
-                setError(`Erro: ${resposta.status} - ${errorMessage}`);
+                setError(`E-mail ou senha inválidos`);
                 return;
             }
 
@@ -59,7 +59,7 @@ function Login() {
                     <p></p>
                     <a class="form-label ms-3" onClick={RecuperacaoSenha}>Esqueci a Senha</a>
                     <button type="submit" class="btn border border-black mt-5 rounded-4 btnLogarU align-self-center" onClick={Logar} >Entrar</button>
-                    {error && <p className="text-danger mt-3">{error}</p>}
+                    {error && <p className="text-danger text-center mt-3">{error}</p>}
                     <span class="linhaU"></span>
                     <h5>Não tem uma conta?<a class="form-label" onClick={Cadastrese}>Cadastre-se</a></h5>
                 </div>

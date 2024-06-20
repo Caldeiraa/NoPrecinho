@@ -13,6 +13,7 @@ import np from './img/NP.png';
 function Home() {
   const [produtos, setProdutos] = useState([]);
   const [carrinho, setCarrinho] = useState([]);
+  const[logos, setLogos] = useState([])
 
   useEffect(() => {
     document.title = "Home";
@@ -58,6 +59,22 @@ function Home() {
     };
 
     carregarProdutos();
+
+    async function carregarLogos() {
+      try {
+        const resposta = await fetch(`/cadastroM`);
+
+        if (!resposta.ok) {
+          console.debug("HTTP erro: " + resposta.status);
+        } else {
+          let dados = await resposta.json();
+          setLogos(dados);
+        }
+      } catch (error) {
+        console.error("Erro ao buscar produtos: " + error);
+      }
+    }
+    carregarLogos()
   }, []);
 
   function Mercado() {
@@ -84,20 +101,15 @@ function Home() {
 
   return (
     <div className="conteudo">
-      <div className="container parceiros">
+      <div className="container parceiros mt-5">
         <h3>Parceiros</h3>
         <div className="slider-wrapper">
           <ul className="image-list">
-            <li><img className="image-item" src={carrefour} onClick={Mercado} alt="Carrefour Logo" /></li>
-            <li><img className="image-item" src={extrabom} alt="Extrabom Logo" /></li>
-            <li><img className="image-item" src={perin} alt="Header Logo" /></li>
-            <li><img className="image-item" src={bh} alt="BH Logo" /></li>
-            <li><img className="image-item" src={assai} alt="Assai Logo" /></li>
-            <li><img className="image-item" src={carrefour} alt="Carrefour Logo" /></li>
-            <li><img className="image-item" src={extrabom} alt="Extrabom Logo" /></li>
-            <li><img className="image-item" src={perin} alt="Header Logo" /></li>
-            <li><img className="image-item" src={bh} alt="BH Logo" /></li>
-            <li><img className="image-item" src={assai} alt="Assai Logo" /></li>
+            {logos.map(mercado =>(
+              <div key={mercado.id_mercado}>
+                <li><img className='image-item' src={`http://localhost:5000/img/${mercado.logo_mercado}`} alt="" /></li>
+              </div>
+            ))}
           </ul>
         </div>
         <div className="slider-scrollbar">
@@ -105,7 +117,7 @@ function Home() {
             <div className="scrollbar-thumb"></div>
           </div>
         </div>
-        <h3>Promoções</h3>
+        <h3 className='mt-4'>Produtos</h3>
       </div>
 
       {/* Exibição dos produtos cadastrados */}

@@ -120,15 +120,17 @@ function InserirMercado() {
 
                                 <label htmlFor="email_mercado" className="form-label fs-4 mt-3">E-mail:</label>
                                 <input value={email_mercado} onChange={e => setEmail_mercado(e.target.value)} id="email_mercado" type="email" className="form-control rounded-4 border border-black p-2 mt-2" required />
+                                
 
-                                <label htmlFor="cep_mercado" className="form-label fs-4 mt-3">CEP:</label>
-                                <InputMask mask="99999-999" value={cep_mercado} onChange={handleCepChange} id="cep_mercado" type="text" className="form-control rounded-4 border border-black p-2 mt-2" required />
+                                <label htmlFor="razao_social" className="form-label fs-4 mt-3">Razão social:</label>
+                                <input value={razao_social} onChange={e => setRazao_social(e.target.value)} id="razao_social" type="text" className="form-control rounded-4 border border-black p-2 mt-2" required />
 
-                                <label htmlFor="cidade_mercado" className="form-label fs-4 mt-3">Cidade:</label>
-                                <input value={cidade_mercado} onChange={e => setCidade_mercado(e.target.value)} id="cidade_mercado" type="text" className="form-control rounded-4 border border-black p-2 mt-2" required />
+                                <label htmlFor="telefone_mercado" className="form-label fs-4 mt-3">Telefone:</label>
+                                <InputMask mask="(99)99999-9999" value={telefone_mercado} onChange={e => setTelefone_mercado(e.target.value)} id="telefone_mercado" type="text" className="form-control rounded-4 border border-black p-2 mt-2" required />
 
-                                <label htmlFor="rua_mercado" className="form-label fs-4 mt-3">Rua:</label>
-                                <input value={rua_mercado} onChange={e => setRua_mercado(e.target.value)} id="rua_mercado" type="text" className="form-control rounded-4 border border-black p-2 mt-2" required />
+                                <label htmlFor="logo_mercado" className="form-label fs-4 mt-3">Logo:</label>
+                                <input onChange={e => setLogo_mercado(e.target.files[0])} id="logo_mercado" type="file" className="form-control rounded-4 border border-black p-2 mt-2" required/>
+        
 
                                 <label htmlFor="senha_mercado" className="form-label fs-4 mt-3">Senha:</label>
                                 <input value={senha_mercado} onChange={e => setSenha_mercado(e.target.value)} id="senha_mercado" type="password" className="form-control rounded-4 border border-black p-2 mt-2" required />
@@ -137,20 +139,20 @@ function InserirMercado() {
                             <div className="col-2"></div>
 
                             <div className="col-md-5">
-                                <label htmlFor="razao_social" className="form-label fs-4 mt-3">Razão social:</label>
-                                <input value={razao_social} onChange={e => setRazao_social(e.target.value)} id="razao_social" type="text" className="form-control rounded-4 border border-black p-2 mt-2" required />
+                            <label htmlFor="cep_mercado" className="form-label fs-4 mt-3">CEP:</label>
+                                <InputMask mask="99999-999" value={cep_mercado} onChange={handleCepChange} id="cep_mercado" type="text" className="form-control rounded-4 border border-black p-2 mt-2" required />
 
-                                <label htmlFor="telefone_mercado" className="form-label fs-4 mt-3">Telefone:</label>
-                                <input value={telefone_mercado} onChange={e => setTelefone_mercado(e.target.value)} id="telefone_mercado" type="text" className="form-control rounded-4 border border-black p-2 mt-2" required />
+                                <label htmlFor="cidade_mercado" className="form-label fs-4 mt-3">Cidade:</label>
+                                <input value={cidade_mercado} onChange={e => setCidade_mercado(e.target.value)} id="cidade_mercado" type="text" className="form-control rounded-4 border border-black p-2 mt-2 campo-visual" required />
 
-                                <label htmlFor="logo_mercado" className="form-label fs-4 mt-3">Logo:</label>
-                                <input onChange={e => setLogo_mercado(e.target.files[0])} id="logo_mercado" type="file" className="form-control rounded-4 border border-black p-2 mt-2" required/>
+                                <label htmlFor="rua_mercado" className="form-label fs-4 mt-3">Rua:</label>
+                                <input value={rua_mercado} onChange={e => setRua_mercado(e.target.value)} id="rua_mercado" type="text" className="form-control rounded-4 border border-black p-2 mt-2 campo-visual" required />
                                 
                                 <label htmlFor="estado_mercado" className="form-label fs-4 mt-3">Estado:</label>
-                                <input value={estado_mercado} onChange={e => setEstado_mercado(e.target.value)} id="estado_mercado" type="text" className="form-control rounded-4 border border-black p-2 mt-2" required />
+                                <input value={estado_mercado} onChange={e => setEstado_mercado(e.target.value)} id="estado_mercado" type="text" className="form-control rounded-4 border border-black p-2 mt-2 campo-visual" required />
 
                                 <label htmlFor="bairro_mercado" className="form-label fs-4 mt-3">Bairro:</label>
-                                <input value={bairro_mercado} onChange={e => setBairro_mercado(e.target.value)} id="bairro_mercado" type="text" className="form-control rounded-4 border border-black p-2 mt-2" required />
+                                <input value={bairro_mercado} onChange={e => setBairro_mercado(e.target.value)} id="bairro_mercado" type="text" className="form-control rounded-4 border border-black p-2 mt-2 campo-visual" required />
 
                                 <label htmlFor="descricao_mercado" className="form-label fs-4 mt-3">Descrição:</label>
                                 <input value={descricao_mercado} onChange={e => setDescricao_mercado(e.target.value)} id="descricao_mercado" type="text" className="form-control rounded-4 border border-black p-2 mt-2" required />

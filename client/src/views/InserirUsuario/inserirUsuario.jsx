@@ -130,13 +130,13 @@ function InserirUsuario() {
                                 <input value={nome_usuario} onChange={e => setNome_usuario(e.target.value)} id="nome" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
 
                                 <label htmlFor="cpf" className="form-label fs-4 mt-3">CPF:</label>
-                                <input value={cpf_usuario} onChange={e => setCpf_usuario(e.target.value)} id="cpf" type="text" maxLength="11" className="form-control rounded-4 border border-black p-2 mt-2" />
+                                <InputMask mask="999.999.999-99" value={cpf_usuario} onChange={e => setCpf_usuario(e.target.value)} id="cpf" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
 
                                 <label htmlFor="telefone" className="form-label fs-4 mt-3">Telefone:</label>
                                 <InputMask mask="(99) 99999-9999" value={telefone_usuario} onChange={e => setTelefone_usuario(e.target.value)} id="telefone" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
 
                                 <label htmlFor="email" className="form-label fs-4 mt-3">E-mail:</label>
-                                <input value={email_usuario} onChange={e => setEmail_usuario(e.target.value)} id="email" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
+                                <input value={email_usuario} onChange={e => setEmail_usuario(e.target.value)} id="email" type="email" required className="form-control rounded-4 border border-black p-2 mt-2" />
 
                                 <label htmlFor="nomeUser" className="form-label fs-4 mt-3">Nome de usuário:</label>
                                 <input value={nomeUser_usuario} onChange={e => setNomeUser_usuario(e.target.value)} id="nomeUser" type="text" className="form-control rounded-4 border border-black p-2 mt-2" />
