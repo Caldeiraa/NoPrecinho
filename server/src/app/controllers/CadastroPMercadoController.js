@@ -42,7 +42,7 @@ class CadastroPMercadoController{
     }
 
     indexMercado(req,res){
-        let {id_mercado} = req.body
+        let {id_mercado} = req.params
         CadastroProdMercado.mostrarProdMercado(id_mercado).then(resposta=>{
             res.status(resposta[0]).json(resposta[1])
         }).catch(
@@ -73,16 +73,20 @@ class CadastroPMercadoController{
     
         const compararProdutos = async () => {
             let respostas = [];
+            let status;
             for (let produto of produtos) {
                 let { nome_prod, marca_prod } = produto;
                 try {
                     let resposta = await CadastroProdMercado.comparacao(nome_prod, marca_prod);
-                    respostas.push({ status: resposta[0], data: resposta[1] });
+                    status = resposta[0]
+                    respostas.push({ comparacao: resposta[1] });
                 } catch (erro) {
+                    status = erro[0]
                     respostas.push({ status: erro[0], data: "Erro: " + erro[1].errno });
                 }
             }
-            res.send(respostas);
+            res.status(status).json(respostas);
+            //res.send(respostas);
         };
     
         compararProdutos();

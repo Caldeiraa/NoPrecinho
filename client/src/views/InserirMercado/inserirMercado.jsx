@@ -96,7 +96,7 @@ function InserirMercado() {
             } else {
                 alert("Mercado criado com sucesso");
                 console.debug("Mercado criado com sucesso");
-                window.location.href = "/login";
+                window.location.href = "/loginM";
             }
         } catch (error) {
             console.debug("Erro na requisição:", error);

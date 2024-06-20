@@ -70,27 +70,25 @@ class CadastroMController{
        )
     }
 
-    logar(req, res){
-        let{email, senha} = req.body
-        CadastroMercado.verificaUsuarioSenha(email, senha).
-        then(
-            resposta =>{
-                console.log(resposta)
-                let mercado_id = resposta[2]
-                let tipo = resposta[3]
-                let token = ''
-                if(resposta[0] === 200){
-                    token = jwt.sign({mercado_id, tipo}, secret,{expiresIn:300})
+    logar(req, res) {
+        let { email, senha } = req.body;
+        CadastroMercado.verificaUsuarioSenha(email, senha)
+            .then(resposta => {
+                console.log(resposta);
+                let mercado_id = resposta[2];
+                let nome_fantasia = resposta[3]; 
+                let token = '';
+                if (resposta[0] === 200) {
+                    token = jwt.sign({ mercado_id, nome_fantasia }, secret, { expiresIn: 300 }); 
                 }
-                res.status(resposta[0]).json({token})
-            }
-        ).catch(
-            resposta =>{
-                console.debug(resposta)
-                res.status(resposta[0]).json("erro: "+resposta[1])
-            }
-        )
+                res.status(resposta[0]).json({ token });
+            })
+            .catch(resposta => {
+                console.debug(resposta);
+                res.status(resposta[0]).json("erro: " + resposta[1]);
+            });
     }
+    
     verificaToken(req, res, next){
         const token = req.headers['x-access-token']
         jwt.verify(token, secret, (erro, decoded)=>{

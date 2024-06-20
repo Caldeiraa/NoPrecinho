@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import './estilo.css'; // Importe o arquivo de estilos onde você definiu as classes CSS
+import {jwtDecode} from 'jwt-decode';
+import './estilo.css';
 
 function CarrinhoDois() {
   const [produtosCarrinho, setProdutosCarrinho] = useState([]);
@@ -13,6 +14,25 @@ function CarrinhoDois() {
         quantidade: produto.quantidade || 1
       }));
       setProdutosCarrinho(carrinhoComQuantidade);
+    }
+
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Efetue login");
+      window.location.href = "/login";
+    } else {
+      try {
+        const decodedToken = jwtDecode(token);
+        const mercado_id = decodedToken.mercado_id;
+        const usuario_id = decodedToken.usuario_id;
+        console.log("Mercado ID:", mercado_id);
+        console.log("Usuario ID:", usuario_id);
+      } catch (error) {
+        console.error("Erro ao decodificar token:", error);
+        alert("Erro ao decodificar token");
+        window.location.href = "/login";
+      }
     }
   }, []);
 
@@ -92,8 +112,9 @@ function CarrinhoDois() {
                           <img className="carrinho-img" src={`http://localhost:5000/img/${produto.foto_produto}`} alt={produto.nome_produto} />
                           <span className="carrinho-title">{produto.nome_produto}</span>
                         </div>
+                        <span className="carrinho-subtitle me-5">{produto.marca_produto}</span>
                         <div>
-                          <span className="carrinho-subtitle">{produto.marca_produto}</span>
+                          
 
                           <div className="d-flex align-items-center">
                             <button className="btn btn-secondary btn-quantidade" onClick={() => alterarQuantidade(produto.id_produto_mercado, -1)}>-</button>

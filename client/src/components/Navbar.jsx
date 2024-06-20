@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { jwtDecode } from 'jwt-decode';
+import {jwtDecode} from 'jwt-decode';
 import './Navbar.css';
 
 function Navbar() {
     const [nomeUsuario, setNomeUsuario] = useState('');
+    const [nomeMercado, setNomeMercado] = useState('');
+    const [isMercado, setIsMercado] = useState(false);
 
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -11,8 +13,15 @@ function Navbar() {
         if (token) {
             try {
                 const decodedToken = jwtDecode(token);
-                const usuario_nome = decodedToken.nome_user_usuario;
-                setNomeUsuario(usuario_nome);
+                console.log("Decoded Token:", decodedToken);  // Debug: print the decoded token
+
+                if (decodedToken.nome_user_usuario) {
+                    setNomeUsuario(decodedToken.nome_user_usuario);
+                    setIsMercado(false);
+                } else if (decodedToken.nome_fantasia) { // Verifique nome_fantasia
+                    setNomeMercado(decodedToken.nome_fantasia);
+                    setIsMercado(true);
+                }
             } catch (error) {
                 console.error("Erro ao decodificar token:", error);
             }
@@ -36,29 +45,38 @@ function Navbar() {
                         </div>
                         <div className="offcanvas-body">
                             <ul className="navbar-nav flex-grow-1 justify-content-center">
-                                <li className="nav-item">
-                                    <a className="nav-link mx-lg-2" href="/">Home</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link mx-lg-2" href="/categoria">Cadastrar Produtos</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link mx-lg-2" href="/carrinho/comparacao">Carrinho</a>
-                                </li>
-                                <li className="ms-2">
-                                    <form className="d-flex" role="search">
-                                        <input className="form-control me-2" id='barraPesq' type="search" placeholder="Buscar produtos, marcas e muito mais." aria-label="Search" />
-                                        <button type='submit' className='btnPesq'><i className="bi bi-search text-light"></i></button>
-                                    </form>
-                                </li>
+                                {isMercado ? (
+                                    <li className="nav-item">
+                                        <a className="nav-link mx-lg-2" href="/categoria">Cadastrar Produtos</a>
+                                    </li>
+                                ) : (
+                                    <>
+                                        <li className="nav-item">
+                                            <a className="nav-link mx-lg-2" href="/">Home</a>
+                                        </li>
+                                        <li className="nav-item">
+                                            <a className="nav-link mx-lg-2" href="/carrinho/comparacao">Carrinho</a>
+                                        </li>
+                                        <li className="ms-2">
+                                            <form className="d-flex" role="search">
+                                                <input className="form-control me-2" id='barraPesq' type="search" placeholder="Buscar produtos, marcas e muito mais." aria-label="Search" />
+                                                <button type='submit' className='btnPesq'><i className="bi bi-search text-light"></i></button>
+                                            </form>
+                                        </li>
+                                    </>
+                                )}
                             </ul>
                         </div>
                     </div>
-                    {!nomeUsuario ? (
+                    {!nomeUsuario && !nomeMercado ? (
                         <a href="/login" className="login-button">Login</a>
                     ) : (
                         <>
-                            <span className="nav-link mx-lg-2" style={{ color: 'white' }}>Usuário: {nomeUsuario}</span>
+                            {isMercado ? (
+                                <span className="nav-link mx-lg-2" style={{ color: 'white' }}>Mercado: {nomeMercado}</span>
+                            ) : (
+                                <span className="nav-link mx-lg-2" style={{ color: 'white' }}>Usuário: {nomeUsuario}</span>
+                            )}
                             <button className="btn btn-secondary ms-2" onClick={handleLogout}>Sair</button>
                         </>
                     )}

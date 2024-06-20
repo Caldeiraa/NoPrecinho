@@ -110,7 +110,7 @@ function InserirUsuario() {
             } else {
                 alert('Usuário inserido com sucesso');
                 console.debug("Usuário inserido com sucesso");
-                window.location.href = "/login";
+                window.location.href = "/loginU";
             }
         } catch (error) {
             console.debug("Erro na requisição:", error);

@@ -84,7 +84,7 @@
   .btn-remover {
     background-color: #dc3545;
     color: white;
-    border: none;
+    border: none; 
     padding: 8px 16px;
     border-radius: 4px;
     cursor: pointer;
@@ -93,5 +93,10 @@
   
   .btn-remover:hover {
     background-color: #c82333;
+  }
+
+  .list-group{
+    height: 100%;
+    width: 650px;
   }
   

@@ -82,9 +82,7 @@ class CadastroMercado{
     
     verificaUsuarioSenha(email, senha) {
         return new Promise((resolve, reject) => {
-            // Consulta parametrizada para evitar injeção de SQL
             let sql = 'SELECT * FROM mercado WHERE email_mercado = ?';
-    
             this.conexao.query(sql, [email], function(erro, retorno) {
                 if (erro) {
                     console.debug(erro);
@@ -96,8 +94,8 @@ class CadastroMercado{
                         let hash = retorno[0].senha;
                         let logado = bcrypt.compareSync(senha, hash);
                         if (logado) {
-                            let { id_mercado, nome_fantasia,tipo } = retorno[0];
-                            resolve([200, "logado", id_mercado, nome_fantasia,tipo]);
+                            let { id_mercado, nome_fantasia } = retorno[0]; 
+                            resolve([200, "logado", id_mercado, nome_fantasia]); 
                         } else {
                             resolve([401, "usuario ou senha invalida"]);
                         }
@@ -106,6 +104,7 @@ class CadastroMercado{
             });
         });
     }
+    
 
     mostrarLogo(){
         return new Promise((resolve,reject)=>{
