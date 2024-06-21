@@ -63,8 +63,9 @@ class CadastroProdMercado{
     comparacao(nome_produto, marca_produto) {
         return new Promise((resolve, reject) => {
             const sql = `
-                SELECT p1.id_produto_mercado, p1.nome_produto, p1.marca_produto, p1.preco_produto, p1.mercado_id
+                SELECT p1.id_produto_mercado, p1.nome_produto, p1.marca_produto, p1.preco_produto, m.razao_social
                 FROM produto_mercado p1
+                JOIN mercado m ON p1.mercado_id = m.id_mercado
                 JOIN (
                     SELECT nome_produto, marca_produto
                     FROM produto_mercado
@@ -73,7 +74,7 @@ class CadastroProdMercado{
                     HAVING COUNT(DISTINCT mercado_id) > 1
                 ) p2 ON p1.nome_produto = p2.nome_produto AND p1.marca_produto = p2.marca_produto
                 WHERE p1.nome_produto = ? AND p1.marca_produto = ?
-                ORDER BY p1.nome_produto, p1.marca_produto, p1.mercado_id;
+                ORDER BY p1.nome_produto, p1.marca_produto, m.razao_social;
             `;
     
             this.conexao.query(sql, [nome_produto, marca_produto, nome_produto, marca_produto], (erro, resultados) => {
@@ -90,6 +91,8 @@ class CadastroProdMercado{
             });
         });
     }
+    
+    
     
     atualizar(id_produto,preco_novo) {
         return new Promise((resolve, reject) => {
