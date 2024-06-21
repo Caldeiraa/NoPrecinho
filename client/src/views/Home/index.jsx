@@ -3,17 +3,11 @@ import {jwtDecode} from 'jwt-decode';
 
 import './estilo.css';
 import './js/barraParceiros';
-import carrefour from './img/Carrefour-Logo.png';
-import extrabom from './img/extrabom-2x.webp';
-import perin from './img/header-logo.png';
-import assai from './img/Logo_assai.png';
-import bh from './img/logo-bh-white.png';
-import np from './img/NP.png';
 
 function Home() {
   const [produtos, setProdutos] = useState([]);
   const [carrinho, setCarrinho] = useState([]);
-  const[logos, setLogos] = useState([])
+  const [logos, setLogos] = useState([]);
 
   useEffect(() => {
     document.title = "Home";
@@ -74,11 +68,12 @@ function Home() {
         console.error("Erro ao buscar produtos: " + error);
       }
     }
-    carregarLogos()
+    carregarLogos();
   }, []);
 
-  function Mercado() {
-    window.location.href = ('/feedM');
+  function Mercado(event) {
+    const id_mercado = event.target.getAttribute('data-id-mercado');
+    window.location.href = `/feed/${id_mercado}`;
   }
 
   const adicionarAoCarrinho = (produto) => {
@@ -105,9 +100,17 @@ function Home() {
         <h3>Parceiros</h3>
         <div className="slider-wrapper">
           <ul className="image-list">
-            {logos.map(mercado =>(
+            {logos.map(mercado => (
               <div key={mercado.id_mercado}>
-                <li><img className='image-item' src={`http://localhost:5000/img/${mercado.logo_mercado}`} alt="" /></li>
+                <li>
+                  <img 
+                    className='image-item' 
+                    src={`http://localhost:5000/img/${mercado.logo_mercado}`} 
+                    alt="" 
+                    data-id-mercado={mercado.id_mercado}
+                    onClick={Mercado} 
+                  />
+                </li>
               </div>
             ))}
           </ul>
@@ -119,8 +122,6 @@ function Home() {
         </div>
         <h3 className='mt-4'>Produtos</h3>
       </div>
-
-      {/* Exibição dos produtos cadastrados */}
       <div className="container">
         <div className="row">
           {produtos.map(produto => (
