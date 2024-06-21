@@ -45,32 +45,31 @@ function CarrinhoDois() {
         throw new Error("Nenhum produto para comparar.");
       }
 
-      // Preparar dados apenas com nome_prod e marca_prod
       const dadosParaComparar = produtosCarrinho.map(({ nome_produto, marca_produto }) => ({
         nome_produto,
         marca_produto
       }));
 
       console.log("Enviando dados para comparação:", JSON.stringify({ produtos: dadosParaComparar }));
-      
+
       const response = await fetch('http://localhost:5000/comparacao', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({ produtos: dadosParaComparar })
-        
       });
+
       if (!response.ok) {
         throw new Error(`Erro de rede: ${response.status}`);
       }
+
       const data = await response.json();
       console.log("Dados recebidos da comparação:", data);
       setComparacaoResultados(data);
     } catch (error) {
       console.error("Erro ao comparar preços:", error.message);
       setErroComparacao("Erro ao comparar preços. Por favor, tente novamente mais tarde.");
-      
     }
   };
 
@@ -79,14 +78,26 @@ function CarrinhoDois() {
       if (produto.id_produto_mercado === idProduto) {
         const novaQuantidade = produto.quantidade + quantidade;
         if (novaQuantidade <= 0) {
-          return null; // Marca o produto para remoção
+          return null;
         }
         return { ...produto, quantidade: novaQuantidade };
       }
       return produto;
     }).filter(produto => produto !== null);
+    
     setProdutosCarrinho(novosProdutos);
     localStorage.setItem('carrinho', JSON.stringify(novosProdutos));
+    
+    // Sincronize os resultados da comparação com o novo estado do carrinho
+    if (comparacaoResultados) {
+      const novosResultadosComparacao = comparacaoResultados.filter((resultado, index) =>
+        novosProdutos.some(produto => 
+          produto.nome_produto === produtosCarrinho[index].nome_produto &&
+          produto.marca_produto === produtosCarrinho[index].marca_produto
+        )
+      );
+      setComparacaoResultados(novosResultadosComparacao);
+    }
   };
 
   const calcularTotalCarrinho = () => {
@@ -107,8 +118,8 @@ function CarrinhoDois() {
         <h2>Monte seu carrinho de compras!</h2>
         <h5 className='text-center'>Adicione produtos e veja os melhores preços.</h5>
       </div>
-    )
-  }
+    );
+  };
 
   const carregarMensagem2 = () => {
     return (
@@ -135,59 +146,64 @@ function CarrinhoDois() {
           </div>
         </div>
       </div>
-    )
-  }
+    );
+  };
 
   return (
     <div className="container-fluid d-flex justify-content-evenly" id="conteudo">
       <div className="box2 d-flex align-items-center justify-content-center flex-column">
         <div className="texto">
           {produtosCarrinho.length > 0 ? (
-              <ul className="list-group">
-                {produtosCarrinho.map(produto => (
-                  <li key={produto.id_produto_mercado} className="list-group-item">
-                    <div className="d-flex justify-content-between align-items-center">
-                      <div className='carrinho-img'>
-                        <img className="FOTOCARRINHO" src={`http://localhost:5000/img/${produto.foto_produto}`} />
-                      </div>
-                      <span className="carrinho-title">{produto.nome_produto}</span>
-                      <span className="carrinho-subtitle">{produto.marca_produto}</span>
-                      <span className=''>{produto.nome_mercado}</span>
-                      <div className="d-flex align-items-center">
-                        <button className="btn btn-sm btn-outline-danger me-2" onClick={() => alterarQuantidade(produto.id_produto_mercado, -1)}>-</button>
-                        <span className="me-2">{produto.quantidade}</span>
-                        <button className="btn btn-sm btn-outline-success" onClick={() => alterarQuantidade(produto.id_produto_mercado, 1)}>+</button>
-                      </div>
+            <ul className="list-group">
+              {produtosCarrinho.map(produto => (
+                <li key={produto.id_produto_mercado} className="list-group-item">
+                  <div className="d-flex justify-content-between align-items-center">
+                    <div className='carrinho-img'>
+                      <img className="FOTOCARRINHO" src={`http://localhost:5000/img/${produto.foto_produto}`} alt={produto.nome_produto} />
                     </div>
-                  </li>
-                ))}
-              </ul>
+                    <span className="carrinho-title">{produto.nome_produto}</span>
+                    <span className="carrinho-subtitle">{produto.marca_produto}</span>
+                    <span className=''>{produto.nome_mercado}</span>
+                    <div className="d-flex align-items-center">
+                      <button className="btn btn-sm btn-outline-danger me-2" onClick={() => alterarQuantidade(produto.id_produto_mercado, -1)}>-</button>
+                      <span className="me-2">{produto.quantidade}</span>
+                      <button className="btn btn-sm btn-outline-success" onClick={() => alterarQuantidade(produto.id_produto_mercado, 1)}>+</button>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
           ) : carregarMensagem1()}
         </div>
       </div>
 
       {comparacaoResultados && (
-        <div className="minibox d-flex align-items-center justify-content-center flex-column mt-5">
-          <div className="tituloCarrinho">
-            <h1>Resultados da Comparação</h1>
-          </div>
-          <div className="container mt-3">
-            {comparacaoResultados.map((resultado, index) => (
-              <div key={index} className="comparacao-resultado">
-                <h4>{produtosCarrinho[index].nome_produto} - {produtosCarrinho[index].marca_produto}</h4>
-                <ul className="list-group mt-3">
-                  {resultado.comparacao.map(item => (
-                    <li key={item.id_produto_mercado} className="list-group-item d-flex justify-content-between align-items-center">
-                      <div>
-                        <span>{item.nome_produto} - {item.marca_produto}</span>
-                        <span className="ms-3">R$ {item.preco_produto}</span>
-                      </div>
-                      <span className="badge bg-primary rounded-pill">Mercado ID: {item.mercado_id}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+        <div className="box d-flex align-items-center justify-content-center flex-column">
+          <div className="texto">
+            {Array.isArray(comparacaoResultados) && comparacaoResultados.length > 0 ? (
+              comparacaoResultados.map((resultado, index) => (
+                <div key={index} className="comparacao-resultado">
+                  <h4>{produtosCarrinho[index]?.nome_produto} - {produtosCarrinho[index]?.marca_produto}</h4>
+                  <ul className="list-group mt-3">
+                    {Array.isArray(resultado.comparacao) && resultado.comparacao.length > 0 ? (
+                      resultado.comparacao.map(item => (
+                        <li key={item.id_produto_mercado} className="list-group-item d-flex justify-content-between align-items-center">
+                          <div>
+                            <span>{item.nome_produto} - {item.marca_produto}</span>
+                            <span className="ms-3">R$ {item.preco_produto}</span>
+                          </div>
+                          <span className="badge bg-primary rounded-pill">Mercado ID: {item.mercado_id}</span>
+                        </li>
+                      ))
+                    ) : (
+                      <li className="list-group-item text-danger">Produto não encontrado em outro mercado</li>
+                    )}
+                  </ul>
+                </div>
+              ))
+            ) : (
+              <div className="alert alert-warning">Nenhum resultado encontrado para a comparação.</div>
+            )}
           </div>
         </div>
       )}
