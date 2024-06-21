@@ -1,12 +1,14 @@
  .minibox{
-    width: 500px;
+    width: 250px;
     height: 250px;
     border: 1px solid #000000;
     background-color: white;
     border-radius: 50px;
-   
 }
 
+  .minibox h4{
+    font-weight: 40px;
+  }
 .tituloCarrinho{
     border-bottom: 2px solid black;
 }
@@ -60,5 +62,24 @@
   .list-group{
     height: 100%;
     width: 650px;
+  }
+
+  .btn-comparar{
+    background-color: #009970;
+    color: white;
+    
+  }
+
+  .boxComparacao{
+    width: 450px;
+    height: 450px;
+    border: 1px solid #000000;
+    background-color: white;
+    border-radius: 100px;
+  }
+
+  .lista_comparacao{
+    width: 300px;
+    height: auto;
   }
   

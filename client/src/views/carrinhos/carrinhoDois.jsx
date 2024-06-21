@@ -6,6 +6,7 @@ function CarrinhoDois() {
   const [produtosCarrinho, setProdutosCarrinho] = useState([]);
   const [comparacaoResultados, setComparacaoResultados] = useState(null);
   const [erroComparacao, setErroComparacao] = useState(null);
+  const [mostrarResumoCompra, setMostrarResumoCompra] = useState(true);
 
   useEffect(() => {
     const carrinhoSalvo = JSON.parse(localStorage.getItem('carrinho'));
@@ -40,6 +41,7 @@ function CarrinhoDois() {
   const compararPrecos = async () => {
     setErroComparacao(null);
     setComparacaoResultados(null);
+    setMostrarResumoCompra(false); // Ocultar o resumo da compra ao iniciar a comparação
     try {
       if (produtosCarrinho.length === 0) {
         throw new Error("Nenhum produto para comparar.");
@@ -117,6 +119,8 @@ function CarrinhoDois() {
         </div>
         <h2>Monte seu carrinho de compras!</h2>
         <h5 className='text-center'>Adicione produtos e veja os melhores preços.</h5>
+        <div className="d-flex">
+        </div>
       </div>
     );
   };
@@ -129,20 +133,7 @@ function CarrinhoDois() {
             <h1>Resumo da compra</h1>
           </div>
           <div className="align-self-center mt-5">
-            <h4>Aqui, você encontrará os valores da sua compra assim que adicionar produtos.</h4>
-          </div>
-        </div>
-
-        <div className="minibox d-flex flex-column alinhando-items-center text-center">
-          <div className="tituloCarrinho">
-            <h1>Fazer comparação</h1>
-          </div>
-          <div className="align-self-center mt-5">
-            <h4>Aqui, você fará a comparação dos preços com outros mercados.</h4>
-          </div>
-          <div className="align-self-center mt-5">
-            <button className="btn btn-primary" onClick={compararPrecos}>Comparar preços</button>
-            {erroComparacao && <p className="text-danger mt-3">{erroComparacao}</p>}
+            <p>Aqui, você encontrará os valores da sua compra assim que adicionar produtos.</p>
           </div>
         </div>
       </div>
@@ -168,23 +159,30 @@ function CarrinhoDois() {
                       <button className="btn btn-sm btn-outline-danger me-2" onClick={() => alterarQuantidade(produto.id_produto_mercado, -1)}>-</button>
                       <span className="me-2">{produto.quantidade}</span>
                       <button className="btn btn-sm btn-outline-success" onClick={() => alterarQuantidade(produto.id_produto_mercado, 1)}>+</button>
+                      
                     </div>
                   </div>
                 </li>
               ))}
+              <h4 className='total'>Total: R$ {calcularTotalCarrinho()}</h4>
             </ul>
           ) : carregarMensagem1()}
+          
+        </div>
+        <div className='mt-5'>
+          <button className="btn btn-comparar" onClick={compararPrecos}>Comparar preços</button>
+          {erroComparacao && <p className="text-danger mt-3">{erroComparacao}</p>}
         </div>
       </div>
-
+          
       {comparacaoResultados && (
-        <div className="box d-flex align-items-center justify-content-center flex-column">
+        <div className="boxComparacao d-flex align-items-center justify-content-center flex-column">
           <div className="texto">
-            {Array.isArray(comparacaoResultados) && comparacaoResultados.length > 0 ? (
+          {Array.isArray(comparacaoResultados) && comparacaoResultados.length > 0 ? (
               comparacaoResultados.map((resultado, index) => (
                 <div key={index} className="comparacao-resultado">
                   <h4>{produtosCarrinho[index]?.nome_produto} - {produtosCarrinho[index]?.marca_produto}</h4>
-                  <ul className="list-group mt-3">
+                  <ul className="list-group mt-3 lista_comparacao">
                     {Array.isArray(resultado.comparacao) && resultado.comparacao.length > 0 ? (
                       resultado.comparacao.map(item => (
                         <li key={item.id_produto_mercado} className="list-group-item d-flex justify-content-between align-items-center">
@@ -192,7 +190,7 @@ function CarrinhoDois() {
                             <span>{item.nome_produto} - {item.marca_produto}</span>
                             <span className="ms-3">R$ {item.preco_produto}</span>
                           </div>
-                          <span className="badge bg-primary rounded-pill">Mercado ID: {item.mercado_id}</span>
+                          <span className="badge bg-primary rounded-pill">Mercado: {item.razao_social}</span>
                         </li>
                       ))
                     ) : (
@@ -206,35 +204,12 @@ function CarrinhoDois() {
             )}
           </div>
         </div>
+        
       )}
-
-      {produtosCarrinho.length > 0 ? (
-        <div className="d-flex flex-column justify-content-evenly">
-          <div className="minibox d-flex flex-column align-items-center text-center">
-            <div className="tituloCarrinho">
-              <h1>Resumo da compra</h1>
-            </div>
-            <div className="align-self-center mt-5">
-              <h4>Total: R$ {calcularTotalCarrinho()}</h4>
-            </div>
-          </div>
-
-          <div className="minibox d-flex flex-column align-items-center text-center">
-            <div className="tituloCarrinho">
-              <h1>Fazer comparação</h1>
-            </div>
-            <div className="align-self-center mt-5">
-              <h4>Aqui, você fará a comparação dos preços com outros mercados.</h4>
-            </div>
-            <div className="align-self-center mt-5">
-              <button className="btn btn-primary" onClick={compararPrecos}>Comparar preços</button>
-              {erroComparacao && <p className="text-danger mt-3">{erroComparacao}</p>}
-            </div>
-          </div>
-        </div>
-      ) : carregarMensagem2()}
+    
     </div>
   );
 }
 
 export default CarrinhoDois;
+
