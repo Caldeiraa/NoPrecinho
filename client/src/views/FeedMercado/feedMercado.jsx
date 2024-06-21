@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import styles from './FeedMercado.module.css';
 
 function FeedMercado() {
+  const { id_mercado } = useParams();
   const [produtoMercado, setProdutoMercado] = useState([]);
   const [carrinho, setCarrinho] = useState([]);
 
@@ -20,7 +21,7 @@ function FeedMercado() {
 
   async function carregarProdutos() {
     try {
-      const resposta = await fetch('/cadastroPM');
+      const resposta = await fetch(`/feed/${id_mercado}`);
 
       if (!resposta.ok) {
         throw new Error("Erro na requisição: " + resposta.status);
@@ -55,20 +56,22 @@ function FeedMercado() {
     <div className="conteudo">
       <div className="container">
         <div className={styles.prod_container}>
-          {produtoMercado.map(produto => (
-            <div className={styles.prod_item} key={produto.id_produto_mercado}>
-              <Link to={`/produto/${produto.id_produto_mercado}`}>
-                <img src={`http://localhost:5000/img/${produto.foto_produto}`} alt={produto.nome_produto} />
-                <span>{produto.nome_produto}</span>
-                <span>{produto.marca_produto}</span>
-                <span>R$ {produto.preco_produto}</span>
-                <span>{produto.nome_mercado}</span>
-              </Link>
-              <button onClick={() => adicionarAoCarrinho(produto)}>
-                {carrinho.find(item => item.id_produto_mercado === produto.id_produto_mercado)
-                  ? 'Produto no carrinho'
-                  : 'Adicionar ao carrinho'}
-              </button>
+        {produtoMercado.map(produto => (
+            <div key={produto.id_produto_mercado} className="col-md-4 mb-4">
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">{produto.nome_produto}</h5>
+                  <img className='card-img' src={`http://localhost:5000/img/${produto.foto_produto}`} alt="" />
+                  <p className="card-text"><strong>Marca:</strong> {produto.marca_produto}</p>
+                  <p className="card-text"><strong>Preço:</strong> R$ {produto.preco_produto}</p>
+                  <p className="card-text"><strong>Mercado:</strong> {produto.nome_mercado}</p>
+                  <button onClick={() => adicionarAoCarrinho(produto)}>
+                    {carrinho.find(item => item.id_produto_mercado === produto.id_produto_mercado)
+                    ? 'Produto no carrinho'
+                    : 'Adicionar ao carrinho'}
+                  </button>
+                </div>
+              </div>
             </div>
           ))}
         </div>
