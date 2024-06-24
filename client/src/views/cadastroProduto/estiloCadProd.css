@@ -1,6 +1,7 @@
 .btnProd{
     background-color: #009970;
     color: white;
+    margin-top: 50px;
     
 }
 
@@ -11,7 +12,7 @@
 
 .box-prod{
     width: 500px;
-    height: 500px;
+    height: 550px;
     background-color: #353B3C;
     border-radius: 20px;
 

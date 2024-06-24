@@ -10,6 +10,7 @@ function CadastroProdMer() {
     const [peso_mercado, setPeso_produto] = useState('')
     const [preco_mercado, setPreco_mercado] = useState('')
     const [foto_produto, setFoto_produto] = useState(null)
+    const [validade, setValidade] = useState('')
     const [id_subCategoria, setId_subCategoria] = useState('')
 
     const { id_categoria } = useParams()
@@ -34,7 +35,6 @@ function CadastroProdMer() {
         const decodedToken = jwtDecode(token)
 
         let mercado_id = decodedToken.mercado_id
-        alert(mercado_id)
         const formData = new FormData()
         formData.append("mercado_id", mercado_id)
         formData.append("nome_prod", nome_prod)
@@ -42,6 +42,7 @@ function CadastroProdMer() {
         formData.append("descricao_prod", descricao_prod)
         formData.append("peso_mercado", peso_mercado)
         formData.append("preco_mercado", preco_mercado)
+        formData.append("validade", validade)
         formData.append("id_subCategoria", id_subCategoria)
 
         if (foto_produto) {
@@ -101,6 +102,8 @@ function CadastroProdMer() {
                         <input value={descricao_prod} onChange={e => setDescricao_prod(e.target.value)} name="" type="text" class="form-control rounded-4 mb-5 border border-black" />
                         <label for="" class="form-label fs-4 mt-3">Preço:</label>
                         <input value={preco_mercado} onChange={e => setPreco_mercado(e.target.value)} name="" type="text" class="form-control rounded-4 mb-5 border border-black" />
+                        <label for="" class="form-label fs-4 mt-3">Vigência:</label>
+                        <input value={validade} onChange={e => setValidade(e.target.value)} name="" type="text" class="form-control rounded-4 mb-5 border border-black" />
                     </div>
                     <div class="col-md">
                         <label for="" class="form-label fs-4 mt-3">Marca:</label>
@@ -117,9 +120,10 @@ function CadastroProdMer() {
                                 </option>
                             ))}
                         </select>
+                        <button type="submit" onClick={cadastrarProdutosMER} class="btnProd btn border border-black rounded-4 fs-4 float-end">Cadastrar</button>
                     </div>
                 </div>
-                <button type="submit" onClick={cadastrarProdutosMER} class="btnProd btn border border-black rounded-4 fs-4 float-end">Cadastrar</button>
+                
             </div>
         </div>
     )

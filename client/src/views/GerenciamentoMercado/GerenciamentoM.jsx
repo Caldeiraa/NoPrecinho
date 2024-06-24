@@ -30,7 +30,7 @@ function GerenciamentoM() {
 
     async function carregarProdutosC(mercado_id) {
       try {
-        const resposta = await fetch(`/produtos/${mercado_id}`);
+        const resposta = await fetch(`/feed/${mercado_id}`);
 
         if (!resposta.ok) {
           console.debug("HTTP erro: " + resposta.status);

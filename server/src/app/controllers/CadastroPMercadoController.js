@@ -7,6 +7,7 @@ class CadastroPMercadoController{
         let peso_mercado = req.body.peso_mercado
         let preco_mercado = req.body.preco_mercado
         let foto_produto = req.files.foto_produto.name
+        let validade = req.body.validade
         let descricao_prod = req.body.descricao_prod
         let mercado_id = req.body.mercado_id
         let id_subCategoria = req.body.id_subCategoria
@@ -18,7 +19,7 @@ class CadastroPMercadoController{
             foto_produto = new Date().getTime()+"."+extensao
             let arquivo = req.files.foto_produto
         
-            CadastroProdMercado.inserir(nome_prod,marca_mercado,peso_mercado,preco_mercado,foto_produto,descricao_prod,mercado_id,id_subCategoria,arquivo).then(resposta=>{
+            CadastroProdMercado.inserir(nome_prod,marca_mercado,peso_mercado,preco_mercado,foto_produto, validade, descricao_prod,mercado_id,id_subCategoria,arquivo).then(resposta=>{
                 res.status(resposta[0]).json(resposta[1])
             }).catch(
                 resposta =>{
